@@ -36,9 +36,9 @@ Ce dépôt contient :
 | Dossier/Fichier | Description |
 |------------------|-------------|
 | `index.html`     | Page principale du site GitHub Pages |
-| `README.md`      | Présentation du projet (tu es ici) |
-| `/assets/`       | Images / icônes / styles (si ajoutés) |
-| `/docs/`         | Documentation publique (si ajoutée) |
+| `README.md`      | Présentation du projet  |
+| `/assets/`       | Images / icônes / styles  |
+| `/docs/`         | Documentation publique  |
 
 ---
 
