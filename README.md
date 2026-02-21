@@ -94,4 +94,4 @@ Ce projet est sous licence MIT (modifiable selon ton besoin).
 ---
 
 Merci pour ton intérêt 🤝  
-Pour toute question : contact@aec-cameroun.org (exemple)
+Pour toute question : differentsleaders328@gmail.com
