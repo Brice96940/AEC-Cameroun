@@ -3,567 +3,897 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>AEC Cameroun — Égalité des Chances (MVP)</title>
-  <meta name="description" content="AEC Cameroun : ressources et opportunités structurées pour l’orientation, les bourses et l’insertion. Contributions vérifiées avant publication." />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="AEC Cameroun — Égalité des Chances (MVP)" />
-  <meta property="og:description" content="Base de ressources structurée + opportunités. Contributions volontaires, vérification avant publication." />
-  <meta property="og:type" content="website" />
-
-  <!-- Google Analytics (remplace G-XXXXXXX) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXX');
-  </script>
+  <title>AEC – Égalité des Chances</title>
+  <meta name="description" content="AEC – Plateforme d’orientation, ressources et opportunités entre la France et le Cameroun." />
 
   <style>
     :root{
-      --bg:#0b1220;
-      --panel:#0f1b33;
-      --panel2:rgba(255,255,255,.04);
-      --text:#e9efff;
-      --muted:#b9c7f2;
-      --line:rgba(255,255,255,.10);
-      --shadow: 0 16px 50px rgba(0,0,0,.40);
-      --radius:18px;
-      --blue:#3b82f6;
-      --green:#22c55e;
-      --danger:#ef4444;
-      --max:1180px;
+      --bg0:#060a13;
+      --bg1:#0a1226;
+
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.04);
+      --border: rgba(255,255,255,.10);
+
+      --text:#eaf1ff;
+      --muted:#a9b8da;
+
+      --accent:#4f8cff;      /* bleu */
+      --accent2:#20e3b2;     /* vert menthe */
+      --accent3:#b36bff;     /* violet */
+      --warn:#ffbf5a;
+
+      --shadow: 0 18px 44px rgba(0,0,0,.45);
+      --radius: 18px;
+      --max: 1160px;
+
+      --glow1: 0 0 0 1px rgba(79,140,255,.35), 0 14px 40px rgba(79,140,255,.15);
+      --glow2: 0 0 0 1px rgba(32,227,178,.30), 0 14px 40px rgba(32,227,178,.12);
     }
 
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color: var(--text);
+      line-height:1.45;
       background:
-        radial-gradient(900px 350px at 15% 8%, rgba(59,130,246,.22), transparent 60%),
-        radial-gradient(900px 350px at 85% 0%, rgba(34,197,94,.14), transparent 60%),
-        var(--bg);
-      color:var(--text);
-      line-height:1.5;
+        radial-gradient(1200px 700px at 15% 0%, rgba(79,140,255,.25), transparent 55%),
+        radial-gradient(900px 600px at 92% 12%, rgba(32,227,178,.18), transparent 55%),
+        radial-gradient(900px 700px at 70% 95%, rgba(179,107,255,.14), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
     }
 
-    a{color:inherit; text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:20px;}
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding: 22px 18px 70px}
 
-    /* App layout */
-    .app{
-      display:grid;
-      grid-template-columns: 290px 1fr;
-      gap:16px;
-      align-items:start;
+    .topbar{
+      position:sticky; top:0;
+      z-index:50;
+      backdrop-filter: blur(12px);
+      background: rgba(6,10,19,.72);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding: 14px 18px;
+      display:flex; gap:14px; align-items:center; justify-content:space-between;
+    }
+
+    .brand{display:flex; align-items:center; gap:10px; text-decoration:none}
+    .logo{
+      width:40px; height:40px; border-radius:14px;
+      background: linear-gradient(135deg, rgba(79,140,255,1), rgba(32,227,178,.92));
+      box-shadow: 0 16px 24px rgba(0,0,0,.35);
+    }
+    .brand b{letter-spacing:.2px}
+
+    nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    .tab{
+      text-decoration:none;
+      color: var(--muted);
+      padding: 9px 12px;
+      border-radius: 12px;
+      border:1px solid transparent;
+      background: transparent;
+      transition: .15s ease;
+      user-select:none;
+    }
+    .tab:hover{
+      color:var(--text);
+      background: rgba(255,255,255,.04);
+      border-color: rgba(255,255,255,.12);
+    }
+    .tab.active{
+      color: var(--text);
+      background: linear-gradient(135deg, rgba(79,140,255,.20), rgba(32,227,178,.10));
+      border-color: rgba(79,140,255,.35);
+      box-shadow: var(--glow1);
     }
 
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
     }
+    .card.pad{padding: 18px}
 
-    /* Sidebar */
-    .sidebar{padding:16px; position:sticky; top:16px;}
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      padding:12px 12px 10px;
-      border-radius:14px;
-      background:var(--panel2);
-      border:1px solid var(--line);
+    h1{
+      margin: 10px 0 12px;
+      font-size: clamp(1.85rem, 3.1vw, 2.7rem);
+      line-height:1.10;
+      letter-spacing: .2px;
     }
-    .dot{
-      width:12px; height:12px; border-radius:999px;
-      background:linear-gradient(135deg, var(--blue), var(--green));
-      box-shadow:0 0 0 4px rgba(59,130,246,.12);
-      flex:0 0 auto;
-    }
-    .brand h1{
-      margin:0;
-      font-size:14px;
-      letter-spacing:.2px;
-      line-height:1.2;
-    }
-    .brand p{margin:2px 0 0; color:var(--muted); font-size:12px}
+    h2{margin:0; font-size: 1.35rem}
+    h3{margin:0 0 8px; font-size: 1.05rem}
+    .sub{margin:0 0 16px; color: var(--muted); font-size: 1.05rem; max-width: 66ch}
+    .hint{color: var(--muted); font-size:.98rem}
 
-    .nav{
-      margin-top:14px;
-      display:grid;
-      gap:8px;
-    }
-    .nav button{
-      width:100%;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.04);
-      color:var(--text);
-      padding:12px 12px;
-      border-radius:14px;
-      cursor:pointer;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      font-weight:700;
-      transition: transform .08s ease, opacity .2s ease, background .2s ease;
-    }
-    .nav button:hover{transform: translateY(-1px); opacity:.95}
-    .nav button.active{
-      background:rgba(59,130,246,.18);
-      border-color:rgba(59,130,246,.35);
-    }
-    .tag{
-      font-size:11px;
-      color:var(--muted);
-      border:1px solid var(--line);
-      padding:4px 8px;
-      border-radius:999px;
-      background:rgba(255,255,255,.03);
-      font-weight:700;
-    }
-
-    .sidebar .mini{
-      margin-top:14px;
-      padding:14px;
-      border-top:1px solid var(--line);
-      color:var(--muted);
-      font-size:13px;
-    }
-    .mini strong{color:var(--text)}
-    .smalllink{color:rgba(232,238,252,.85); text-decoration:underline; text-underline-offset:3px}
-
-    /* Main */
-    .main{padding:16px;}
-    .topbar{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      padding:14px;
-      border-bottom:1px solid var(--line);
-      border-top-left-radius: var(--radius);
-      border-top-right-radius: var(--radius);
-      background: rgba(255,255,255,.03);
-    }
-    .topbar .title{
-      display:flex; flex-direction:column; gap:2px;
-    }
-    .topbar .title .big{
-      font-size:18px;
-      font-weight:900;
-      letter-spacing:-.2px;
-      margin:0;
-    }
-    .topbar .title .sub{
-      margin:0;
-      color:var(--muted);
-      font-size:13px;
-    }
-
-    .tabs{
-      display:flex; gap:8px; flex-wrap:wrap;
-    }
     .pill{
-      border:1px solid var(--line);
-      padding:8px 12px;
-      border-radius:999px;
-      color:var(--muted);
-      background:rgba(255,255,255,.04);
-      font-weight:700;
-      cursor:pointer;
-      transition: background .2s ease, transform .08s ease;
-    }
-    .pill:hover{transform: translateY(-1px)}
-    .pill.active{
-      background:rgba(59,130,246,.18);
-      color:var(--text);
-      border-color:rgba(59,130,246,.35);
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 6px 10px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size:.92rem;
     }
 
-    .content{padding:16px;}
-    .section{display:none;}
-    .section.active{display:block;}
-
-    .hero{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:14px;
-      align-items:stretch;
-    }
-    .panel{padding:18px; border:1px solid var(--line); border-radius:16px; background:rgba(255,255,255,.03);}
-    .panel h2{margin:0 0 10px; font-size:20px; letter-spacing:-.2px}
-    .panel p{margin:0 0 12px; color:var(--muted)}
-    .notice{
-      padding:12px 14px;
-      border-radius:14px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.04);
-      color:rgba(232,238,252,.9);
-      font-size:13px;
-    }
-
-    .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;}
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
-      padding:12px 14px;
-      border-radius:12px;
-      border:1px solid transparent;
-      font-weight:900;
-      cursor:pointer;
-      min-width:220px;
-      transition: transform .08s ease, opacity .2s ease;
-    }
-    .btn:hover{transform: translateY(-1px); opacity:.95}
-    .btn.blue{background:var(--blue)}
-    .btn.green{background:var(--green)}
-    .btn.ghost{background:rgba(255,255,255,.06); border-color:var(--line); color:var(--text)}
-
-    /* Resources UX */
-    .search{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin:0 0 12px;
-    }
-    .search input{
-      flex:1;
-      min-width:260px;
-      padding:12px 12px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      background:rgba(0,0,0,.20);
+      gap:10px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
       color:var(--text);
+      padding: 11px 14px;
+      border-radius: 13px;
+      text-decoration:none;
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.07);
+      border-color: rgba(255,255,255,.20);
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(79,140,255,1), rgba(179,107,255,.85));
+      border-color: rgba(79,140,255,.55);
+      box-shadow: var(--glow1);
+    }
+    .btn.primary:hover{background: linear-gradient(135deg, rgba(79,140,255,1), rgba(179,107,255,.92))}
+    .btn.green{
+      background: linear-gradient(135deg, rgba(32,227,178,1), rgba(32,227,178,.70));
+      border-color: rgba(32,227,178,.55);
+      color:#061118;
+      font-weight:800;
+      box-shadow: var(--glow2);
+    }
+    .btn.small{padding:9px 12px; border-radius: 12px; font-size:.95rem}
+
+    .grid-2{display:grid; gap:12px; grid-template-columns: repeat(2, 1fr)}
+    .grid-3{display:grid; gap:12px; grid-template-columns: repeat(3, 1fr)}
+    @media (max-width: 980px){
+      .grid-2,.grid-3{grid-template-columns: 1fr}
+    }
+
+    .item{
+      padding: 16px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: var(--card2);
+    }
+    .item p{margin:0; color: var(--muted)}
+
+    .section-head{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      margin: 18px 0 10px;
+    }
+
+    .view{display:none; animation: fade .18s ease}
+    .view.active{display:block}
+    @keyframes fade{from{opacity:.5; transform: translateY(4px)} to{opacity:1; transform: translateY(0)}}
+
+    .hero{padding: 18px 0 10px}
+    .hero-grid{
+      display:grid; gap:12px;
+      grid-template-columns: 1.25fr .75fr;
+      align-items:stretch;
+    }
+    @media (max-width: 980px){ .hero-grid{grid-template-columns: 1fr} }
+
+    .cta-row{display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px}
+    .mini{margin-top: 14px; display:flex; gap:10px; flex-wrap:wrap; color: var(--muted); font-size:.98rem}
+
+    .kpi{
+      display:flex; flex-direction:column; gap:10px;
+      padding:16px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      min-height: 120px;
+    }
+    .kpi .label{color:var(--muted); font-size:.98rem}
+    .kpi .value{font-size: 1.65rem; font-weight: 900; letter-spacing:.2px}
+    .kpi .note{color: var(--muted); font-size:.92rem}
+    .placeholder{opacity:.88}
+
+    .meta{display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px}
+    .meta span{
+      display:inline-flex; align-items:center;
+      gap:8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size:.92rem;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:.92rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      width:fit-content;
+    }
+    .status-prep{
+      color: var(--text);
+      border-color: rgba(79,140,255,.45) !important;
+      background: rgba(79,140,255,.14) !important;
+    }
+    .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px}
+
+    details.admin{margin-top: 12px}
+    details.admin summary{cursor:pointer; color: var(--muted); user-select:none}
+    .adminbox{
+      margin-top: 10px;
+      padding: 14px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius: 14px;
+      background: rgba(0,0,0,.18);
+      color: var(--muted);
+    }
+    .admingrid{display:grid; gap:10px; grid-template-columns: 1fr 1fr}
+    @media (max-width: 980px){ .admingrid{grid-template-columns: 1fr} }
+    label{display:block; font-size:.92rem; margin-bottom: 6px}
+    input[type="number"]{
+      width:100%;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.22);
+      color: var(--text);
       outline:none;
     }
-    .search input::placeholder{color:rgba(185,199,242,.65)}
-    .hint{color:var(--muted); font-size:13px; margin:0 0 10px}
+    input::placeholder{color: rgba(169,184,218,.70)}
+    .row{display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px}
 
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:12px;
+    .footer{
+      margin-top: 26px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      color: var(--muted);
+      display:flex; gap:10px; flex-wrap:wrap;
+      align-items:center; justify-content:space-between;
+      font-size:.95rem;
     }
-    .tile{
-      padding:14px;
-      border-radius:16px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.03);
-      transition: transform .08s ease, opacity .2s ease, border-color .2s ease;
-    }
-    .tile:hover{transform: translateY(-1px); opacity:.97; border-color:rgba(59,130,246,.30)}
-    .tile .t{margin:0 0 6px; font-weight:900}
-    .tile .d{margin:0; color:var(--muted); font-size:13px}
-    .tile .meta{margin-top:10px; display:flex; gap:8px; flex-wrap:wrap}
-    .chip{
-      font-size:11px; font-weight:800;
-      padding:4px 8px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      color:rgba(232,238,252,.85);
-      background:rgba(255,255,255,.03);
-    }
-
-    footer{
-      margin-top:12px;
-      padding:14px 16px;
-      border-top:1px solid var(--line);
-      color:rgba(232,238,252,.65);
-      font-size:12px;
-      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
-    }
-
-    /* Responsive */
-    @media (max-width: 980px){
-      .app{grid-template-columns:1fr}
-      .sidebar{position:relative; top:auto}
-      .hero{grid-template-columns:1fr}
-      .grid{grid-template-columns:1fr}
-      .btn{min-width:100%}
+    .smallprint{max-width: 80ch}
+    .mailto a{
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="app">
-
-      <!-- Sidebar -->
-      <aside class="card sidebar">
-        <div class="brand">
-          <span class="dot"></span>
-          <div>
-            <h1>AEC Cameroun — MVP</h1>
-            <p>Orientation • Ressources • Opportunités</p>
-          </div>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#/accueil" data-nav="accueil">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <b>AEC</b><div style="color:var(--muted);font-size:.88rem;margin-top:2px">Égalité des Chances</div>
         </div>
+      </a>
 
-        <div class="nav" aria-label="Navigation">
-          <button class="navbtn active" data-tab="accueil">
-            Accueil <span class="tag">Start</span>
-          </button>
-          <button class="navbtn" data-tab="ressources">
-            Ressources <span class="tag">Base</span>
-          </button>
-          <button class="navbtn" data-tab="proposer">
-            Proposer <span class="tag">Form</span>
-          </button>
-          <button class="navbtn" data-tab="contact">
-            Contact <span class="tag">Mail</span>
-          </button>
-        </div>
-
-        <div class="mini">
-          <div><strong>Principe :</strong> Contribution → Vérification → Publication</div>
-          <div style="margin-top:8px">
-            Email : <a class="smalllink" href="mailto:differentsleaders328@gmail.com">differentsleaders328@gmail.com</a>
-          </div>
-        </div>
-      </aside>
-
-      <!-- Main -->
-      <main class="card main">
-        <div class="topbar">
-          <div class="title">
-            <p class="big">AEC Cameroun — Égalité des Chances</p>
-            <p class="sub">Un accès structuré à l’information, même sans réseau.</p>
-          </div>
-
-          <!-- Tabs (mobile-friendly) -->
-          <div class="tabs" role="tablist">
-            <button class="pill active tabbtn" data-tab="accueil" role="tab">Accueil</button>
-            <button class="pill tabbtn" data-tab="ressources" role="tab">Ressources</button>
-            <button class="pill tabbtn" data-tab="proposer" role="tab">Proposer</button>
-            <button class="pill tabbtn" data-tab="contact" role="tab">Contact</button>
-          </div>
-        </div>
-
-        <div class="content">
-
-          <!-- ACCUEIL -->
-          <section class="section active" id="accueil">
-            <div class="hero">
-              <div class="panel">
-                <h2>Structurer l’accès à l’information, même sans réseau.</h2>
-                <p>
-                  AEC Cameroun centralise des ressources et opportunités utiles pour les collégiens/lycéens, étudiants et jeunes diplômés :
-                  orientation, modèles, démarches, bourses et insertion professionnelle.
-                </p>
-                <div class="notice">
-                  Les ressources sont <strong>proposées par la communauté</strong>, puis <strong>vérifiées avant publication</strong> pour garantir un accès plus fiable.
-                </div>
-
-                <div class="cta">
-                  <!-- Remplace par TON lien Notion “Base ressources” -->
-                  <a class="btn blue" href="https://buttercup-sight-745.notion.site/RESSOURCES-30ee2b4c167380dc90cef0babdfb8095?pvs=143" target="_blank" rel="noopener">
-                    Accéder à la base de ressources
-                  </a>
-
-                  <!-- Remplace par TON lien Tally -->
-                  <a class="btn green" href="https://tally.so/r/ODzE9Y" target="_blank" rel="noopener">
-                    Proposer une ressource / Demander un ajout
-                  </a>
-
-                  <button class="btn ghost goto" data-tab="ressources">
-                    Explorer par catégories
-                  </button>
-                </div>
-              </div>
-
-              <div class="panel">
-                <h2>Pour qui ?</h2>
-                <p>• Collégiens / lycéens (orientation)</p>
-                <p>• Étudiants (méthode + ressources)</p>
-                <p>• Jeunes diplômés (insertion)</p>
-                <hr style="border:0;border-top:1px solid var(--line);margin:12px 0" />
-                <h2>Ce que tu trouves ici</h2>
-                <p>• Guides & checklists</p>
-                <p>• Modèles CV / mails</p>
-                <p>• Bourses / opportunités</p>
-                <p>• Plateformes utiles</p>
-              </div>
-            </div>
-          </section>
-
-          <!-- RESSOURCES -->
-          <section class="section" id="ressources">
-            <div class="panel">
-              <h2>Ressources</h2>
-              <p class="hint">
-                Astuce : utilise la recherche ci-dessous pour trouver une catégorie (bourses, CV, orientation…).
-                Ensuite, ouvre la base Notion.
-              </p>
-
-              <div class="search">
-                <input id="q" type="search" placeholder="Rechercher : bourses, CV, orientation, emploi, université, concours…" />
-                <a class="btn blue" style="min-width:auto" href="https://buttercup-sight-745.notion.site/RESSOURCES-30ee2b4c167380dc90cef0babdfb8095?pvs=143" target="_blank" rel="noopener">
-                  Ouvrir Notion
-                </a>
-              </div>
-
-              <div class="grid" id="cards">
-                <!-- IMPORTANT :
-                     Si tu crées des vues Notion filtrées (ex: “Bourses”), remplace href par le lien de la vue. -->
-
-                <a class="tile" href="https://buttercup-sight-745.notion.site/RESSOURCES-30ee2b4c167380dc90cef0babdfb8095?pvs=143" target="_blank" rel="noopener"
-                   data-k="orientation lycée collège filière">
-                  <p class="t">Orientation (Collège/Lycée)</p>
-                  <p class="d">Méthode pour choisir une filière + éviter les choix “par pression”.</p>
-                  <div class="meta">
-                    <span class="chip">Orientation</span><span class="chip">Méthode</span>
-                  </div>
-                </a>
-
-                <a class="tile" href="https://buttercup-sight-745.notion.site/RESSOURCES-30ee2b4c167380dc90cef0babdfb8095?pvs=143" target="_blank" rel="noopener"
-                   data-k="bourse concours financement auf daad campus france">
-                  <p class="t">Bourses & Concours</p>
-                  <p class="d">Bourses, appels à projets, programmes, concours utiles.</p>
-                  <div class="meta">
-                    <span class="chip">Bourses</span><span class="chip">Opportunités</span>
-                  </div>
-                </a>
-
-                <a class="tile" href="https://buttercup-sight-745.notion.site/RESSOURCES-30ee2b4c167380dc90cef0babdfb8095?pvs=143" target="_blank" rel="noopener"
-                   data-k="cv mail lettre motivation entretien">
-                  <p class="t">Modèles CV / Mails</p>
-                  <p class="d">CV, emails pro, lettre de motivation, messages LinkedIn.</p>
-                  <div class="meta">
-                    <span class="chip">CV</span><span class="chip">Mails</span>
-                  </div>
-                </a>
-
-                <a class="tile" href="https://buttercup-sight-745.notion.site/RESSOURCES-30ee2b4c167380dc90cef0babdfb8095?pvs=143" target="_blank" rel="noopener"
-                   data-k="emploi stage alternance insertion recrutements">
-                  <p class="t">Insertion & Emploi</p>
-                  <p class="d">Outils pour chercher, candidater, relancer et se positionner.</p>
-                  <div class="meta">
-                    <span class="chip">Emploi</span><span class="chip">Insertion</span>
-                  </div>
-                </a>
-
-                <a class="tile" href="https://buttercup-sight-745.notion.site/RESSOURCES-30ee2b4c167380dc90cef0babdfb8095?pvs=143" target="_blank" rel="noopener"
-                   data-k="digital tech incubateur activspaces orange digital center">
-                  <p class="t">Tech / Digital (Cameroun)</p>
-                  <p class="d">Incubateurs, hubs, programmes et plateformes utiles.</p>
-                  <div class="meta">
-                    <span class="chip">Tech</span><span class="chip">Digital</span>
-                  </div>
-                </a>
-
-                <a class="tile" href="https://buttercup-sight-745.notion.site/RESSOURCES-30ee2b4c167380dc90cef0babdfb8095?pvs=143" target="_blank" rel="noopener"
-                   data-k="université formation cours certifications">
-                  <p class="t">Formations & Parcours</p>
-                  <p class="d">Formations, certifications, parcours et ressources d’apprentissage.</p>
-                  <div class="meta">
-                    <span class="chip">Formation</span><span class="chip">Parcours</span>
-                  </div>
-                </a>
-
-              </div>
-            </div>
-          </section>
-
-          <!-- PROPOSER -->
-          <section class="section" id="proposer">
-            <div class="panel">
-              <h2>Proposer une ressource</h2>
-              <p class="hint">
-                Tu as une bourse, une opportunité, une plateforme, un guide ou une information utile ?
-                Propose-la ici. L’équipe vérifie avant publication.
-              </p>
-
-              <div class="cta">
-                <!-- Tally -->
-                <a class="btn green" href="https://tally.so/r/ODzE9Y" target="_blank" rel="noopener">
-                  Proposer via Tally (recommandé)
-                </a>
-
-                <!-- Google Form (optionnel) -->
-                <a class="btn ghost" href="https://docs.google.com/forms/d/e/1FAIpQLSeGMSt89Eb-xxK856BdZoOwva5-txwqFeMjm_hwj4-lixnx7w/viewform?usp=header" target="_blank" rel="noopener">
-                  Proposer via Google Form
-                </a>
-              </div>
-
-              <div style="margin-top:14px" class="notice">
-                Conseil : indique toujours <strong>la ville</strong>, <strong>le public cible</strong> et un <strong>lien officiel</strong> si possible.
-              </div>
-            </div>
-          </section>
-
-          <!-- CONTACT -->
-          <section class="section" id="contact">
-            <div class="panel">
-              <h2>Contact</h2>
-              <p class="hint">
-                Pour une question, une suggestion ou un partenariat :
-              </p>
-
-              <p>
-                • Email : <a class="smalllink" href="mailto:differentsleaders328@gmail.com">differentsleaders328@gmail.com</a><br>
-                • LinkedIn : <a class="smalllink" href="https://www.linkedin.com/in/awoumpebrice99/recent-activity/all/" target="_blank" rel="noopener">Mon profil</a>
-              </p>
-
-              <div class="notice" style="margin-top:14px">
-                Si tu es une école / association à Douala ou Yaoundé : on peut faire un atelier pilote “orientation + méthode”.
-              </div>
-            </div>
-          </section>
-
-        </div>
-
-        <footer>
-          <div>© <span id="y"></span> — AEC Cameroun (MVP)</div>
-          <div>
-            <span style="color:rgba(232,238,252,.55)">Navigation :</span>
-            <a class="smalllink goto" data-tab="accueil" href="#">Accueil</a>
-            &nbsp;·&nbsp;
-            <a class="smalllink goto" data-tab="ressources" href="#">Ressources</a>
-            &nbsp;·&nbsp;
-            <a class="smalllink goto" data-tab="proposer" href="#">Proposer</a>
-          </div>
-        </footer>
-      </main>
-
+      <nav>
+        <a class="tab" href="#/accueil" data-nav="accueil">Accueil</a>
+        <a class="tab" href="#/ressources" data-nav="ressources">Ressources</a>
+        <a class="tab" href="#/ateliers" data-nav="ateliers">Ateliers</a>
+        <a class="tab" href="#/opportunites" data-nav="opportunites">Opportunités</a>
+        <a class="tab" href="#/impact" data-nav="impact">Impact</a>
+        <a class="tab" href="#/apropos" data-nav="apropos">À propos</a>
+        <a class="tab" href="#/proposer" data-nav="proposer">Proposer</a>
+      </nav>
     </div>
-  </div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- =======================
+         CONFIG LIENS (UN SEUL ENDROIT)
+         -> Tally = Ateliers
+         -> Proposer ressource = Notion (ou autre)
+    ======================== -->
+    <script>
+      const AEC_LINKS = {
+        // CONTACT / IDENTITÉ
+        email: "differentsleaders328@gmail.com",
+        linkedin: "https://www.linkedin.com/in/awoumpebrice99/recent-activity/all/",
+
+        //Notion complet
+        notion_complet: "https://buttercup-sight-745.notion.site/AEC-Cameroun-Orientation-Employabilit-30ee2b4c167380e599bbe47d0d6b9223?pvs=143",
+
+
+        // BASE RESSOURCES (Notion)
+        notion_base: "https://buttercup-sight-745.notion.site/RESSOURCES-30ee2b4c167380dc90cef0babdfb8095?pvs=143",
+
+        // ATELIERS (Tally) -> ton lien
+        ateliers_tally: "https://tally.so/r/ODzE9Y",
+
+        // (Optionnel) Inscription générale (si tu n'as pas, on met sur Ateliers)
+        inscription_form: "https://tally.so/r/ODzE9Y",
+
+        // RESSOURCES (si tu veux des pages séparées plus tard)
+        res_methode: "https://www.notion.so/ORIENTATION-STRUCTURER-TON-PROJET-310e2b4c167380f39eb6c9c5b7129cc3?source=copy_link",
+        res_cv: "https://www.notion.so/CV-CANDIDATURES-Public-310e2b4c167380be87e2d75ba86da2bb?source=copy_link",
+        res_metiers: "https://www.notion.so/7-FICHES-M-TIERS-GRATUITES-310e2b4c167380f29527d8fa40c7f2a0?source=copy_link",
+
+        // OPPORTUNITÉS (si tu veux des pages dédiées plus tard)
+        opp_bourses: "https://www.notion.so/Bourses-Public-310e2b4c167380058571c2cd052576e8?source=copy_link",
+        opp_offres: "https://www.notion.so/OFFRES-ET-OPPORTUNITES-PUBLIC-310e2b4c167380dbbcd6f0154ea15713?source=copy_link",
+        opp_concours: "https://www.notion.so/OPPORTUNIT-S-DE-CONCOURS-310e2b4c167380a5bfffc770cc39194e?source=copy_link",
+
+        // PROPOSER RESSOURCE (pas Tally)
+        // -> soit un Google Form spécial ressource, soit une page Notion "Proposer"
+        proposer_ressource: "https://docs.google.com/forms/d/e/1FAIpQLSeGMSt89Eb-xxK856BdZoOwva5-txwqFeMjm_hwj4-lixnx7w/viewform?usp=header"
+      };
+    </script>
+
+    <!-- ========= VUE : ACCUEIL ========= -->
+    <section class="view" id="view-accueil">
+      <section class="hero">
+        <div class="hero-grid">
+          <div class="card pad">
+            <span class="pill">France 🇫🇷 & Cameroun 🇨🇲 · Orientation · Ressources · Ateliers · Opportunités</span>
+            <h1>AEC – Ta plateforme d’orientation et d’opportunités.</h1>
+            <p class="sub">
+              Une méthode simple et structurée pour aider les jeunes (15–30 ans) à clarifier leur projet,
+              développer leurs compétences et accéder aux bonnes opportunités.
+            </p>
+
+            <div class="cta-row">
+              <a class="btn primary" href="#/ressources" data-track="cta_ressources">Découvrir les ressources</a>
+              <a class="btn green" href="#/ateliers" data-track="cta_ateliers">Voir les ateliers</a>
+              <a class="btn" href="#/impact" data-track="cta_impact">Voir l’impact</a>
+            </div>
+
+            <div class="mini">
+              <span class="pill">✔ Parcours guidé</span>
+              <span class="pill">✔ Ressources actionnables</span>
+              <span class="pill">✔ Ateliers collectifs</span>
+              <span class="pill">✔ Suivi d’impact (KPI)</span>
+            </div>
+          </div>
+
+          <div class="card pad">
+            <h2 style="margin-top:0">Accès rapide</h2>
+            <p class="hint" style="margin-top:8px">
+              Va directement au bon endroit. (Compteurs de clics inclus pour tester.)
+            </p>
+
+            <div class="row" style="margin-top:12px">
+              <a class="btn small" href="#/ressources" data-track="quick_ressources">📚 Ressources</a>
+              <a class="btn small" href="#/ateliers" data-track="quick_ateliers">🗓 Ateliers</a>
+              <a class="btn small" href="#/opportunites" data-track="quick_opportunites">🎯 Opportunités</a>
+              <a class="btn small" href="#/apropos" data-track="quick_apropos">👤 À propos</a>
+            </div>
+
+            <details class="admin">
+              <summary>Mini panel (facultatif) · Renseigner tes KPI manuellement</summary>
+              <div class="adminbox">
+                <div class="admingrid">
+                  <div>
+                    <label for="kpiUsers">Jeunes inscrits</label>
+                    <input id="kpiUsers" type="number" min="0" placeholder="ex : 120" />
+                  </div>
+                  <div>
+                    <label for="kpiWorkshops">Ateliers organisés</label>
+                    <input id="kpiWorkshops" type="number" min="0" placeholder="ex : 8" />
+                  </div>
+                  <div>
+                    <label for="kpiCoaching">Jeunes accompagnés</label>
+                    <input id="kpiCoaching" type="number" min="0" placeholder="ex : 35" />
+                  </div>
+                  <div>
+                    <label for="kpiPartners">Partenaires</label>
+                    <input id="kpiPartners" type="number" min="0" placeholder="ex : 4" />
+                  </div>
+                </div>
+                <div class="row">
+                  <button class="btn small primary" type="button" id="saveKpi">Enregistrer</button>
+                  <button class="btn small" type="button" id="resetKpi">Réinitialiser</button>
+                </div>
+                <p class="hint" style="margin-top:10px">
+                  Stocké localement (dans ton navigateur) uniquement, pour tester sans base de données.
+                </p>
+              </div>
+            </details>
+
+            <div class="row" style="margin-top:12px">
+              <a class="btn green" href="#" id="btnInscription" data-track="signup_home">📝 S’inscrire</a>
+              <a class="btn" href="#" id="btnContact" data-track="contact_home">📩 Me contacter</a>
+            </div>
+
+            <p class="hint" style="margin:10px 0 0">
+              Astuce pro : “pré-inscription” → tu fixes les dates après avoir mesuré la demande.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-head">
+        <h2>Ce que tu peux consulter</h2>
+        <div class="hint">Chaque bouton t’emmène vers l’onglet correspondant.</div>
+      </div>
+
+      <div class="grid-3">
+        <div class="item">
+          <h3>📚 Ressources</h3>
+          <p>Méthode d’orientation, CV, fiches métiers, outils concrets.</p>
+          <div class="actions">
+            <a class="btn small primary" href="#/ressources" data-track="home_go_ressources">Accéder</a>
+            <a class="btn small" href="#" id="homeOpenNotion" data-track="home_open_notion">Ouvrir Notion</a>
+          </div>
+        </div>
+        <div class="item">
+          <h3>🗓 Ateliers</h3>
+          <p>Ateliers en ligne / présentiel, avec période + statut + pré-inscription.</p>
+          <div class="actions">
+            <a class="btn small green" href="#/ateliers" data-track="home_go_ateliers">Voir</a>
+            <a class="btn small" href="#" id="homeTally" data-track="home_open_tally">Pré-inscription</a>
+          </div>
+        </div>
+        <div class="item">
+          <h3>🎯 Opportunités</h3>
+          <p>Stages, emplois, programmes, bourses, concours (à brancher plus tard).</p>
+          <div class="actions">
+            <a class="btn small primary" href="#/opportunites" data-track="home_go_opps">Consulter</a>
+            <a class="btn small" href="#/proposer" data-track="home_go_proposer">Proposer une ressource</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========= VUE : RESSOURCES ========= -->
+    <section class="view" id="view-ressources">
+      <div class="section-head">
+        <h2>Ressources</h2>
+        <div class="hint">MVP : tu centralises dans Notion. Plus tard : pages dédiées.</div>
+      </div>
+
+      <div class="grid-3">
+        <div class="item">
+          <h3>🧭 Méthode d’orientation</h3>
+          <p>Se connaître → explorer → tester → décider. Un parcours guidé étape par étape.</p>
+          <div class="actions">
+            <a class="btn small primary" href="#" id="linkResMethode" data-track="resource_methode">Accéder</a>
+            <a class="btn small" href="#/proposer" data-track="resource_proposer_methode">Proposer un contenu</a>
+          </div>
+        </div>
+
+        <div class="item">
+          <h3>📄 CV & candidatures</h3>
+          <p>Modèles, checklist, LinkedIn, préparation entretien (France & Cameroun).</p>
+          <div class="actions">
+            <a class="btn small primary" href="#" id="linkResCV" data-track="resource_cv">Accéder</a>
+            <a class="btn small" href="#/proposer" data-track="resource_proposer_cv">Proposer un modèle</a>
+          </div>
+        </div>
+
+        <div class="item">
+          <h3>🧰 Fiches métiers</h3>
+          <p>Missions, compétences, formations, évolutions, repères (par pays).</p>
+          <div class="actions">
+            <a class="btn small primary" href="#" id="linkResMetiers" data-track="resource_metiers">Accéder</a>
+            <a class="btn small" href="#/proposer" data-track="resource_proposer_metiers">Proposer une fiche</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card pad" style="margin-top:12px">
+        <div class="section-head" style="margin:0 0 10px">
+          <h3 style="margin:0">Base complète (Notion)</h3>
+          <div class="hint">Ton point central : ressources + organisation.</div>
+        </div>
+        <div class="row">
+          <a class="btn green" href="#" id="openNotionBase" data-track="open_notion_complet">📌 Ouvrir Notion</a>
+          <a class="btn" href="#/proposer" data-track="go_proposer_from_resources">➕ Proposer une ressource</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========= VUE : ATELIERS ========= -->
+    <section class="view" id="view-ateliers">
+      <div class="section-head">
+        <h2>Ateliers</h2>
+        <div class="hint">Sans dates exactes : période + créneau + statut + pré-inscription (pro).</div>
+      </div>
+
+      <div class="grid-2">
+        <div class="item">
+          <div class="badge status-prep">Statut : En préparation</div>
+          <h3 style="margin-top:10px">Cycle Orientation – France (en ligne)</h3>
+          <p>Clarifier ton projet + méthode + plan d’action (lycéens / étudiants).</p>
+          <div class="meta">
+            <span>📅 Période : à définir</span>
+            <span>🕒 Créneau : Mercredi 18h–19h30</span>
+            <span>📍 Format : En ligne</span>
+            <span>🎯 Public : Lycéens & étudiants</span>
+          </div>
+          <div class="actions">
+            <a class="btn small green" href="#" id="linkPreinscriptionFR" data-track="workshop_preinscription_fr">🔔 Pré-inscription</a>
+            <a class="btn small" href="#/proposer" data-track="workshop_sugg_topic_fr">💡 Suggérer un thème</a>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="badge status-prep">Statut : En préparation</div>
+          <h3 style="margin-top:10px">Atelier pilote – Douala</h3>
+          <p>Atelier concret : orientation + opportunités + méthode + Q/R.</p>
+          <div class="meta">
+            <span>📅 Période : à définir</span>
+            <span>🕒 Créneau : Samedi matin</span>
+            <span>📍 Lieu : Douala (présentiel)</span>
+            <span>👥 Groupe : 10–20 participants</span>
+          </div>
+          <div class="actions">
+            <a class="btn small green" href="#" id="linkPreinscriptionCM" data-track="workshop_preinscription_cm">🔔 Être informé</a>
+            <a class="btn small" href="#/proposer" data-track="workshop_sugg_place_cm">📍 Proposer un lieu</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card pad" style="margin-top:12px">
+        <h3 style="margin:0 0 8px">Inscription / pré-inscription</h3>
+        <p class="hint" style="margin:0">
+          Tous les boutons d’ateliers renvoient vers ton formulaire Tally (même lien).
+        </p>
+        <div class="row">
+          <a class="btn primary" href="#" id="openAteliersTally" data-track="open_tally_main">🗓 Ouvrir le formulaire Ateliers</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========= VUE : OPPORTUNITÉS ========= -->
+    <section class="view" id="view-opportunites">
+      <div class="section-head">
+        <h2>Opportunités</h2>
+        <div class="hint">MVP : liens vers pages/ressources. Plus tard : base filtrable.</div>
+      </div>
+
+      <div class="grid-3">
+        <div class="item">
+          <h3>🎓 Programmes & bourses</h3>
+          <p>Listes par pays et niveau (à brancher via liens).</p>
+          <div class="actions">
+            <a class="btn small primary" href="#" id="linkOppBourses" data-track="opp_bourses">Consulter</a>
+          </div>
+        </div>
+        <div class="item">
+          <h3>💼 Offres (emploi / alternance)</h3>
+          <p>Opportunités centralisées (à brancher via liens).</p>
+          <div class="actions">
+            <a class="btn small primary" href="#" id="linkOppOffres" data-track="opp_offres">Consulter</a>
+          </div>
+        </div>
+        <div class="item">
+          <h3>🌍 Volontariat & concours</h3>
+          <p>Expériences valorisables + montée en compétences.</p>
+          <div class="actions">
+            <a class="btn small primary" href="#" id="linkOppConcours" data-track="opp_concours">Consulter</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card pad" style="margin-top:12px">
+        <h3 style="margin:0 0 8px">Tu veux ajouter une opportunité ?</h3>
+        <p class="hint" style="margin:0">
+          Passe par l’onglet “Proposer” (on centralise dans Notion / un lien dédié).
+        </p>
+        <div class="row">
+          <a class="btn green" href="#/proposer" data-track="opps_go_proposer">➕ Proposer</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========= VUE : IMPACT ========= -->
+    <section class="view" id="view-impact">
+      <div class="section-head">
+        <h2>Impact & KPI</h2>
+        <div class="hint">Aucune donnée inventée · à renseigner via le mini panel (Accueil).</div>
+      </div>
+
+      <div class="grid-3">
+        <div class="kpi">
+          <div class="label">Jeunes inscrits</div>
+          <div class="value placeholder" id="kpi_users">À renseigner</div>
+          <div class="note">Total France + Cameroun</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Ateliers organisés</div>
+          <div class="value placeholder" id="kpi_workshops">À renseigner</div>
+          <div class="note">En ligne & présentiel</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Jeunes accompagnés</div>
+          <div class="value placeholder" id="kpi_coaching">À renseigner</div>
+          <div class="note">Coaching / mentorat / bilan</div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top:12px">
+        <div class="kpi">
+          <div class="label">Partenaires</div>
+          <div class="value placeholder" id="kpi_partners">À renseigner</div>
+          <div class="note">Écoles · entreprises · associations</div>
+        </div>
+        <div class="kpi">
+          <div class="label">Clics (test local)</div>
+          <div class="value" id="kpi_clicks_total">0</div>
+          <div class="note">Total des clics sur les boutons (localStorage)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========= VUE : À PROPOS ========= -->
+    <section class="view" id="view-apropos">
+      <div class="section-head">
+        <h2>À propos</h2>
+        <div class="hint">Crédibilité : mission claire + parcours + engagement + méthode.</div>
+      </div>
+
+      <div class="card pad">
+        <h3>Brice Awoumpe · Fondateur</h3>
+        <p class="hint" style="margin:0">
+          Ingénieur mécatronique, engagé pour l’égalité des chances. Objectif : rendre l’orientation plus claire,
+          plus actionnable, et connecter les jeunes aux bonnes opportunités.
+        </p>
+
+        <div class="row" style="margin-top:12px">
+          <a class="btn small primary" href="#" id="linkLinkedin" data-track="about_linkedin">LinkedIn</a>
+          <a class="btn small green" href="#" id="linkNotion" data-track="about_notion">Notion / Ressources</a>
+          <a class="btn small" href="#" id="linkEmail" data-track="about_email">Email</a>
+        </div>
+
+        <p class="hint mailto" style="margin-top:12px">
+          Contact : <a href="#" id="emailInline">differentsleaders328@gmail.com</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ========= VUE : PROPOSER ========= -->
+    <section class="view" id="view-proposer">
+      <div class="section-head">
+        <h2>Proposer une ressource</h2>
+        <div class="hint">Ici on ne fait pas de formulaire. On renvoie vers ton lien “Proposer” (Notion / Form dédié).</div>
+      </div>
+
+      <div class="card pad">
+        <p class="hint" style="margin-top:0">
+          Pour éviter l’automatisation inutile, tu centralises les propositions via un seul lien.
+          (Ex : page Notion “Proposer” ou Google Form ressources.)""
+        </p>
+        <div class="row">
+          <a class="btn green" href="#" id="linkProposerForm" data-track="proposer_link">➕ Proposer une ressource</a>
+          <a class="btn" href="#/ressources" data-track="back_to_resources">↩ Retour aux ressources</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      <div class="smallprint">
+        <b>AEC – Égalité des Chances</b> · MVP en construction.  
+        Politique de confidentialité / cookies à ajouter avant mise en production.
+        <span style="display:block;margin-top:6px" class="mailto">
+          Email : <a href="#" id="emailFooter">differentsleaders328@gmail.com</a>
+        </span>
+      </div>
+      <div>
+        <span class="pill">Suivi local : <span id="clicksLabel">0</span> clic(s)</span>
+      </div>
+    </div>
+  </main>
 
   <script>
-    // Year
-    document.getElementById("y").textContent = new Date().getFullYear();
+    // -------------------------------
+    // 0) Routing simple par hash: #/accueil, #/ressources, etc.
+    // -------------------------------
+    const VIEWS = ["accueil","ressources","ateliers","opportunites","impact","apropos","proposer"];
 
-    // Tabs logic (sidebar + pills + footer links)
-    const tabButtons = [...document.querySelectorAll("[data-tab]")];
-    const sections = [...document.querySelectorAll(".section")];
-
-    function setTab(name){
-      sections.forEach(s => s.classList.toggle("active", s.id === name));
-      document.querySelectorAll(".navbtn").forEach(b => b.classList.toggle("active", b.dataset.tab === name));
-      document.querySelectorAll(".tabbtn").forEach(b => b.classList.toggle("active", b.dataset.tab === name));
-      window.scrollTo({top: 0, behavior: "smooth"});
+    function setActiveView(name){
+      VIEWS.forEach(v=>{
+        const el = document.getElementById("view-"+v);
+        if(el) el.classList.toggle("active", v===name);
+      });
+      document.querySelectorAll("[data-nav]").forEach(a=>{
+        a.classList.toggle("active", a.getAttribute("data-nav")===name);
+      });
+      window.scrollTo({top:0, behavior:"instant"});
     }
 
-    tabButtons.forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        // Some are <a> links with href="#" in footer
-        if (btn.classList.contains("goto")) e.preventDefault();
-        setTab(btn.dataset.tab);
-      });
+    function getRoute(){
+      const h = (location.hash || "#/accueil").trim();
+      const m = h.match(/^#\/([a-z-]+)/i);
+      const route = m ? m[1].toLowerCase() : "accueil";
+      return VIEWS.includes(route) ? route : "accueil";
+    }
+
+    window.addEventListener("hashchange", ()=> setActiveView(getRoute()));
+    setActiveView(getRoute());
+
+    // -------------------------------
+    // 1) Click tracking (localStorage)
+    // -------------------------------
+    const TRACK_KEY = "aec_click_counts_v2";
+    const TOTAL_KEY = "aec_click_total_v2";
+
+    function loadCounts(){
+      try { return JSON.parse(localStorage.getItem(TRACK_KEY) || "{}"); }
+      catch { return {}; }
+    }
+    function saveCounts(counts){ localStorage.setItem(TRACK_KEY, JSON.stringify(counts)); }
+    function getTotal(){ return Number(localStorage.getItem(TOTAL_KEY) || "0"); }
+    function setTotal(n){ localStorage.setItem(TOTAL_KEY, String(n)); }
+
+    function incCount(label){
+      const counts = loadCounts();
+      counts[label] = (counts[label] || 0) + 1;
+      saveCounts(counts);
+      const total = getTotal() + 1;
+      setTotal(total);
+      refreshTotals();
+    }
+
+    function refreshTotals(){
+      const total = getTotal();
+      const a = document.getElementById("clicksLabel");
+      const b = document.getElementById("kpi_clicks_total");
+      if(a) a.textContent = total;
+      if(b) b.textContent = total;
+    }
+
+    document.addEventListener("click", (e) => {
+      const el = e.target.closest("[data-track]");
+      if(!el) return;
+      incCount(el.getAttribute("data-track"));
     });
 
-    // Simple local search for resource tiles
-    const q = document.getElementById("q");
-    const cards = document.getElementById("cards");
-    if (q && cards){
-      q.addEventListener("input", () => {
-        const v = q.value.trim().toLowerCase();
-        [...cards.querySelectorAll(".tile")].forEach(tile => {
-          const k = (tile.getAttribute("data-k") || "").toLowerCase();
-          const t = (tile.querySelector(".t")?.textContent || "").toLowerCase();
-          const d = (tile.querySelector(".d")?.textContent || "").toLowerCase();
-          const ok = !v || k.includes(v) || t.includes(v) || d.includes(v);
-          tile.style.display = ok ? "block" : "none";
-        });
+    // -------------------------------
+    // 2) KPI placeholders (no fake data)
+    // -------------------------------
+    const KPI_KEY = "aec_kpi_v2";
+    function loadKpi(){
+      try { return JSON.parse(localStorage.getItem(KPI_KEY) || "{}"); }
+      catch { return {}; }
+    }
+    function saveKpi(obj){ localStorage.setItem(KPI_KEY, JSON.stringify(obj)); }
+
+    function applyKpi(){
+      const k = loadKpi();
+      const map = [
+        ["kpi_users", "users"],
+        ["kpi_workshops", "workshops"],
+        ["kpi_coaching", "coaching"],
+        ["kpi_partners", "partners"]
+      ];
+      for(const [id, key] of map){
+        const el = document.getElementById(id);
+        if(!el) continue;
+        if(k[key] === undefined || k[key] === "" || k[key] === null){
+          el.textContent = "À renseigner";
+          el.classList.add("placeholder");
+        } else {
+          el.textContent = String(k[key]);
+          el.classList.remove("placeholder");
+        }
+      }
+
+      const i1 = document.getElementById("kpiUsers");
+      const i2 = document.getElementById("kpiWorkshops");
+      const i3 = document.getElementById("kpiCoaching");
+      const i4 = document.getElementById("kpiPartners");
+      if(i1) i1.value = k.users ?? "";
+      if(i2) i2.value = k.workshops ?? "";
+      if(i3) i3.value = k.coaching ?? "";
+      if(i4) i4.value = k.partners ?? "";
+    }
+
+    const saveBtn = document.getElementById("saveKpi");
+    const resetBtn = document.getElementById("resetKpi");
+    if(saveBtn){
+      saveBtn.addEventListener("click", () => {
+        const k = {
+          users: document.getElementById("kpiUsers").value === "" ? "" : Number(document.getElementById("kpiUsers").value),
+          workshops: document.getElementById("kpiWorkshops").value === "" ? "" : Number(document.getElementById("kpiWorkshops").value),
+          coaching: document.getElementById("kpiCoaching").value === "" ? "" : Number(document.getElementById("kpiCoaching").value),
+          partners: document.getElementById("kpiPartners").value === "" ? "" : Number(document.getElementById("kpiPartners").value),
+        };
+        saveKpi(k);
+        applyKpi();
       });
     }
+    if(resetBtn){
+      resetBtn.addEventListener("click", () => {
+        localStorage.removeItem(KPI_KEY);
+        applyKpi();
+      });
+    }
+
+    // -------------------------------
+    // 3) Brancher les liens (un seul endroit : AEC_LINKS)
+    //    Règles :
+    //    - Tally = Ateliers
+    //    - Proposer ressource = Notion (ou un Google Form ressource dédié)
+    // -------------------------------
+    function mailto(email){
+      return "mailto:" + encodeURIComponent(email);
+    }
+
+    function safeLink(el, url, fallbackHash, forceNewTab=false){
+      if(!el) return;
+      if(url && url !== "#"){
+        el.href = url;
+        // Pour les liens externes : new tab
+        if(forceNewTab || /^https?:\/\//i.test(url) || url.startsWith("mailto:")){
+          el.target = "_blank";
+          el.rel = "noopener noreferrer";
+        }
+      } else {
+        el.href = fallbackHash;
+      }
+    }
+
+    // Accueil
+    const signupLink = AEC_LINKS.inscription_form || AEC_LINKS.ateliers_tally; // si pas de form, on renvoie Tally ateliers
+    safeLink(document.getElementById("btnInscription"), signupLink, "#/ateliers", true);
+
+    const emailUrl = mailto(AEC_LINKS.email);
+    safeLink(document.getElementById("btnContact"), emailUrl, "#/apropos", true);
+
+    // Home extra buttons
+    safeLink(document.getElementById("homeOpenNotion"), AEC_LINKS.notion_base, "#/ressources", true);
+    safeLink(document.getElementById("homeTally"), AEC_LINKS.ateliers_tally, "#/ateliers", true);
+
+    // Ressources : si tu n’as pas des pages dédiées -> on renvoie vers Notion
+    safeLink(document.getElementById("linkResMethode"), AEC_LINKS.res_methode || AEC_LINKS.notion_base, "#/proposer", true);
+    safeLink(document.getElementById("linkResCV"), AEC_LINKS.res_cv || AEC_LINKS.notion_base, "#/proposer", true);
+    safeLink(document.getElementById("linkResMetiers"), AEC_LINKS.res_metiers || AEC_LINKS.notion_base, "#/proposer", true);
+    safeLink(document.getElementById("openNotionBase"), AEC_LINKS.notion_base, "#/ressources", true);
+    safeLink(document.getElementById("openNotionBase"), AEC_LINKS.notion_complet, "#/ressources", true);
+
+    // Ateliers : tous les boutons -> Tally
+    safeLink(document.getElementById("linkPreinscriptionFR"), AEC_LINKS.ateliers_tally, "#/ateliers", true);
+    safeLink(document.getElementById("linkPreinscriptionCM"), AEC_LINKS.ateliers_tally, "#/ateliers", true);
+    safeLink(document.getElementById("openAteliersTally"), AEC_LINKS.ateliers_tally, "#/ateliers", true);
+
+    // Opportunités : si pas de pages dédiées -> Notion (ou une future page)
+    safeLink(document.getElementById("linkOppBourses"), AEC_LINKS.opp_bourses || AEC_LINKS.notion_base, "#/proposer", true);
+    safeLink(document.getElementById("linkOppOffres"), AEC_LINKS.opp_offres || AEC_LINKS.notion_base, "#/proposer", true);
+    safeLink(document.getElementById("linkOppConcours"), AEC_LINKS.opp_concours || AEC_LINKS.notion_base, "#/proposer", true);
+
+    // À propos
+    safeLink(document.getElementById("linkLinkedin"), AEC_LINKS.linkedin, "#/apropos", true);
+    safeLink(document.getElementById("linkNotion"), AEC_LINKS.notion_base, "#/ressources", true);
+    safeLink(document.getElementById("linkEmail"), emailUrl, "#/apropos", true);
+
+    const emailInline = document.getElementById("emailInline");
+    const emailFooter = document.getElementById("emailFooter");
+    if(emailInline){
+      emailInline.href = emailUrl;
+      emailInline.textContent = AEC_LINKS.email;
+      emailInline.target = "_blank";
+      emailInline.rel = "noopener noreferrer";
+    }
+    if(emailFooter){
+      emailFooter.href = emailUrl;
+      emailFooter.textContent = AEC_LINKS.email;
+      emailFooter.target = "_blank";
+      emailFooter.rel = "noopener noreferrer";
+    }
+
+    // Proposer ressource : NOTION / FORM dédié (pas Tally)
+    safeLink(document.getElementById("linkProposerForm"), AEC_LINKS.proposer_ressource, "#/proposer", true);
+
+    // Init
+    refreshTotals();
+    applyKpi();
   </script>
 </body>
 </html>
