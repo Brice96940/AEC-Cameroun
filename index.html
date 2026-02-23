@@ -298,6 +298,7 @@
         <a class="tab" href="#/opportunites" data-nav="opportunites">Opportunités</a>
         <a class="tab" href="#/impact" data-nav="impact">Impact</a>
         <a class="tab" href="#/apropos" data-nav="apropos">À propos</a>
+        <a href="#rejoindre" class="nav-join">Rejoindre</a>
         <a class="tab" href="#/proposer" data-nav="proposer">Proposer</a>
       </nav>
     </div>
@@ -325,6 +326,10 @@
 
         // ATELIERS (Tally) -> ton lien
         ateliers_tally: "https://tally.so/r/ODzE9Y",
+
+        
+        // Rejoindre
+        join_membre: "https://docs.google.com/forms/d/e/1FAIpQLSePxirx2doALdDiq1qsY6bKNbh8RT6U2F76IK2kEDX6SfcvxA/viewform?usp=header",
 
         // (Optionnel) Inscription générale (si tu n'as pas, on met sur Ateliers)
         inscription_form: "https://tally.so/r/ODzE9Y",
@@ -426,6 +431,8 @@
           </div>
         </div>
       </section>
+
+      
 
       <div class="section-head">
         <h2>Ce que tu peux consulter</h2>
@@ -552,7 +559,7 @@
       <div class="card pad" style="margin-top:12px">
         <h3 style="margin:0 0 8px">Inscription / pré-inscription</h3>
         <p class="hint" style="margin:0">
-          Tous les boutons d’ateliers renvoient vers ton formulaire Tally (même lien).
+          Tous les boutons d’ateliers renvoient vers un formulaire Tally (même lien).
         </p>
         <div class="row">
           <a class="btn primary" href="#" id="openAteliersTally" data-track="open_tally_main">🗓 Ouvrir le formulaire Ateliers</a>
@@ -599,6 +606,19 @@
         <div class="row">
           <a class="btn green" href="#/proposer" data-track="opps_go_proposer">➕ Proposer</a>
         </div>
+      </div>
+    </section>
+
+    <section id="rejoindre" class="section-join">
+      <div class="container">
+        <h2>Rejoindre l’espace membre</h2>
+        <p>
+          Accède aux ressources avancées, ateliers privés et opportunités exclusives.
+        </p>
+
+        <a href="#" id="btnJoinAccueil" class="btn-primary">
+          🚀 Rejoindre maintenant
+        </a>
       </div>
     </section>
 
@@ -903,6 +923,31 @@
     // Init
     refreshTotals();
     applyKpi();
+
+
+  function trackJoinClick() {
+    if (typeof gtag === "function") {
+      gtag("event", "join_click", {
+        event_category: "engagement",
+        event_label: "rejoindre_membre"
+    });
+  }
+
+  setTimeout(() => {
+    window.open(AEC_LINKS.join_membre, "_blank", "noopener,noreferrer");
+  }, 150);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const btn = document.getElementById("btnJoinAccueil");
+  if (btn) {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      trackJoinClick();
+    });
+  }
+});
+    
   </script>
 </body>
 </html>
