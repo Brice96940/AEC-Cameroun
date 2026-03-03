@@ -4,33 +4,36 @@
   <meta charset="utf-8" />
   <meta name="google-site-verification" content="FPiaPtgTR2P054CTezHlMk9CGlnQhWN7kYA57xJ_PrI" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  
-  <title>AEC – Égalité des Chances</title>
-  <meta name="description" content="AEC – Plateforme d’orientation, ressources et opportunités entre la France et le Cameroun." />
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4LBV0YTTX4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-4LBV0YTTX4');
-</script>
+
+  <title>AEC Cameroun – Orientation, Ressources, Ateliers & Opportunités</title>
+  <meta name="description" content="AEC Cameroun : plateforme d’orientation, ressources et opportunités. Accès Notion, ateliers (pré-inscription) et suivi des clics via GA4." />
+  <meta name="robots" content="index, follow" />
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4LBV0YTTX4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    // anonymize_ip utile + propre
+    gtag('config', 'G-4LBV0YTTX4', { anonymize_ip: true });
+  </script>
 
   <style>
     :root{
       --bg0:#060a13;
       --bg1:#0a1226;
 
-      --card: rgba(255,255,255,.06);
-      --card2: rgba(255,255,255,.04);
+      --card: rgba(255,255,255,.07);
+      --card2: rgba(255,255,255,.045);
       --border: rgba(255,255,255,.10);
 
       --text:#eaf1ff;
       --muted:#a9b8da;
 
-      --accent:#4f8cff;      /* bleu */
-      --accent2:#20e3b2;     /* vert menthe */
-      --accent3:#b36bff;     /* violet */
+      --blue:#4f8cff;
+      --mint:#20e3b2;
+      --violet:#b36bff;
       --warn:#ffbf5a;
 
       --shadow: 0 18px 44px rgba(0,0,0,.45);
@@ -54,9 +57,10 @@
         linear-gradient(180deg, var(--bg0), var(--bg1));
     }
 
-    a{color:inherit}
+    a{color:inherit; text-decoration:none}
     .wrap{max-width:var(--max); margin:0 auto; padding: 22px 18px 70px}
 
+    /* Topbar */
     .topbar{
       position:sticky; top:0;
       z-index:50;
@@ -71,7 +75,7 @@
       display:flex; gap:14px; align-items:center; justify-content:space-between;
     }
 
-    .brand{display:flex; align-items:center; gap:10px; text-decoration:none}
+    .brand{display:flex; align-items:center; gap:10px}
     .logo{
       width:40px; height:40px; border-radius:14px;
       background: linear-gradient(135deg, rgba(79,140,255,1), rgba(32,227,178,.92));
@@ -79,9 +83,9 @@
     }
     .brand b{letter-spacing:.2px}
 
-    nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    /* Desktop nav */
+    nav.desktop{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
     .tab{
-      text-decoration:none;
       color: var(--muted);
       padding: 9px 12px;
       border-radius: 12px;
@@ -89,6 +93,7 @@
       background: transparent;
       transition: .15s ease;
       user-select:none;
+      white-space:nowrap;
     }
     .tab:hover{
       color:var(--text);
@@ -102,6 +107,41 @@
       box-shadow: var(--glow1);
     }
 
+    /* Mobile menu */
+    .menuBtn{
+      display:none;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 12px;
+      cursor:pointer;
+    }
+    .menuPanel{
+      display:none;
+      border-top:1px solid rgba(255,255,255,.10);
+      background: rgba(6,10,19,.92);
+      padding: 10px 18px 14px;
+    }
+    .menuPanel a{
+      display:block;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      margin-top:10px;
+      font-weight:700;
+    }
+    .menuPanel a.active{ color:var(--text); border-color: rgba(79,140,255,.35); }
+
+    @media (max-width: 980px){
+      nav.desktop{display:none}
+      .menuBtn{display:inline-flex; align-items:center; gap:8px}
+      .menuPanel.open{display:block}
+    }
+
+    /* UI */
     .card{
       background: var(--card);
       border: 1px solid var(--border);
@@ -139,7 +179,6 @@
       color:var(--text);
       padding: 11px 14px;
       border-radius: 13px;
-      text-decoration:none;
       cursor:pointer;
       transition: transform .12s ease, background .12s ease, border-color .12s ease;
       user-select:none;
@@ -154,16 +193,22 @@
       background: linear-gradient(135deg, rgba(79,140,255,1), rgba(179,107,255,.85));
       border-color: rgba(79,140,255,.55);
       box-shadow: var(--glow1);
+      font-weight:900;
     }
-    .btn.primary:hover{background: linear-gradient(135deg, rgba(79,140,255,1), rgba(179,107,255,.92))}
     .btn.green{
       background: linear-gradient(135deg, rgba(32,227,178,1), rgba(32,227,178,.70));
       border-color: rgba(32,227,178,.55);
       color:#061118;
-      font-weight:800;
+      font-weight:900;
       box-shadow: var(--glow2);
     }
     .btn.small{padding:9px 12px; border-radius: 12px; font-size:.95rem}
+
+    /* Mobile ergonomics: boutons full width */
+    @media (max-width: 520px){
+      .btn{width:100%}
+      .btn.small{width:100%}
+    }
 
     .grid-2{display:grid; gap:12px; grid-template-columns: repeat(2, 1fr)}
     .grid-3{display:grid; gap:12px; grid-template-columns: repeat(3, 1fr)}
@@ -199,19 +244,6 @@
     .cta-row{display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px}
     .mini{margin-top: 14px; display:flex; gap:10px; flex-wrap:wrap; color: var(--muted); font-size:.98rem}
 
-    .kpi{
-      display:flex; flex-direction:column; gap:10px;
-      padding:16px;
-      border-radius: 16px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      min-height: 120px;
-    }
-    .kpi .label{color:var(--muted); font-size:.98rem}
-    .kpi .value{font-size: 1.65rem; font-weight: 900; letter-spacing:.2px}
-    .kpi .note{color: var(--muted); font-size:.92rem}
-    .placeholder{opacity:.88}
-
     .meta{display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px}
     .meta span{
       display:inline-flex; align-items:center;
@@ -223,6 +255,7 @@
       color: var(--muted);
       font-size:.92rem;
     }
+
     .badge{
       display:inline-flex; align-items:center; gap:8px;
       font-size:.92rem;
@@ -240,31 +273,6 @@
     }
     .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px}
 
-    details.admin{margin-top: 12px}
-    details.admin summary{cursor:pointer; color: var(--muted); user-select:none}
-    .adminbox{
-      margin-top: 10px;
-      padding: 14px;
-      border:1px solid rgba(255,255,255,.12);
-      border-radius: 14px;
-      background: rgba(0,0,0,.18);
-      color: var(--muted);
-    }
-    .admingrid{display:grid; gap:10px; grid-template-columns: 1fr 1fr}
-    @media (max-width: 980px){ .admingrid{grid-template-columns: 1fr} }
-    label{display:block; font-size:.92rem; margin-bottom: 6px}
-    input[type="number"]{
-      width:100%;
-      padding: 10px 12px;
-      border-radius: 12px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.22);
-      color: var(--text);
-      outline:none;
-    }
-    input::placeholder{color: rgba(169,184,218,.70)}
-    .row{display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px}
-
     .footer{
       margin-top: 26px;
       padding-top: 14px;
@@ -275,78 +283,80 @@
       font-size:.95rem;
     }
     .smallprint{max-width: 80ch}
-    .mailto a{
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
+    .mailto a{ text-decoration: underline; text-underline-offset: 3px; }
   </style>
 </head>
 
 <body>
   <header class="topbar">
     <div class="topbar-inner">
-      <a class="brand" href="#/accueil" data-nav="accueil">
+      <a class="brand" href="#/accueil" data-nav="accueil" data-track="nav_accueil_brand">
         <div class="logo" aria-hidden="true"></div>
         <div>
-          <b>AEC</b><div style="color:var(--muted);font-size:.88rem;margin-top:2px">Égalité des Chances</div>
+          <b>AEC</b>
+          <div style="color:var(--muted);font-size:.88rem;margin-top:2px">Cameroun — Égalité des Chances</div>
         </div>
       </a>
 
-      <nav>
-        <a class="tab" href="#/accueil" data-nav="accueil">Accueil</a>
-        <a class="tab" href="#/ressources" data-nav="ressources">Ressources</a>
-        <a class="tab" href="#/ateliers" data-nav="ateliers">Ateliers</a>
-        <a class="tab" href="#/opportunites" data-nav="opportunites">Opportunités</a>
-        <a class="tab" href="#/impact" data-nav="impact">Impact</a>
-        <a class="tab" href="#/apropos" data-nav="apropos">À propos</a>
-        <a class="tab" href="#/rejoindre" data-nav="rejoindre">Rejoindre</a>
-        <a class="tab" href="#/proposer" data-nav="proposer">Proposer</a>
+      <nav class="desktop">
+        <a class="tab" href="#/accueil" data-nav="accueil" data-track="nav_accueil">Accueil</a>
+        <a class="tab" href="#/ressources" data-nav="ressources" data-track="nav_ressources">Ressources</a>
+        <a class="tab" href="#/ateliers" data-nav="ateliers" data-track="nav_ateliers">Ateliers</a>
+        <a class="tab" href="#/opportunites" data-nav="opportunites" data-track="nav_opportunites">Opportunités</a>
+        <a class="tab" href="#/impact" data-nav="impact" data-track="nav_impact">Impact</a>
+        <a class="tab" href="#/apropos" data-nav="apropos" data-track="nav_apropos">À propos</a>
+        <a class="tab" href="#/rejoindre" data-nav="rejoindre" data-track="nav_rejoindre">Rejoindre</a>
+        <a class="tab" href="#/proposer" data-nav="proposer" data-track="nav_proposer">Proposer</a>
       </nav>
+
+      <button class="menuBtn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menuPanel">
+        ☰ Menu
+      </button>
+    </div>
+
+    <div class="menuPanel" id="menuPanel">
+      <a href="#/accueil" data-nav="accueil" data-track="m_nav_accueil">Accueil</a>
+      <a href="#/ressources" data-nav="ressources" data-track="m_nav_ressources">Ressources</a>
+      <a href="#/ateliers" data-nav="ateliers" data-track="m_nav_ateliers">Ateliers</a>
+      <a href="#/opportunites" data-nav="opportunites" data-track="m_nav_opportunites">Opportunités</a>
+      <a href="#/impact" data-nav="impact" data-track="m_nav_impact">Impact</a>
+      <a href="#/apropos" data-nav="apropos" data-track="m_nav_apropos">À propos</a>
+      <a href="#/rejoindre" data-nav="rejoindre" data-track="m_nav_rejoindre">Rejoindre</a>
+      <a href="#/proposer" data-nav="proposer" data-track="m_nav_proposer">Proposer</a>
     </div>
   </header>
 
   <main class="wrap">
 
-    <!-- =======================
-         CONFIG LIENS (UN SEUL ENDROIT)
-         -> Tally = Ateliers
-         -> Proposer ressource = Notion (ou autre)
-    ======================== -->
     <script>
+      // =========================
+      // CONFIG LIENS (UN SEUL ENDROIT)
+      // =========================
       const AEC_LINKS = {
-        // CONTACT / IDENTITÉ
         email: "differentsleaders328@gmail.com",
         linkedin: "https://www.linkedin.com/in/awoumpebrice99/recent-activity/all/",
 
-        //Notion complet
+        // Notion
         notion_complet: "https://buttercup-sight-745.notion.site/AEC-Cameroun-Orientation-Employabilit-30ee2b4c167380e599bbe47d0d6b9223?pvs=143",
-
-
-        // BASE RESSOURCES (Notion)
         notion_base: "https://buttercup-sight-745.notion.site/RESSOURCES-30ee2b4c167380dc90cef0babdfb8095?pvs=143",
 
-        // ATELIERS (Tally) -> ton lien
+        // Ateliers (Tally)
         ateliers_tally: "https://tally.so/r/ODzE9Y",
 
-        
         // Rejoindre
         join_membre: "https://docs.google.com/forms/d/e/1FAIpQLSePxirx2doALdDiq1qsY6bKNbh8RT6U2F76IK2kEDX6SfcvxA/viewform?usp=header",
 
-        // (Optionnel) Inscription générale (si tu n'as pas, on met sur Ateliers)
-        inscription_form: "https://tally.so/r/ODzE9Y",
-
-        // RESSOURCES (si tu veux des pages séparées plus tard)
+        // Ressources détaillées (si tu veux garder)
         res_methode: "https://www.notion.so/ORIENTATION-STRUCTURER-TON-PROJET-310e2b4c167380f39eb6c9c5b7129cc3?source=copy_link",
         res_cv: "https://www.notion.so/CV-CANDIDATURES-Public-310e2b4c167380be87e2d75ba86da2bb?source=copy_link",
         res_metiers: "https://www.notion.so/7-FICHES-M-TIERS-GRATUITES-310e2b4c167380f29527d8fa40c7f2a0?source=copy_link",
 
-        // OPPORTUNITÉS (si tu veux des pages dédiées plus tard)
+        // Opportunités
         opp_bourses: "https://www.notion.so/Bourses-Public-310e2b4c167380058571c2cd052576e8?source=copy_link",
         opp_offres: "https://www.notion.so/OFFRES-ET-OPPORTUNITES-PUBLIC-310e2b4c167380dbbcd6f0154ea15713?source=copy_link",
         opp_concours: "https://www.notion.so/OPPORTUNIT-S-DE-CONCOURS-310e2b4c167380a5bfffc770cc39194e?source=copy_link",
 
-        // PROPOSER RESSOURCE (pas Tally)
-        // -> soit un Google Form spécial ressource, soit une page Notion "Proposer"
+        // Proposer
         proposer_ressource: "https://docs.google.com/forms/d/e/1FAIpQLSeGMSt89Eb-xxK856BdZoOwva5-txwqFeMjm_hwj4-lixnx7w/viewform?usp=header"
       };
     </script>
@@ -356,8 +366,8 @@
       <section class="hero">
         <div class="hero-grid">
           <div class="card pad">
-            <span class="pill">France 🇫🇷 & Cameroun 🇨🇲 · Orientation · Ressources · Ateliers · Opportunités</span>
-            <h1>AEC – Ta plateforme d’orientation et d’opportunités.</h1>
+            <span class="pill">Cameroun 🇨🇲 · Orientation · Ressources · Ateliers · Opportunités</span>
+            <h1>AEC Cameroun – Clarifie ton projet, puis passe à l’action.</h1>
             <p class="sub">
               Une méthode simple et structurée pour aider les jeunes (15–30 ans) à clarifier leur projet,
               développer leurs compétences et accéder aux bonnes opportunités.
@@ -366,7 +376,7 @@
             <div class="cta-row">
               <a class="btn primary" href="#/ressources" data-track="cta_ressources">Découvrir les ressources</a>
               <a class="btn green" href="#/ateliers" data-track="cta_ateliers">Voir les ateliers</a>
-              <a class="btn" href="#/impact" data-track="cta_impact">Voir l’impact</a>
+              <a class="btn" href="#/opportunites" data-track="cta_opportunites">Voir les opportunités</a>
               <a class="btn" href="#/rejoindre" data-track="cta_rejoindre">Rejoindre</a>
             </div>
 
@@ -374,62 +384,31 @@
               <span class="pill">✔ Parcours guidé</span>
               <span class="pill">✔ Ressources actionnables</span>
               <span class="pill">✔ Ateliers collectifs</span>
-              <span class="pill">✔ Suivi d’impact (KPI)</span>
+              <span class="pill">✔ Mesure (GA4)</span>
             </div>
           </div>
 
           <div class="card pad">
             <h2 style="margin-top:0">Accès rapide</h2>
             <p class="hint" style="margin-top:8px">
-              Va directement au bon endroit. (Compteurs de clics inclus pour tester.)
+              Chaque bouton est mesurable (clics visibles dans GA4).
             </p>
 
-            <div class="row" style="margin-top:12px">
+            <div class="actions" style="margin-top:12px">
               <a class="btn small" href="#/ressources" data-track="quick_ressources">📚 Ressources</a>
               <a class="btn small" href="#/ateliers" data-track="quick_ateliers">🗓 Ateliers</a>
               <a class="btn small" href="#/opportunites" data-track="quick_opportunites">🎯 Opportunités</a>
-              <a class="btn small primary" href="#/rejoindre" data-track="home_go_rejoindre">Accéder</a>
+              <a class="btn small primary" href="#/rejoindre" data-track="quick_rejoindre">Accéder</a>
               <a class="btn small" href="#/apropos" data-track="quick_apropos">👤 À propos</a>
             </div>
 
-            <details class="admin">
-              <summary>Mini panel (facultatif) · Renseigner tes KPI manuellement</summary>
-              <div class="adminbox">
-                <div class="admingrid">
-                  <div>
-                    <label for="kpiUsers">Jeunes inscrits</label>
-                    <input id="kpiUsers" type="number" min="0" placeholder="ex : 120" />
-                  </div>
-                  <div>
-                    <label for="kpiWorkshops">Ateliers organisés</label>
-                    <input id="kpiWorkshops" type="number" min="0" placeholder="ex : 8" />
-                  </div>
-                  <div>
-                    <label for="kpiCoaching">Jeunes accompagnés</label>
-                    <input id="kpiCoaching" type="number" min="0" placeholder="ex : 35" />
-                  </div>
-                  <div>
-                    <label for="kpiPartners">Partenaires</label>
-                    <input id="kpiPartners" type="number" min="0" placeholder="ex : 4" />
-                  </div>
-                </div>
-                <div class="row">
-                  <button class="btn small primary" type="button" id="saveKpi">Enregistrer</button>
-                  <button class="btn small" type="button" id="resetKpi">Réinitialiser</button>
-                </div>
-                <p class="hint" style="margin-top:10px">
-                  Stocké localement (dans ton navigateur) uniquement, pour tester sans base de données.
-                </p>
-              </div>
-            </details>
-
-            <div class="row" style="margin-top:12px">
-              <a class="btn green" href="#" id="btnInscription" data-track="signup_home">📝 S’inscrire</a>
-              <a class="btn" href="#" id="btnContact" data-track="contact_home">📩 Me contacter</a>
+            <div class="actions" style="margin-top:12px">
+              <a class="btn green" href="#" id="btnInscription" data-track="open_tally_main">📝 S’inscrire</a>
+              <a class="btn" href="#" id="btnContact" data-track="contact_email">📩 Me contacter</a>
             </div>
 
             <p class="hint" style="margin:10px 0 0">
-              Astuce pro : “pré-inscription” → tu fixes les dates après avoir mesuré la demande.
+              Astuce : utilise la “pré-inscription” pour fixer les dates après avoir mesuré la demande.
             </p>
           </div>
         </div>
@@ -437,32 +416,34 @@
 
       <div class="section-head">
         <h2>Ce que tu peux consulter</h2>
-        <div class="hint">Chaque bouton t’emmène vers l’onglet correspondant.</div>
+        <div class="hint">Simple, direct, actionnable.</div>
       </div>
 
       <div class="grid-3">
         <div class="item">
           <h3>📚 Ressources</h3>
-          <p>Méthode d’orientation, CV, fiches métiers, outils concrets.</p>
+          <p>Méthode, CV, fiches métiers, outils concrets.</p>
           <div class="actions">
-            <a class="btn small primary" href="#/ressources" data-track="home_go_ressources">Accéder</a>
-            <a class="btn small" href="#" id="homeOpenNotion" data-track="home_open_notion">Ouvrir Notion</a>
+            <a class="btn small primary" href="#/ressources" data-track="go_ressources">Accéder</a>
+            <a class="btn small" href="#" id="homeOpenNotionBase" data-track="open_notion_base">Ouvrir Notion</a>
           </div>
         </div>
+
         <div class="item">
           <h3>🗓 Ateliers</h3>
-          <p>Ateliers en ligne / présentiel, avec période + statut + pré-inscription.</p>
+          <p>Ateliers en ligne / présentiel, pré-inscription et suivi.</p>
           <div class="actions">
-            <a class="btn small green" href="#/ateliers" data-track="home_go_ateliers">Voir</a>
-            <a class="btn small" href="#" id="homeTally" data-track="home_open_tally">Pré-inscription</a>
+            <a class="btn small green" href="#/ateliers" data-track="go_ateliers">Voir</a>
+            <a class="btn small" href="#" id="homeOpenTally" data-track="open_tally_main_2">Pré-inscription</a>
           </div>
         </div>
+
         <div class="item">
           <h3>🎯 Opportunités</h3>
-          <p>Stages, emplois, programmes, bourses, concours (à brancher plus tard).</p>
+          <p>Bourses, programmes, concours, offres.</p>
           <div class="actions">
-            <a class="btn small primary" href="#/opportunites" data-track="home_go_opps">Consulter</a>
-            <a class="btn small" href="#/proposer" data-track="home_go_proposer">Proposer une ressource</a>
+            <a class="btn small primary" href="#/opportunites" data-track="go_opportunites">Consulter</a>
+            <a class="btn small" href="#/proposer" data-track="go_proposer">Proposer</a>
           </div>
         </div>
       </div>
@@ -472,45 +453,46 @@
     <section class="view" id="view-ressources">
       <div class="section-head">
         <h2>Ressources</h2>
-        <div class="hint">MVP : tu centralises dans Notion. Plus tard : pages dédiées.</div>
+        <div class="hint">Tu centralises dans Notion (MVP). Après, tu détailles page par page.</div>
       </div>
 
       <div class="grid-3">
         <div class="item">
           <h3>🧭 Méthode d’orientation</h3>
-          <p>Se connaître → explorer → tester → décider. Un parcours guidé étape par étape.</p>
+          <p>Se connaître → explorer → tester → décider.</p>
           <div class="actions">
-            <a class="btn small primary" href="#" id="linkResMethode" data-track="resource_methode">Accéder</a>
-            <a class="btn small" href="#/proposer" data-track="resource_proposer_methode">Proposer un contenu</a>
+            <a class="btn small primary" href="#" id="linkResMethode" data-track="open_res_methode">Accéder</a>
+            <a class="btn small" href="#/proposer" data-track="propose_methode">Proposer un contenu</a>
           </div>
         </div>
 
         <div class="item">
           <h3>📄 CV & candidatures</h3>
-          <p>Modèles, checklist, LinkedIn, préparation entretien (France & Cameroun).</p>
+          <p>Modèles, checklist, LinkedIn, préparation entretien.</p>
           <div class="actions">
-            <a class="btn small primary" href="#" id="linkResCV" data-track="resource_cv">Accéder</a>
-            <a class="btn small" href="#/proposer" data-track="resource_proposer_cv">Proposer un modèle</a>
+            <a class="btn small primary" href="#" id="linkResCV" data-track="open_res_cv">Accéder</a>
+            <a class="btn small" href="#/proposer" data-track="propose_cv">Proposer un modèle</a>
           </div>
         </div>
 
         <div class="item">
           <h3>🧰 Fiches métiers</h3>
-          <p>Missions, compétences, formations, évolutions, repères (par pays).</p>
+          <p>Missions, compétences, formations, repères.</p>
           <div class="actions">
-            <a class="btn small primary" href="#" id="linkResMetiers" data-track="resource_metiers">Accéder</a>
-            <a class="btn small" href="#/proposer" data-track="resource_proposer_metiers">Proposer une fiche</a>
+            <a class="btn small primary" href="#" id="linkResMetiers" data-track="open_res_metiers">Accéder</a>
+            <a class="btn small" href="#/proposer" data-track="propose_metiers">Proposer une fiche</a>
           </div>
         </div>
       </div>
 
       <div class="card pad" style="margin-top:12px">
         <div class="section-head" style="margin:0 0 10px">
-          <h3 style="margin:0">Base complète (Notion)</h3>
-          <div class="hint">Ton point central : ressources + organisation.</div>
+          <h3 style="margin:0">Notion (Base / Complet)</h3>
+          <div class="hint">Deux liens séparés (plus de bug).</div>
         </div>
-        <div class="row">
-          <a class="btn green" href="#" id="openNotionBase" data-track="open_notion_complet">📌 Ouvrir Notion</a>
+        <div class="actions">
+          <a class="btn green" href="#" id="openNotionBase" data-track="open_notion_base_2">📌 Notion Base</a>
+          <a class="btn primary" href="#" id="openNotionComplet" data-track="open_notion_complet">⭐ Notion Complet</a>
           <a class="btn" href="#/proposer" data-track="go_proposer_from_resources">➕ Proposer une ressource</a>
         </div>
       </div>
@@ -520,14 +502,14 @@
     <section class="view" id="view-ateliers">
       <div class="section-head">
         <h2>Ateliers</h2>
-        <div class="hint">Sans dates exactes : période + créneau + statut + pré-inscription (pro).</div>
+        <div class="hint">Pré-inscription d’abord → dates ensuite (logique entrepreneur).</div>
       </div>
 
       <div class="grid-2">
         <div class="item">
           <div class="badge status-prep">Statut : En préparation</div>
-          <h3 style="margin-top:10px">Cycle Orientation – France (en ligne)</h3>
-          <p>Clarifier ton projet + méthode + plan d’action (lycéens / étudiants).</p>
+          <h3 style="margin-top:10px">Cycle Orientation (en ligne)</h3>
+          <p>Clarifier ton projet + méthode + plan d’action.</p>
           <div class="meta">
             <span>📅 Période : à définir</span>
             <span>🕒 Créneau : Mercredi 18h–19h30</span>
@@ -535,15 +517,15 @@
             <span>🎯 Public : Lycéens & étudiants</span>
           </div>
           <div class="actions">
-            <a class="btn small green" href="#" id="linkPreinscriptionFR" data-track="workshop_preinscription_fr">🔔 Pré-inscription</a>
-            <a class="btn small" href="#/proposer" data-track="workshop_sugg_topic_fr">💡 Suggérer un thème</a>
+            <a class="btn small green" href="#" id="linkPreinscriptionOnline" data-track="workshop_preinscription_online">🔔 Pré-inscription</a>
+            <a class="btn small" href="#/proposer" data-track="workshop_suggest_topic_online">💡 Suggérer un thème</a>
           </div>
         </div>
 
         <div class="item">
           <div class="badge status-prep">Statut : En préparation</div>
-          <h3 style="margin-top:10px">Atelier pilote – Douala</h3>
-          <p>Atelier concret : orientation + opportunités + méthode + Q/R.</p>
+          <h3 style="margin-top:10px">Atelier pilote (Douala)</h3>
+          <p>Orientation + opportunités + méthode + Q/R.</p>
           <div class="meta">
             <span>📅 Période : à définir</span>
             <span>🕒 Créneau : Samedi matin</span>
@@ -551,19 +533,17 @@
             <span>👥 Groupe : 10–20 participants</span>
           </div>
           <div class="actions">
-            <a class="btn small green" href="#" id="linkPreinscriptionCM" data-track="workshop_preinscription_cm">🔔 Être informé</a>
-            <a class="btn small" href="#/proposer" data-track="workshop_sugg_place_cm">📍 Proposer un lieu</a>
+            <a class="btn small green" href="#" id="linkPreinscriptionDouala" data-track="workshop_preinscription_douala">🔔 Être informé</a>
+            <a class="btn small" href="#/proposer" data-track="workshop_suggest_place_douala">📍 Proposer un lieu</a>
           </div>
         </div>
       </div>
 
       <div class="card pad" style="margin-top:12px">
-        <h3 style="margin:0 0 8px">Inscription / pré-inscription</h3>
-        <p class="hint" style="margin:0">
-          Tous les boutons d’ateliers renvoient vers un formulaire Tally (même lien).
-        </p>
-        <div class="row">
-          <a class="btn primary" href="#" id="openAteliersTally" data-track="open_tally_main">🗓 Ouvrir le formulaire Ateliers</a>
+        <h3 style="margin:0 0 8px">Formulaire Ateliers (Tally)</h3>
+        <p class="hint" style="margin:0">Tous les boutons “pré-inscription” peuvent renvoyer ici.</p>
+        <div class="actions">
+          <a class="btn primary" href="#" id="openAteliersTally" data-track="open_tally_main_3">🗓 Ouvrir le formulaire</a>
         </div>
       </div>
     </section>
@@ -572,53 +552,53 @@
     <section class="view" id="view-opportunites">
       <div class="section-head">
         <h2>Opportunités</h2>
-        <div class="hint">MVP : liens vers pages/ressources. Plus tard : base filtrable.</div>
+        <div class="hint">MVP : tu renvoies vers tes pages Notion. Après tu fais une base filtrable.</div>
       </div>
 
       <div class="grid-3">
         <div class="item">
           <h3>🎓 Programmes & bourses</h3>
-          <p>Listes par pays et niveau (à brancher via liens).</p>
+          <p>Listes par pays et niveau.</p>
           <div class="actions">
-            <a class="btn small primary" href="#" id="linkOppBourses" data-track="opp_bourses">Consulter</a>
+            <a class="btn small primary" href="#" id="linkOppBourses" data-track="open_opp_bourses">Consulter</a>
           </div>
         </div>
         <div class="item">
-          <h3>💼 Offres (emploi / alternance)</h3>
-          <p>Opportunités centralisées (à brancher via liens).</p>
+          <h3>💼 Offres (emploi)</h3>
+          <p>Opportunités centralisées.</p>
           <div class="actions">
-            <a class="btn small primary" href="#" id="linkOppOffres" data-track="opp_offres">Consulter</a>
+            <a class="btn small primary" href="#" id="linkOppOffres" data-track="open_opp_offres">Consulter</a>
           </div>
         </div>
         <div class="item">
           <h3>🌍 Volontariat & concours</h3>
-          <p>Expériences valorisables + montée en compétences.</p>
+          <p>Expériences valorisables + progression.</p>
           <div class="actions">
-            <a class="btn small primary" href="#" id="linkOppConcours" data-track="opp_concours">Consulter</a>
+            <a class="btn small primary" href="#" id="linkOppConcours" data-track="open_opp_concours">Consulter</a>
           </div>
         </div>
       </div>
 
       <div class="card pad" style="margin-top:12px">
-        <h3 style="margin:0 0 8px">Tu veux ajouter une opportunité ?</h3>
-        <p class="hint" style="margin:0">
-          Passe par l’onglet “Proposer” (on centralise dans Notion / un lien dédié).
-        </p>
-        <div class="row">
+        <h3 style="margin:0 0 8px">Ajouter une opportunité ?</h3>
+        <p class="hint" style="margin:0">Passe par “Proposer” (centralisation).</p>
+        <div class="actions">
           <a class="btn green" href="#/proposer" data-track="opps_go_proposer">➕ Proposer</a>
         </div>
       </div>
     </section>
 
+    <!-- ========= VUE : REJOINDRE ========= -->
     <section class="view" id="view-rejoindre">
-      <div class="container">
-        <div class="section-head">
-          <h2>Rejoindre l’espace membre</h2>
-          <div class="hint">Accède aux ressources avancées, ateliers privés et opportunités exclusives.</div>
-        </div>
-    
-        <div class="card pad">
-          <a href="#" id="btnJoinAccueil" class="btn primary">🚀 Rejoindre maintenant</a>
+      <div class="section-head">
+        <h2>Rejoindre</h2>
+        <div class="hint">Espace membre : ressources avancées, ateliers privés, opportunités.</div>
+      </div>
+
+      <div class="card pad">
+        <p class="hint" style="margin-top:0">Inscription via formulaire (Google Form).</p>
+        <div class="actions">
+          <a class="btn primary" href="#" id="btnJoin" data-track="open_join_form">🚀 Rejoindre maintenant</a>
         </div>
       </div>
     </section>
@@ -626,39 +606,17 @@
     <!-- ========= VUE : IMPACT ========= -->
     <section class="view" id="view-impact">
       <div class="section-head">
-        <h2>Impact & KPI</h2>
-        <div class="hint">Aucune donnée inventée · à renseigner via le mini panel (Accueil).</div>
+        <h2>Impact</h2>
+        <!-- <div class="hint">Tu ajoutes tes chiffres quand tu veux (pas besoin d’inventer).</div>-->
       </div>
 
-      <div class="grid-3">
-        <div class="kpi">
-          <div class="label">Jeunes inscrits</div>
-          <div class="value placeholder" id="kpi_users">À renseigner</div>
-          <div class="note">Total France + Cameroun</div>
-        </div>
-        <div class="kpi">
-          <div class="label">Ateliers organisés</div>
-          <div class="value placeholder" id="kpi_workshops">À renseigner</div>
-          <div class="note">En ligne & présentiel</div>
-        </div>
-        <div class="kpi">
-          <div class="label">Jeunes accompagnés</div>
-          <div class="value placeholder" id="kpi_coaching">À renseigner</div>
-          <div class="note">Coaching / mentorat / bilan</div>
-        </div>
-      </div>
-
-      <div class="grid-2" style="margin-top:12px">
-        <div class="kpi">
-          <div class="label">Partenaires</div>
-          <div class="value placeholder" id="kpi_partners">À renseigner</div>
-          <div class="note">Écoles · entreprises · associations</div>
-        </div>
-        <div class="kpi">
-          <div class="label">Clics (test local)</div>
-          <div class="value" id="kpi_clicks_total">0</div>
-          <div class="note">Total des clics sur les boutons (localStorage)</div>
-        </div>
+      <div class="card pad">
+        <h3 style="margin:0 0 8px">Lecture entrepreneur</h3>
+        <p class="hint" style="margin:0">
+            
+            <!--GA4 te dira : quels boutons sont cliqués, quelles pages retiennent l’attention, et où ça décroche.-->
+            <!--Tu peux ensuite améliorer 1 page / 1 bouton à la fois.-->
+        </p>
       </div>
     </section>
 
@@ -666,20 +624,20 @@
     <section class="view" id="view-apropos">
       <div class="section-head">
         <h2>À propos</h2>
-        <div class="hint">Crédibilité : mission claire + parcours + engagement + méthode.</div>
+        <div class="hint">Mission + méthode + contact (propre, concis).</div>
       </div>
 
       <div class="card pad">
         <h3>Brice Awoumpe · Fondateur</h3>
         <p class="hint" style="margin:0">
-          Ingénieur mécatronique, engagé pour l’égalité des chances. Objectif : rendre l’orientation plus claire,
-          plus actionnable, et connecter les jeunes aux bonnes opportunités.
+          AEC existe pour rendre l’orientation plus claire et plus actionnable : ressources utiles, ateliers,
+          et opportunités. Objectif : permettre aux jeunes d’avancer même sans réseau.
         </p>
 
-        <div class="row" style="margin-top:12px">
-          <a class="btn small primary" href="#" id="linkLinkedin" data-track="about_linkedin">LinkedIn</a>
-          <a class="btn small green" href="#" id="linkNotion" data-track="about_notion">Notion / Ressources</a>
-          <a class="btn small" href="#" id="linkEmail" data-track="about_email">Email</a>
+        <div class="actions" style="margin-top:12px">
+          <a class="btn small primary" href="#" id="linkLinkedin" data-track="open_linkedin">LinkedIn</a>
+          <a class="btn small green" href="#" id="linkNotionMain" data-track="open_notion_complet_2">Notion</a>
+          <a class="btn small" href="#" id="linkEmail" data-track="open_email">Email</a>
         </div>
 
         <p class="hint mailto" style="margin-top:12px">
@@ -692,39 +650,64 @@
     <section class="view" id="view-proposer">
       <div class="section-head">
         <h2>Proposer une ressource</h2>
-        <div class="hint">Ici on ne fait pas de formulaire. On renvoie vers ton lien “Proposer” (Notion / Form dédié).</div>
+        <div class="hint">Tu centralises via 1 lien (Google Form / Notion).</div>
       </div>
 
       <div class="card pad">
         <p class="hint" style="margin-top:0">
-          Pour éviter l’automatisation inutile, tu centralises les propositions via un seul lien.
-          (Ex : page Notion “Proposer” ou Google Form ressources.)""
+          Propose une ressource (lien, fichier, info) : on garde ce qui est pertinent et actionnable.
         </p>
-        <div class="row">
-          <a class="btn green" href="#" id="linkProposerForm" data-track="proposer_link">➕ Proposer une ressource</a>
-          <a class="btn" href="#/ressources" data-track="back_to_resources">↩ Retour aux ressources</a>
+        <div class="actions">
+          <a class="btn green" href="#" id="linkProposerForm" data-track="open_proposer_form">➕ Proposer</a>
+          <a class="btn" href="#/ressources" data-track="back_resources">↩ Retour aux ressources</a>
         </div>
       </div>
     </section>
 
     <div class="footer">
       <div class="smallprint">
-        <b>AEC – Égalité des Chances</b> · MVP en construction.  
-        Politique de confidentialité / cookies à ajouter avant mise en production.
+        <b>AEC Cameroun</b> · MVP en construction. Politique de confidentialité / cookies à ajouter avant production.
         <span style="display:block;margin-top:6px" class="mailto">
           Email : <a href="#" id="emailFooter">differentsleaders328@gmail.com</a>
         </span>
       </div>
       <div>
-        <span class="pill">Suivi local : <span id="clicksLabel">0</span> clic(s)</span>
+        <span class="pill">GA4 activé · événements : clics boutons</span>
       </div>
     </div>
   </main>
 
   <script>
-    // -------------------------------
-    // 0) Routing simple par hash: #/accueil, #/ressources, etc.
-    // -------------------------------
+    // =========================
+    // 1) GA4 tracking (propre)
+    // =========================
+    function trackEvent(eventName, params={}){
+      try{
+        if(typeof gtag === "function"){
+          gtag("event", eventName, params);
+        }
+      }catch(e){}
+    }
+
+    // Auto-track: chaque data-track envoie:
+    // - event "click" (générique) avec label
+    // - event spécifique = label (pour lecture entrepreneur)
+    document.addEventListener("click", (e)=>{
+      const el = e.target.closest("[data-track]");
+      if(!el) return;
+      const label = el.getAttribute("data-track") || "unknown";
+
+      // 1) générique
+      trackEvent("click", { event_category: "ui", event_label: label });
+
+      // 2) spécifique (très pratique pour filtrer)
+      // GA4 accepte les underscores etc.
+      trackEvent(label, { event_category: "ui" });
+    });
+
+    // =========================
+    // 2) Router hash
+    // =========================
     const VIEWS = ["accueil","ressources","ateliers","opportunites","impact","apropos","rejoindre","proposer"];
 
     function setActiveView(name){
@@ -735,6 +718,15 @@
       document.querySelectorAll("[data-nav]").forEach(a=>{
         a.classList.toggle("active", a.getAttribute("data-nav")===name);
       });
+
+      // fermer menu mobile quand on change de vue
+      const panel = document.getElementById("menuPanel");
+      const btn = document.getElementById("menuBtn");
+      if(panel && btn){
+        panel.classList.remove("open");
+        btn.setAttribute("aria-expanded","false");
+      }
+
       window.scrollTo({top:0, behavior:"instant"});
     }
 
@@ -748,206 +740,92 @@
     window.addEventListener("hashchange", ()=> setActiveView(getRoute()));
     setActiveView(getRoute());
 
-    // -------------------------------
-    // 1) Click tracking (localStorage)
-    // -------------------------------
-    const TRACK_KEY = "aec_click_counts_v2";
-    const TOTAL_KEY = "aec_click_total_v2";
-
-    function loadCounts(){
-      try { return JSON.parse(localStorage.getItem(TRACK_KEY) || "{}"); }
-      catch { return {}; }
-    }
-    function saveCounts(counts){ localStorage.setItem(TRACK_KEY, JSON.stringify(counts)); }
-    function getTotal(){ return Number(localStorage.getItem(TOTAL_KEY) || "0"); }
-    function setTotal(n){ localStorage.setItem(TOTAL_KEY, String(n)); }
-
-    function incCount(label){
-      const counts = loadCounts();
-      counts[label] = (counts[label] || 0) + 1;
-      saveCounts(counts);
-      const total = getTotal() + 1;
-      setTotal(total);
-      refreshTotals();
-    }
-
-    function refreshTotals(){
-      const total = getTotal();
-      const a = document.getElementById("clicksLabel");
-      const b = document.getElementById("kpi_clicks_total");
-      if(a) a.textContent = total;
-      if(b) b.textContent = total;
-    }
-
-    document.addEventListener("click", (e) => {
-      const el = e.target.closest("[data-track]");
-      if(!el) return;
-      incCount(el.getAttribute("data-track"));
-    });
-
-    // -------------------------------
-    // 2) KPI placeholders (no fake data)
-    // -------------------------------
-    const KPI_KEY = "aec_kpi_v2";
-    function loadKpi(){
-      try { return JSON.parse(localStorage.getItem(KPI_KEY) || "{}"); }
-      catch { return {}; }
-    }
-    function saveKpi(obj){ localStorage.setItem(KPI_KEY, JSON.stringify(obj)); }
-
-    function applyKpi(){
-      const k = loadKpi();
-      const map = [
-        ["kpi_users", "users"],
-        ["kpi_workshops", "workshops"],
-        ["kpi_coaching", "coaching"],
-        ["kpi_partners", "partners"]
-      ];
-      for(const [id, key] of map){
-        const el = document.getElementById(id);
-        if(!el) continue;
-        if(k[key] === undefined || k[key] === "" || k[key] === null){
-          el.textContent = "À renseigner";
-          el.classList.add("placeholder");
-        } else {
-          el.textContent = String(k[key]);
-          el.classList.remove("placeholder");
-        }
-      }
-
-      const i1 = document.getElementById("kpiUsers");
-      const i2 = document.getElementById("kpiWorkshops");
-      const i3 = document.getElementById("kpiCoaching");
-      const i4 = document.getElementById("kpiPartners");
-      if(i1) i1.value = k.users ?? "";
-      if(i2) i2.value = k.workshops ?? "";
-      if(i3) i3.value = k.coaching ?? "";
-      if(i4) i4.value = k.partners ?? "";
-    }
-
-    const saveBtn = document.getElementById("saveKpi");
-    const resetBtn = document.getElementById("resetKpi");
-    if(saveBtn){
-      saveBtn.addEventListener("click", () => {
-        const k = {
-          users: document.getElementById("kpiUsers").value === "" ? "" : Number(document.getElementById("kpiUsers").value),
-          workshops: document.getElementById("kpiWorkshops").value === "" ? "" : Number(document.getElementById("kpiWorkshops").value),
-          coaching: document.getElementById("kpiCoaching").value === "" ? "" : Number(document.getElementById("kpiCoaching").value),
-          partners: document.getElementById("kpiPartners").value === "" ? "" : Number(document.getElementById("kpiPartners").value),
-        };
-        saveKpi(k);
-        applyKpi();
-      });
-    }
-    if(resetBtn){
-      resetBtn.addEventListener("click", () => {
-        localStorage.removeItem(KPI_KEY);
-        applyKpi();
+    // =========================
+    // 3) Mobile menu
+    // =========================
+    const menuBtn = document.getElementById("menuBtn");
+    const menuPanel = document.getElementById("menuPanel");
+    if(menuBtn && menuPanel){
+      menuBtn.addEventListener("click", ()=>{
+        const open = menuPanel.classList.toggle("open");
+        menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
       });
     }
 
-    // -------------------------------
-    // 3) Brancher les liens (un seul endroit : AEC_LINKS)
-    //    Règles :
-    //    - Tally = Ateliers
-    //    - Proposer ressource = Notion (ou un Google Form ressource dédié)
-    // -------------------------------
+    // =========================
+    // 4) Link helpers (robuste)
+    // =========================
     function mailto(email){
       return "mailto:" + encodeURIComponent(email);
     }
 
-    function safeLink(el, url, fallbackHash, forceNewTab=false){
+    function bindLink(id, url, newTab=true){
+      const el = document.getElementById(id);
       if(!el) return;
-      if(url && url !== "#"){
-        el.href = url;
-        // Pour les liens externes : new tab
-        if(forceNewTab || /^https?:\/\//i.test(url) || url.startsWith("mailto:")){
-          el.target = "_blank";
-          el.rel = "noopener noreferrer";
+      el.addEventListener("click", (e)=>{
+        if(!url || url === "#"){
+          e.preventDefault();
+          return;
         }
-      } else {
-        el.href = fallbackHash;
-      }
-    }
-
-    // Accueil
-    const signupLink = AEC_LINKS.inscription_form || AEC_LINKS.ateliers_tally; // si pas de form, on renvoie Tally ateliers
-    safeLink(document.getElementById("btnInscription"), signupLink, "#/ateliers", true);
-    safeLink(document.getElementById("btnJoinAccueil"), AEC_LINKS.join_membre, "#/rejoindre", true);
-
-    const emailUrl = mailto(AEC_LINKS.email);
-    safeLink(document.getElementById("btnContact"), emailUrl, "#/apropos", true);
-    
-
-    // Home extra buttons
-    safeLink(document.getElementById("homeOpenNotion"), AEC_LINKS.notion_base, "#/ressources", true);
-    safeLink(document.getElementById("homeTally"), AEC_LINKS.ateliers_tally, "#/ateliers", true);
-
-    // Ressources : si tu n’as pas des pages dédiées -> on renvoie vers Notion
-    safeLink(document.getElementById("linkResMethode"), AEC_LINKS.res_methode || AEC_LINKS.notion_base, "#/proposer", true);
-    safeLink(document.getElementById("linkResCV"), AEC_LINKS.res_cv || AEC_LINKS.notion_base, "#/proposer", true);
-    safeLink(document.getElementById("linkResMetiers"), AEC_LINKS.res_metiers || AEC_LINKS.notion_base, "#/proposer", true);
-    safeLink(document.getElementById("openNotionBase"), AEC_LINKS.notion_base, "#/ressources", true);
-    safeLink(document.getElementById("openNotionBase"), AEC_LINKS.notion_complet, "#/ressources", true);
-
-    // Ateliers : tous les boutons -> Tally
-    safeLink(document.getElementById("linkPreinscriptionFR"), AEC_LINKS.ateliers_tally, "#/ateliers", true);
-    safeLink(document.getElementById("linkPreinscriptionCM"), AEC_LINKS.ateliers_tally, "#/ateliers", true);
-    safeLink(document.getElementById("openAteliersTally"), AEC_LINKS.ateliers_tally, "#/ateliers", true);
-
-    // Opportunités : si pas de pages dédiées -> Notion (ou une future page)
-    safeLink(document.getElementById("linkOppBourses"), AEC_LINKS.opp_bourses || AEC_LINKS.notion_base, "#/proposer", true);
-    safeLink(document.getElementById("linkOppOffres"), AEC_LINKS.opp_offres || AEC_LINKS.notion_base, "#/proposer", true);
-    safeLink(document.getElementById("linkOppConcours"), AEC_LINKS.opp_concours || AEC_LINKS.notion_base, "#/proposer", true);
-
-    // À propos
-    safeLink(document.getElementById("linkLinkedin"), AEC_LINKS.linkedin, "#/apropos", true);
-    safeLink(document.getElementById("linkNotion"), AEC_LINKS.notion_base, "#/ressources", true);
-    safeLink(document.getElementById("linkEmail"), emailUrl, "#/apropos", true);
-
-    const emailInline = document.getElementById("emailInline");
-    const emailFooter = document.getElementById("emailFooter");
-    if(emailInline){
-      emailInline.href = emailUrl;
-      emailInline.textContent = AEC_LINKS.email;
-      emailInline.target = "_blank";
-      emailInline.rel = "noopener noreferrer";
-    }
-    if(emailFooter){
-      emailFooter.href = emailUrl;
-      emailFooter.textContent = AEC_LINKS.email;
-      emailFooter.target = "_blank";
-      emailFooter.rel = "noopener noreferrer";
-    }
-
-    // Proposer ressource : NOTION / FORM dédié (pas Tally)
-    safeLink(document.getElementById("linkProposerForm"), AEC_LINKS.proposer_ressource, "#/proposer", true);
-
-    // Init
-    refreshTotals();
-    applyKpi();
-
-
-  document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("btnJoinAccueil");
-  if (!btn) return;
-
-  btn.addEventListener("click", (e) => {
-    e.preventDefault();
-
-    // Tracking GA4 (si dispo)
-    if (typeof gtag === "function") {
-      gtag("event", "join_click", {
-        event_category: "engagement",
-        event_label: "rejoindre_membre",
+        // mailto
+        if(url.startsWith("mailto:")){
+          el.href = url;
+          return;
+        }
+        e.preventDefault();
+        if(newTab){
+          window.open(url, "_blank", "noopener,noreferrer");
+        }else{
+          window.location.href = url;
+        }
       });
     }
 
-    // OUVERTURE DIRECTE (sinon popup-block)
-    window.open(AEC_LINKS.join_membre, "_blank", "noopener,noreferrer");
-  });
-});
-    
+    // Accueil
+    bindLink("btnInscription", AEC_LINKS.ateliers_tally, true);
+    bindLink("btnContact", mailto(AEC_LINKS.email), false);
+    bindLink("homeOpenNotionBase", AEC_LINKS.notion_base, true);
+    bindLink("homeOpenTally", AEC_LINKS.ateliers_tally, true);
+
+    // Ressources
+    bindLink("linkResMethode", AEC_LINKS.res_methode || AEC_LINKS.notion_base, true);
+    bindLink("linkResCV", AEC_LINKS.res_cv || AEC_LINKS.notion_base, true);
+    bindLink("linkResMetiers", AEC_LINKS.res_metiers || AEC_LINKS.notion_base, true);
+    bindLink("openNotionBase", AEC_LINKS.notion_base, true);
+    bindLink("openNotionComplet", AEC_LINKS.notion_complet, true);
+
+    // Ateliers
+    bindLink("linkPreinscriptionOnline", AEC_LINKS.ateliers_tally, true);
+    bindLink("linkPreinscriptionDouala", AEC_LINKS.ateliers_tally, true);
+    bindLink("openAteliersTally", AEC_LINKS.ateliers_tally, true);
+
+    // Opportunités
+    bindLink("linkOppBourses", AEC_LINKS.opp_bourses || AEC_LINKS.notion_base, true);
+    bindLink("linkOppOffres", AEC_LINKS.opp_offres || AEC_LINKS.notion_base, true);
+    bindLink("linkOppConcours", AEC_LINKS.opp_concours || AEC_LINKS.notion_base, true);
+
+    // Rejoindre
+    bindLink("btnJoin", AEC_LINKS.join_membre, true);
+
+    // À propos
+    bindLink("linkLinkedin", AEC_LINKS.linkedin, true);
+    bindLink("linkNotionMain", AEC_LINKS.notion_complet, true);
+    bindLink("linkEmail", mailto(AEC_LINKS.email), false);
+
+    // inline emails
+    const emailInline = document.getElementById("emailInline");
+    const emailFooter = document.getElementById("emailFooter");
+    if(emailInline){
+      emailInline.textContent = AEC_LINKS.email;
+      emailInline.href = mailto(AEC_LINKS.email);
+    }
+    if(emailFooter){
+      emailFooter.textContent = AEC_LINKS.email;
+      emailFooter.href = mailto(AEC_LINKS.email);
+    }
+
+    // Proposer
+    bindLink("linkProposerForm", AEC_LINKS.proposer_ressource, true);
   </script>
 </body>
 </html>
