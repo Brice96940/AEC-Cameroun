@@ -628,32 +628,70 @@
     </div>
   </section>
 
-  <!-- ═══════════ IMPACT ═══════════ -->
+  <!-- ═══════════ IMPACT (accès protégé) ═══════════ -->
   <section class="view" id="view-impact">
-    <div class="section-head">
-      <div><h2>Impact</h2><p class="hint">Lecture entrepreneur — on améliore ce que l'on mesure.</p></div>
-    </div>
-    <div class="card pad">
-      <div class="banner">
-        <span>📊</span>
-        <span>GA4 actif sur toute la plateforme. Chaque clic est mesuré par catégorie : <strong>navigation</strong>, <strong>ressources</strong>, <strong>ateliers</strong>, <strong>opportunités</strong>. Tu peux identifier quelle section génère le plus d'engagement et optimiser en priorité.</span>
+
+    <!-- Écran de verrouillage -->
+    <div id="impact-lock" class="card pad" style="max-width:420px;margin:0 auto;text-align:center;">
+      <div style="font-size:36px;margin-bottom:12px;">🔒</div>
+      <h2 style="margin-bottom:6px;">Accès restreint</h2>
+      <p class="hint" style="margin-bottom:20px;">Cette section est réservée à l'administrateur.</p>
+      <div style="display:flex;gap:10px;justify-content:center;">
+        <input
+          id="impact-pwd"
+          type="password"
+          placeholder="Mot de passe"
+          style="
+            flex:1; padding:11px 14px; border-radius:var(--r);
+            border:1px solid var(--line); background:#1a2540;
+            color:var(--text); font-family:var(--fb); font-size:14px;
+            outline:none; transition:border-color .15s;
+          "
+          onkeydown="if(event.key==='Enter') checkImpactPwd()"
+        />
+        <button
+          onclick="checkImpactPwd()"
+          class="btn primary"
+          style="min-width:90px;">
+          Entrer
+        </button>
       </div>
-      <h3 style="margin-top:6px;">Ce que tu peux faire avec ces données</h3>
-      <div class="grid-3" style="margin-top:12px;">
-        <div class="item">
-          <h3>🔍 Identifier les pages froides</h3>
-          <p>Quelles sections ont peu de clics ? C'est là qu'il faut améliorer le contenu ou le CTA.</p>
+      <p id="impact-err" style="color:#ff6b6b;font-size:13px;margin-top:10px;display:none;">
+        ❌ Mot de passe incorrect
+      </p>
+    </div>
+
+    <!-- Contenu réel — caché jusqu'au bon mot de passe -->
+    <div id="impact-content" style="display:none;">
+      <div class="section-head">
+        <div><h2>Impact</h2><p class="hint">Lecture entrepreneur — on améliore ce que l'on mesure.</p></div>
+      </div>
+      <div class="card pad">
+        <div class="banner">
+          <span>📊</span>
+          <span>GA4 actif sur toute la plateforme. Chaque clic est mesuré par catégorie : <strong>navigation</strong>, <strong>ressources</strong>, <strong>ateliers</strong>, <strong>opportunités</strong>. Tu peux identifier quelle section génère le plus d'engagement et optimiser en priorité.</span>
         </div>
-        <div class="item">
-          <h3>📈 Voir ce qui convertit</h3>
-          <p>Quels boutons amènent à l'inscription ou à Notion ? Dupliquer ce qui marche.</p>
+        <h3 style="margin-top:6px;">Ce que tu peux faire avec ces données</h3>
+        <div class="grid-3" style="margin-top:12px;">
+          <div class="item">
+            <h3>🔍 Identifier les pages froides</h3>
+            <p>Quelles sections ont peu de clics ? C'est là qu'il faut améliorer le contenu ou le CTA.</p>
+          </div>
+          <div class="item">
+            <h3>📈 Voir ce qui convertit</h3>
+            <p>Quels boutons amènent à l'inscription ou à Notion ? Dupliquer ce qui marche.</p>
+          </div>
+          <div class="item">
+            <h3>🗓 Mesurer la demande ateliers</h3>
+            <p>Combien de clics sur "Pré-inscription" ? Quand le seuil est atteint, tu fixes les dates.</p>
+          </div>
         </div>
-        <div class="item">
-          <h3>🗓 Mesurer la demande ateliers</h3>
-          <p>Combien de clics sur "Pré-inscription" ? Quand le seuil est atteint, tu fixes les dates.</p>
+        <div style="margin-top:18px;text-align:right;">
+          <button onclick="lockImpact()" class="btn sm" style="font-size:12px;">🔒 Verrouiller</button>
         </div>
       </div>
     </div>
+
   </section>
 
   <!-- ═══════════ À PROPOS ═══════════ -->
@@ -673,7 +711,7 @@
         <a class="btn" id="linkEmail" data-track="open_email_apropos" onclick="track('open_email_apropos','apropos')">✉️ Email</a>
       </div>
       <hr class="hr"/>
-      <p class="hint">Contact direct : <a href="mailto:differentsleaders328@gmail.com" style="color:var(--mint);text-decoration:underline;text-underline-offset:3px;" data-track="email_inline_apropos">differentsleaders328@gmail.com</a></p>
+      <p class="hint">Contact direct : <a href="/cdn-cgi/l/email-protection#99fdf0fffffcebfcf7edeaf5fcf8fdfcebeaaaaba1d9fef4f8f0f5b7faf6f4" style="color:var(--mint);text-decoration:underline;text-underline-offset:3px;" data-track="email_inline_apropos"><span class="__cf_email__" data-cfemail="54303d32323126313a20273831353031262767666c143339353d387a373b39">[email&#160;protected]</span></a></p>
     </div>
   </section>
 
@@ -712,7 +750,7 @@
 
 <footer class="z1">
   <div class="fi">
-    <span>© 2025 AEC Cameroun &nbsp;·&nbsp; Brice Awoumpe &nbsp;·&nbsp; <a href="mailto:differentsleaders328@gmail.com" style="color:var(--muted);">differentsleaders328@gmail.com</a></span>
+    <span>© 2025 AEC Cameroun &nbsp;·&nbsp; Brice Awoumpe &nbsp;·&nbsp; <a href="/cdn-cgi/l/email-protection#a6c2cfc0c0c3d4c3c8d2d5cac3c7c2c3d4d595949ee6c1cbc7cfca88c5c9cb" style="color:var(--muted);"><span class="__cf_email__" data-cfemail="680c010e0e0d1a0d061c1b040d090c0d1a1b5b5a50280f05090104460b0705">[email&#160;protected]</span></a></span>
     <nav class="fl" aria-label="Liens pied de page">
       <a href="#/ressources"   data-nav="ressources"   data-track="footer_ressources">Ressources</a>
       <a href="#/ateliers"     data-nav="ateliers"     data-track="footer_ateliers">Ateliers</a>
@@ -722,7 +760,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function(){
   /* ── Animations Hero ─── */
   document.addEventListener('DOMContentLoaded', function(){
@@ -862,7 +900,7 @@
     bind('linkPreinscriptionOnline', L.ateliers_tally);
     bind('linkPreinscriptionDouala', L.ateliers_tally);
     bind('openAteliersTally',    L.ateliers_tally);
-        bind('linkOppBourses',       L.opp_bourses);
+    bind('linkOppBourses',       L.opp_bourses);
     bind('linkOppOffres',        L.opp_offres);
     bind('linkOppConcours',      L.opp_concours);
     bind('btnJoin',              L.join_membre);
@@ -870,6 +908,64 @@
     bind('linkNotionMain',       L.notion_complet);
     bindMail('linkEmail',        L.email);
     bind('linkProposerForm',     L.proposer_form);
+  });
+
+  /* ── Impact — protection mot de passe ───────────────────── */
+  // Change "aec2025" par le mot de passe de ton choix
+  var IMPACT_PWD = 'aec2025';
+  var IMPACT_KEY = 'aec_impact_ok';
+
+  window.checkImpactPwd = function(){
+    var val = document.getElementById('impact-pwd').value;
+    if(val === IMPACT_PWD){
+      sessionStorage.setItem(IMPACT_KEY,'1');
+      unlockImpact();
+    } else {
+      var err = document.getElementById('impact-err');
+      if(err) err.style.display='block';
+      var inp = document.getElementById('impact-pwd');
+      if(inp){ inp.value=''; inp.focus(); }
+    }
+  };
+
+  window.unlockImpact = function(){
+    var lock    = document.getElementById('impact-lock');
+    var content = document.getElementById('impact-content');
+    if(lock)    lock.style.display    = 'none';
+    if(content) content.style.display = 'block';
+  };
+
+  window.lockImpact = function(){
+    sessionStorage.removeItem(IMPACT_KEY);
+    var lock    = document.getElementById('impact-lock');
+    var content = document.getElementById('impact-content');
+    if(lock)    lock.style.display    = 'block';
+    if(content) content.style.display = 'none';
+    var inp = document.getElementById('impact-pwd');
+    if(inp) inp.value = '';
+  };
+
+  // Si déjà auth dans la session, déverrouiller auto
+  document.addEventListener('DOMContentLoaded',function(){
+    if(sessionStorage.getItem(IMPACT_KEY)==='1' && location.hash==='#/impact'){
+      unlockImpact();
+    }
+  });
+
+  // Gestion au changement de vue
+  window.addEventListener('hashchange',function(){
+    if(location.hash==='#/impact'){
+      if(sessionStorage.getItem(IMPACT_KEY)==='1') unlockImpact();
+    } else {
+      if(!sessionStorage.getItem(IMPACT_KEY)){
+        var lock    = document.getElementById('impact-lock');
+        var content = document.getElementById('impact-content');
+        var err     = document.getElementById('impact-err');
+        if(lock)    lock.style.display    = 'block';
+        if(content) content.style.display = 'none';
+        if(err)     err.style.display     = 'none';
+      }
+    }
   });
 
 })();
