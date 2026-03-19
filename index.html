@@ -4,971 +4,1902 @@
   <meta charset="utf-8" />
   <meta name="google-site-verification" content="FPiaPtgTR2P054CTezHlMk9CGlnQhWN7kYA57xJ_PrI" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+
   <title>AEC Cameroun – Orientation, Ressources, Ateliers & Opportunités</title>
-  <meta name="description" content="AEC Cameroun : plateforme d'orientation, ressources et opportunités pour les jeunes 15–30 ans. Accès Notion, ateliers, bourses et méthode d'action." />
+  <meta
+    name="description"
+    content="AEC Cameroun : plateforme d'orientation, ressources et opportunités pour les jeunes de 15 à 30 ans. Accès Notion, ateliers, bourses, opportunités et méthode d'action."
+  />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://brice96940.github.io/AEC-Cameroun/" />
 
+  <!-- Open Graph -->
   <meta property="og:title" content="AEC Cameroun – Orientation & Opportunités" />
-  <meta property="og:description" content="Clarifie ton projet et passe à l'action. Ressources, ateliers et opportunités pour les jeunes du Cameroun." />
+  <meta property="og:description" content="Clarifie ton projet, trouve les bonnes ressources et passe à l'action." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://brice96940.github.io/AEC-Cameroun/" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
 
-  <!-- GA4 — ID Cameroun -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4LBV0YTTX4"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4LBV0YTTX4', { anonymize_ip: true });
-    function track(label, cat){ if(typeof gtag!=='undefined') gtag('event','click',{event_category:cat||'navigation',event_label:label}); }
+
+    /**
+     * Wrapper GA4.
+     */
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag("js", new Date());
+    gtag("config", "G-4LBV0YTTX4", { anonymize_ip: true });
+
+    /**
+     * Helper de tracking.
+     * Permet de suivre les clics sans surcharger le HTML.
+     *
+     * @param {string} label
+     * @param {string} [category="navigation"]
+     */
+    function track(label, category = "navigation") {
+      if (typeof gtag !== "undefined") {
+        gtag("event", "click", {
+          event_category: category,
+          event_label: label
+        });
+      }
+    }
   </script>
 
+  <!-- Structured data -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"EducationalOrganization","name":"AEC Cameroun","url":"https://brice96940.github.io/AEC-Cameroun/","description":"Plateforme d'orientation, ressources et opportunités pour les jeunes du Cameroun.","founder":{"@type":"Person","name":"Brice Awoumpe"},"areaServed":"CM"}
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "AEC Cameroun",
+      "url": "https://brice96940.github.io/AEC-Cameroun/",
+      "description": "Plateforme d'orientation, ressources et opportunités pour les jeunes du Cameroun.",
+      "founder": {
+        "@type": "Person",
+        "name": "Brice Awoumpe"
+      },
+      "areaServed": "CM"
+    }
   </script>
 
   <style>
-    :root{
-      /* ── Palette sombre profonde — identité Cameroun (touche verte/dorée) ── */
-      --bg:#0b1118;
-      --bg1:#0f1720;
-      --bg2:#121e2c;
+    :root {
+      /* ======================================
+         THEME
+      ====================================== */
+      --bg: #0b1118;
+      --bg1: #0f1720;
+      --bg2: #121e2c;
 
-      --text:#d6e8ff;
-      --muted:#637fa8;
-      --subtle:rgba(180,210,255,.32);
+      --text: #d6e8ff;
+      --muted: #7b93b9;
 
-      /* Cards opaques */
-      --card:#152030;
-      --card2:#101929;
+      --card: #152030;
+      --card2: #101929;
 
-      /* Bordures */
-      --line:rgba(70,130,200,.20);
-      --line2:rgba(70,130,200,.11);
+      --line: rgba(70, 130, 200, 0.2);
+      --line2: rgba(70, 130, 200, 0.11);
 
-      /* Couleurs — bleu + mint camerounais + or */
-      --blue:#5b9eff;
-      --blue2:#4478e8;
-      --mint:#1ecfa0;
-      --mint2:#17a880;
-      --gold:#f5a623;
-      --violet:#a06bff;
+      --blue: #5b9eff;
+      --blue2: #4478e8;
+      --mint: #1ecfa0;
+      --mint2: #17a880;
+      --gold: #f5a623;
 
-      --fd:'Syne',sans-serif;
-      --fb:'DM Sans',sans-serif;
+      --fd: "Syne", sans-serif;
+      --fb: "DM Sans", sans-serif;
 
-      --r:16px; --rl:22px;
-      --sh:0 20px 55px rgba(0,0,0,.72),0 4px 16px rgba(0,0,0,.50);
-      --shm:0 6px 20px rgba(0,0,0,.40);
-      --max:1160px; --tap:44px;
-      --tr:.15s cubic-bezier(.4,0,.2,1);
+      --r: 16px;
+      --rl: 22px;
+      --sh: 0 20px 55px rgba(0, 0, 0, 0.72), 0 4px 16px rgba(0, 0, 0, 0.5);
+      --max: 1160px;
+      --tap: 44px;
+      --tr: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    *,*::before,*::after{box-sizing:border-box;}
-    html{scroll-behavior:smooth;}
-    body{
-      margin:0; font-family:var(--fb); font-size:15px; color:var(--text);
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--fb);
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+
       background: #0b1118;
       background-image:
-        radial-gradient(ellipse 1000px 600px at -5% -8%,  rgba(50,100,220,.26), transparent 52%),
-        radial-gradient(ellipse  900px 550px at 105% 5%,  rgba(30,207,160,.18), transparent 52%),
-        radial-gradient(ellipse  700px 450px at 70%  85%, rgba(160,107,255,.12),transparent 58%),
+        radial-gradient(ellipse 1000px 600px at -5% -8%, rgba(50, 100, 220, 0.26), transparent 52%),
+        radial-gradient(ellipse 900px 550px at 105% 5%, rgba(30, 207, 160, 0.18), transparent 52%),
+        radial-gradient(ellipse 700px 450px at 70% 85%, rgba(245, 166, 35, 0.08), transparent 58%),
         linear-gradient(180deg, #0b1118 0%, #0f1720 60%, #0b1118 100%);
-      line-height:1.6; -webkit-font-smoothing:antialiased; min-height:100vh;
-    }
-    body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.02;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px;}
-
-    a{color:inherit;text-decoration:none;}
-    .z1{position:relative;z-index:1;}
-    .wrap{max-width:var(--max);margin:0 auto;padding:20px 20px 48px;}
-    .skip{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;}
-    .skip:focus{left:12px;top:10px;width:auto;height:auto;padding:10px 14px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:10px;z-index:999;}
-
-    /* ── Topbar ── */
-    .topbar{position:sticky;top:0;z-index:100;backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);background:rgba(11,17,24,.85);border-bottom:1px solid var(--line);}
-    .topbar-inner{max-width:var(--max);margin:0 auto;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
-    .brand{display:flex;gap:10px;align-items:center;}
-    .logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--mint));box-shadow:0 0 0 1px rgba(255,255,255,.1),0 0 14px rgba(30,207,160,.28);flex:0 0 auto;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:800;font-size:16px;color:#fff;}
-    .brand-t b{font-family:var(--fd);font-size:14px;font-weight:800;display:block;}
-    .brand-t .sub{color:var(--muted);font-size:11px;}
-
-    nav.desktop{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end;}
-    .tab{padding:8px 11px;border-radius:999px;border:1px solid transparent;background:transparent;color:var(--muted);font-family:var(--fb);font-weight:500;font-size:13px;transition:all var(--tr);min-height:var(--tap);display:inline-flex;align-items:center;cursor:pointer;white-space:nowrap;}
-    .tab:hover{color:var(--text);background:var(--card);border-color:var(--line);}
-    .tab.active{color:var(--text);background:rgba(30,207,160,.13);border-color:rgba(30,207,160,.32);box-shadow:0 0 0 3px rgba(30,207,160,.06);}
-
-    .menuBtn{display:none;height:var(--tap);min-width:var(--tap);padding:0 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--text);cursor:pointer;align-items:center;justify-content:center;gap:7px;font-weight:600;font-size:13px;font-family:var(--fb);transition:all var(--tr);}
-    .menuBtn:hover{border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.07);}
-    .menuPanel{display:none;border-top:1px solid var(--line2);background:rgba(11,17,24,.96);padding:10px 20px 14px;}
-    .menuPanel.open{display:block;}
-    .menuPanel a{display:block;padding:10px 12px;border-radius:var(--r);border:1px solid var(--line2);background:var(--card);color:var(--muted);margin-top:8px;font-weight:600;font-size:13px;transition:all var(--tr);}
-    .menuPanel a:hover{color:var(--text);border-color:var(--line);}
-    .menuPanel a.active{color:var(--text);border-color:rgba(30,207,160,.32);background:rgba(30,207,160,.08);}
-
-    /* ── Views ── */
-    .view{display:none;animation:fi .2s ease;}
-    .view.active{display:block;}
-    @keyframes fi{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:none;}}
-
-    /* ── Cards ── */
-    .card{background:linear-gradient(158deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:var(--rl);box-shadow:var(--sh);position:relative;overflow:hidden;}
-    .card::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(100,180,255,.025) 0%,transparent 55%);pointer-events:none;border-radius:inherit;}
-    .card.pad{padding:22px;}
-    .item{background:#121e30;border:1px solid var(--line2);border-radius:var(--r);padding:16px;transition:border-color var(--tr),background var(--tr);}
-    .item:hover{border-color:var(--line);background:#152338;}
-    .item p{margin:4px 0 0;color:var(--muted);font-size:13px;}
-
-    /* ── Grid ── */
-    .grid-2{display:grid;gap:14px;grid-template-columns:repeat(2,1fr);}
-    .grid-3{display:grid;gap:14px;grid-template-columns:repeat(3,1fr);}
-    .hero-grid{display:grid;gap:14px;grid-template-columns:1.3fr .7fr;align-items:start;}
-
-    /* ── Type ── */
-    h1{margin:12px 0 12px;font-family:var(--fd);font-size:clamp(24px,3vw,42px);font-weight:800;letter-spacing:-1px;line-height:1.07;}
-    h2{margin:0 0 8px;font-family:var(--fd);font-size:18px;font-weight:700;}
-    h3{margin:0 0 7px;font-family:var(--fd);font-size:15px;font-weight:700;}
-    .sub{margin:0 0 16px;color:var(--muted);font-size:15px;max-width:62ch;line-height:1.7;}
-    .hint{color:var(--muted);font-size:13px;}
-    p{margin:0;}
-    strong{color:var(--text);}
-
-    .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0 0 14px;}
-
-    /* ── Pills / badges ── */
-    .pill{display:inline-flex;align-items:center;gap:7px;padding:5px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--muted);font-size:12px;font-weight:500;width:fit-content;}
-    .badge{display:inline-flex;align-items:center;gap:7px;padding:5px 11px;border-radius:999px;border:1px solid var(--line2);background:var(--card);color:var(--muted);font-size:12px;font-weight:600;width:fit-content;}
-    .badge.prep{color:var(--text);border-color:rgba(91,158,255,.42);background:rgba(91,158,255,.12);}
-    .meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
-    .meta span{display:inline-flex;align-items:center;gap:7px;padding:5px 10px;border-radius:999px;border:1px solid var(--line2);background:var(--card);color:var(--muted);font-size:12px;}
-    .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px;}
-    .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
-
-    /* ── Buttons ── */
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 16px;border-radius:var(--r);font-family:var(--fb);font-weight:600;font-size:14px;border:1px solid var(--line);background:var(--card);color:var(--text);cursor:pointer;transition:all var(--tr);min-height:var(--tap);user-select:none;-webkit-tap-highlight-color:transparent;white-space:nowrap;}
-    .btn:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.22);background:#1e2e45;}
-    .btn:active{transform:none;}
-    .btn.primary{background:linear-gradient(135deg,var(--blue),var(--blue2));border-color:rgba(91,158,255,.45);box-shadow:0 4px 16px rgba(68,120,232,.30);font-weight:700;}
-    .btn.primary:hover{box-shadow:0 6px 22px rgba(68,120,232,.42);}
-    .btn.green{background:linear-gradient(135deg,var(--mint),var(--mint2));border-color:rgba(30,207,160,.45);color:#061714;font-weight:700;box-shadow:0 4px 16px rgba(30,207,160,.26);}
-    .btn.green:hover{box-shadow:0 6px 22px rgba(30,207,160,.38);}
-    .btn.sm{padding:9px 13px;font-size:13px;min-height:36px;}
-    .btn.block{width:100%;}
-    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;}
-
-    /* ── HR ── */
-    .hr{border:0;border-top:1px solid var(--line2);margin:18px 0;}
-
-    /* ── Banner info ── */
-    .banner{display:flex;align-items:flex-start;gap:10px;background:rgba(91,158,255,.08);border:1px solid rgba(91,158,255,.20);border-radius:10px;padding:11px 14px;color:var(--blue);font-size:13px;margin-bottom:12px;}
-    .banner.mint{background:rgba(30,207,160,.08);border-color:rgba(30,207,160,.22);color:var(--mint);}
-
-    /* ── Footer ── */
-    footer{border-top:1px solid var(--line2);background:#0b1118;padding:16px 20px;margin-top:0;}
-    .fi{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;font-size:12px;color:var(--muted);}
-    .fl{display:flex;gap:14px;}
-    .fl a{color:var(--muted);transition:color var(--tr);}
-    .fl a:hover{color:var(--text);}
-
-    :focus-visible{outline:2px solid rgba(30,207,160,.55);outline-offset:2px;border-radius:8px;}
-
-    /* ── Hero Dynamic Block ───────────────────────────────── */
-    .hero-dynamic{
-      margin-top:20px;
-      display:flex; flex-direction:column; gap:14px;
     }
 
-    /* Parcours étapes */
-    .journey{
-      display:flex; align-items:center; gap:8px; flex-wrap:wrap;
-      background:rgba(255,255,255,.025);
-      border:1px solid var(--line2);
-      border-radius:var(--r);
-      padding:14px 16px;
-    }
-    .journey-step{
-      display:flex; flex-direction:column; align-items:center; gap:6px;
-      opacity:0; animation:popIn .4s ease forwards;
-      animation-delay:var(--d);
-    }
-    @keyframes popIn{
-      from{opacity:0;transform:translateY(6px);}
-      to{opacity:1;transform:none;}
-    }
-    .jdot{
-      width:10px; height:10px; border-radius:50%;
-      background:var(--muted); border:2px solid var(--line);
-      transition:all .3s ease;
-    }
-    .jdot.active{
-      background:var(--mint);
-      border-color:var(--mint);
-      box-shadow:0 0 0 4px rgba(30,207,160,.18), 0 0 12px rgba(30,207,160,.35);
-      animation:pulse 1.8s ease infinite;
-    }
-    .jdot.gold{
-      background:var(--gold);
-      border-color:var(--gold);
-      box-shadow:0 0 0 4px rgba(245,166,35,.15);
-    }
-    @keyframes pulse{
-      0%,100%{box-shadow:0 0 0 4px rgba(30,207,160,.18),0 0 12px rgba(30,207,160,.35);}
-      50%{box-shadow:0 0 0 7px rgba(30,207,160,.08),0 0 20px rgba(30,207,160,.25);}
-    }
-    .jtext{ text-align:center; }
-    .jtext b{ display:block; font-family:var(--fd); font-size:13px; font-weight:700; color:var(--text); }
-    .jtext span{ font-size:11px; color:var(--muted); line-height:1.3; }
-    .journey-arrow{ color:var(--muted); font-size:14px; flex:0 0 auto; opacity:.5; }
-
-    /* Stats */
-    .hstats{
-      display:grid; grid-template-columns:80px 80px 1fr; gap:10px; align-items:center;
-    }
-    .hstat{
-      background:rgba(255,255,255,.025);
-      border:1px solid var(--line2);
-      border-radius:var(--r);
-      padding:12px 14px;
-      display:flex; flex-direction:column; gap:4px;
-    }
-    .hnum{
-      font-family:var(--fd);
-      font-size:28px; font-weight:800; letter-spacing:-1px;
-      color:var(--mint);
-      line-height:1;
-    }
-    .hlabel{ font-size:11px; color:var(--muted); line-height:1.4; }
-
-    .hstat-bar{ grid-column:auto; }
-
-    /* Progress bar */
-    .prog-track{
-      width:100%; height:8px; border-radius:999px;
-      background:rgba(255,255,255,.06);
-      border:1px solid var(--line2);
-      position:relative; overflow:hidden;
-    }
-    .prog-fill{
-      height:100%; border-radius:999px;
-      background:linear-gradient(90deg, var(--mint), #34d4b0);
-      box-shadow:0 0 8px rgba(30,207,160,.40);
-      width:0%; transition:width 1.6s cubic-bezier(.4,0,.2,1);
-    }
-    .prog-label{
-      position:absolute; right:8px; top:50%;
-      transform:translateY(-50%);
-      font-size:10px; font-weight:700; color:var(--text);
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.02;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 180px;
     }
 
-    /* Ticker live */
-    .ticker{
-      display:flex; align-items:center; gap:9px;
-      background:rgba(30,207,160,.06);
-      border:1px solid rgba(30,207,160,.18);
-      border-radius:999px;
-      padding:7px 14px;
-      font-size:12px; color:var(--muted);
-      width:fit-content;
-    }
-    .ticker-dot{
-      width:7px; height:7px; border-radius:50%;
-      background:var(--mint);
-      box-shadow:0 0 0 3px rgba(30,207,160,.22);
-      flex:0 0 auto;
-      animation:blink 1.6s ease infinite;
-    }
-    @keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
-
-    @media(max-width:980px){
-      .hstats{grid-template-columns:1fr 1fr;}
-      .hstat-bar{grid-column:1/-1;}
-      .journey{gap:6px;}
-    }
-    @media(max-width:520px){
-      .journey{flex-direction:column;align-items:flex-start;}
-      .journey-arrow{transform:rotate(90deg);}
-      .journey-step{flex-direction:row;align-items:center;gap:10px;}
-      .jtext{text-align:left;}
-      .hstats{grid-template-columns:1fr 1fr;}
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    @media(max-width:980px){
-      .hero-grid{grid-template-columns:1fr;}
-      .grid-2,.grid-3{grid-template-columns:1fr 1fr;}
-      nav.desktop{display:none;}
-      .menuBtn{display:inline-flex;}
+    .z1 {
+      position: relative;
+      z-index: 1;
     }
-    @media(max-width:600px){
-      .grid-2,.grid-3{grid-template-columns:1fr;}
-      .card.pad{padding:18px;}
-      h1{font-size:clamp(22px,7vw,32px);}
-      .btn{width:100%;}
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 20px 20px 48px;
     }
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.btn,.tab,.item{transition:none;}.view{animation:none;}}
+
+    .skip {
+      position: absolute;
+      left: -999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .skip:focus {
+      left: 12px;
+      top: 10px;
+      width: auto;
+      height: auto;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      z-index: 999;
+    }
+
+    /* ======================================
+       TOPBAR
+    ====================================== */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(18px) saturate(1.4);
+      -webkit-backdrop-filter: blur(18px) saturate(1.4);
+      background: rgba(11, 17, 24, 0.85);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .brand {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--fd);
+      font-weight: 800;
+      font-size: 16px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--blue), var(--mint));
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 14px rgba(30, 207, 160, 0.28);
+    }
+
+    .brand-t b {
+      display: block;
+      font-family: var(--fd);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .brand-t .sub {
+      color: var(--muted);
+      font-size: 11px;
+      margin: 0;
+    }
+
+    nav.desktop {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .tab {
+      padding: 8px 11px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 13px;
+      min-height: var(--tap);
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all var(--tr);
+    }
+
+    .tab:hover {
+      color: var(--text);
+      background: var(--card);
+      border-color: var(--line);
+    }
+
+    .tab.active {
+      color: var(--text);
+      background: rgba(30, 207, 160, 0.13);
+      border-color: rgba(30, 207, 160, 0.32);
+      box-shadow: 0 0 0 3px rgba(30, 207, 160, 0.06);
+    }
+
+    .menuBtn {
+      display: none;
+      height: var(--tap);
+      min-width: var(--tap);
+      padding: 0 12px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--text);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      font-weight: 600;
+      font-size: 13px;
+      transition: all var(--tr);
+    }
+
+    .menuBtn:hover {
+      border-color: rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .menuPanel {
+      display: none;
+      border-top: 1px solid var(--line2);
+      background: rgba(11, 17, 24, 0.96);
+      padding: 10px 20px 14px;
+    }
+
+    .menuPanel.open {
+      display: block;
+    }
+
+    .menuPanel a {
+      display: block;
+      padding: 10px 12px;
+      border-radius: var(--r);
+      border: 1px solid var(--line2);
+      background: var(--card);
+      color: var(--muted);
+      margin-top: 8px;
+      font-weight: 600;
+      font-size: 13px;
+      transition: all var(--tr);
+    }
+
+    .menuPanel a:hover {
+      color: var(--text);
+      border-color: var(--line);
+    }
+
+    .menuPanel a.active {
+      color: var(--text);
+      border-color: rgba(30, 207, 160, 0.32);
+      background: rgba(30, 207, 160, 0.08);
+    }
+
+    /* ======================================
+       VIEWS
+    ====================================== */
+    .view {
+      display: none;
+      animation: fi 0.2s ease;
+    }
+
+    .view.active {
+      display: block;
+    }
+
+    @keyframes fi {
+      from {
+        opacity: 0;
+        transform: translateY(5px);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* ======================================
+       CARDS / LAYOUT
+    ====================================== */
+    .card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--rl);
+      box-shadow: var(--sh);
+      background: linear-gradient(158deg, var(--card), var(--card2));
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(100, 180, 255, 0.025) 0%, transparent 55%);
+    }
+
+    .card.pad {
+      padding: 22px;
+    }
+
+    .item {
+      padding: 16px;
+      border: 1px solid var(--line2);
+      border-radius: var(--r);
+      background: #121e30;
+      transition: border-color var(--tr), background var(--tr), transform var(--tr);
+    }
+
+    .item:hover {
+      border-color: var(--line);
+      background: #152338;
+      transform: translateY(-1px);
+    }
+
+    .item p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .grid-2 {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-3 {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: 1.3fr 0.7fr;
+      align-items: stretch;
+      margin-bottom: 16px;
+    }
+
+    .hero-grid > * {
+      height: 100%;
+    }
+
+    .side-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      height: 100%;
+    }
+
+    .compact-card {
+      min-height: 220px;
+    }
+
+    /* ======================================
+       TYPOGRAPHY
+    ====================================== */
+    h1 {
+      margin: 12px 0;
+      font-family: var(--fd);
+      font-size: clamp(24px, 3vw, 42px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.07;
+    }
+
+    h2 {
+      margin: 0 0 8px;
+      font-family: var(--fd);
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    h3 {
+      margin: 0 0 7px;
+      font-family: var(--fd);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .sub {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+      max-width: 62ch;
+    }
+
+    .hint {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 0 0 14px;
+    }
+
+    /* ======================================
+       BADGES / TAGS
+    ====================================== */
+    .pill,
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      width: fit-content;
+      padding: 5px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .badge.prep {
+      color: var(--text);
+      border-color: rgba(91, 158, 255, 0.42);
+      background: rgba(91, 158, 255, 0.12);
+    }
+
+    .meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line2);
+      background: var(--card);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 12px;
+    }
+
+    /* ======================================
+       BUTTONS
+    ====================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: var(--tap);
+      padding: 11px 16px;
+      border-radius: var(--r);
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all var(--tr);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      border-color: rgba(255, 255, 255, 0.22);
+      background: #1e2e45;
+    }
+
+    .btn.primary {
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--blue), var(--blue2));
+      border-color: rgba(91, 158, 255, 0.45);
+      box-shadow: 0 4px 16px rgba(68, 120, 232, 0.3);
+    }
+
+    .btn.green {
+      font-weight: 700;
+      color: #061714;
+      background: linear-gradient(135deg, var(--mint), var(--mint2));
+      border-color: rgba(30, 207, 160, 0.45);
+      box-shadow: 0 4px 16px rgba(30, 207, 160, 0.26);
+    }
+
+    .btn.sm {
+      min-height: 36px;
+      padding: 9px 13px;
+      font-size: 13px;
+    }
+
+    .btn.block {
+      width: 100%;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    /* ======================================
+       HERO / DYNAMIC
+    ====================================== */
+    .hero-dynamic {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .journey {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding: 14px 16px;
+      border: 1px solid var(--line2);
+      border-radius: var(--r);
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .journey-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      opacity: 0;
+      animation: popIn 0.4s ease forwards;
+      animation-delay: var(--d);
+    }
+
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .jdot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--muted);
+      border: 2px solid var(--line);
+    }
+
+    .jdot.active {
+      background: var(--mint);
+      border-color: var(--mint);
+      box-shadow: 0 0 0 4px rgba(30, 207, 160, 0.18), 0 0 12px rgba(30, 207, 160, 0.35);
+      animation: pulse 1.8s ease infinite;
+    }
+
+    .jdot.gold {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 0 4px rgba(30, 207, 160, 0.18), 0 0 12px rgba(30, 207, 160, 0.35);
+      }
+      50% {
+        box-shadow: 0 0 0 7px rgba(30, 207, 160, 0.08), 0 0 20px rgba(30, 207, 160, 0.25);
+      }
+    }
+
+    .jtext {
+      text-align: center;
+    }
+
+    .jtext b {
+      display: block;
+      font-family: var(--fd);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .jtext span {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.3;
+    }
+
+    .journey-arrow {
+      color: var(--muted);
+      font-size: 14px;
+      opacity: 0.5;
+    }
+
+    .hstats {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .hstat {
+      padding: 12px 14px;
+      border: 1px solid var(--line2);
+      border-radius: var(--r);
+      background: rgba(255, 255, 255, 0.025);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .hnum {
+      font-family: var(--fd);
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: var(--mint);
+      line-height: 1;
+    }
+
+    .hlabel {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .prog-track {
+      width: 100%;
+      height: 8px;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid var(--line2);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .prog-fill {
+      width: 0%;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--mint), #34d4b0);
+      box-shadow: 0 0 8px rgba(30, 207, 160, 0.4);
+      transition: width 1.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .ticker {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      width: fit-content;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(30, 207, 160, 0.18);
+      background: rgba(30, 207, 160, 0.06);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .ticker-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--mint);
+      box-shadow: 0 0 0 3px rgba(30, 207, 160, 0.22);
+      animation: blink 1.6s ease infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.3;
+      }
+    }
+
+    /* ======================================
+       HOME GOALS PANEL
+    ====================================== */
+    .mini-goals {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .goal-line {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 12px;
+      border: 1px solid var(--line2);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .goal-number {
+      min-width: 52px;
+      font-family: var(--fd);
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--mint);
+    }
+
+    .goal-text {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* ======================================
+       FAQ
+    ====================================== */
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--fd);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item p {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    /* ======================================
+       BANNERS / FLOATING CTA / FOOTER
+    ====================================== */
+    .banner {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 11px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(91, 158, 255, 0.2);
+      background: rgba(91, 158, 255, 0.08);
+      color: var(--blue);
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .banner.mint {
+      border-color: rgba(30, 207, 160, 0.22);
+      background: rgba(30, 207, 160, 0.08);
+      color: var(--mint);
+    }
+
+    .floating-cta {
+      position: fixed;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      z-index: 120;
+      display: none;
+      gap: 10px;
+      padding: 10px;
+      border-radius: 18px;
+      border: 1px solid rgba(30, 207, 160, 0.18);
+      background: rgba(11, 17, 24, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .floating-cta .btn {
+      width: 100%;
+      margin: 0;
+    }
+
+    footer {
+      margin-top: 0;
+      padding: 16px 20px;
+      border-top: 1px solid var(--line2);
+      background: #0b1118;
+    }
+
+    .fi {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .fl {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .fl a:hover {
+      color: var(--text);
+    }
+
+    :focus-visible {
+      outline: 2px solid rgba(30, 207, 160, 0.55);
+      outline-offset: 2px;
+      border-radius: 8px;
+    }
+
+    /* ======================================
+       RESPONSIVE
+    ====================================== */
+    @media (max-width: 980px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-2,
+      .grid-3,
+      .hstats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      nav.desktop {
+        display: none;
+      }
+
+      .menuBtn {
+        display: inline-flex;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .floating-cta {
+        display: flex;
+      }
+
+      body {
+        padding-bottom: 86px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .grid-2,
+      .grid-3,
+      .hstats {
+        grid-template-columns: 1fr;
+      }
+
+      .card.pad {
+        padding: 18px;
+      }
+
+      h1 {
+        font-size: clamp(22px, 7vw, 32px);
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .journey {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .journey-arrow {
+        transform: rotate(90deg);
+      }
+
+      .journey-step {
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .jtext {
+        text-align: left;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .btn,
+      .tab,
+      .item,
+      .prog-fill {
+        transition: none;
+      }
+
+      .view,
+      .journey-step,
+      .jdot.active,
+      .ticker-dot {
+        animation: none;
+      }
+    }
   </style>
 </head>
 <body>
-<a class="skip" href="#main">Aller au contenu</a>
+  <a class="skip" href="#main">Aller au contenu</a>
 
-<!-- TOPBAR -->
-<header class="topbar">
-  <div class="topbar-inner">
-    <a class="brand" href="#/accueil" data-nav="accueil" data-track="nav_brand" aria-label="AEC Cameroun – Accueil">
-      <span class="logo" aria-hidden="true">A</span>
-      <div class="brand-t"><b>AEC</b><span class="sub">Cameroun — Égalité des Chances</span></div>
-    </a>
-    <nav class="desktop" aria-label="Navigation principale">
-      <a class="tab" href="#/accueil"      data-nav="accueil"      data-track="nav_accueil">Accueil</a>
-      <a class="tab" href="#/ressources"   data-nav="ressources"   data-track="nav_ressources">Ressources</a>
-      <a class="tab" href="#/ateliers"     data-nav="ateliers"     data-track="nav_ateliers">Ateliers</a>
-      <a class="tab" href="#/opportunites" data-nav="opportunites" data-track="nav_opportunites">Opportunités</a>
-      <a class="tab" href="#/impact"       data-nav="impact"       data-track="nav_impact">Impact</a>
-      <a class="tab" href="#/apropos"      data-nav="apropos"      data-track="nav_apropos">À propos</a>
-      <a class="tab" href="#/rejoindre"    data-nav="rejoindre"    data-track="nav_rejoindre">Rejoindre</a>
-      <a class="tab" href="#/proposer"     data-nav="proposer"     data-track="nav_proposer">Proposer</a>
-    </nav>
-    <button class="menuBtn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menuPanel">☰ Menu</button>
-  </div>
-  <div class="menuPanel" id="menuPanel">
-    <a href="#/accueil"      data-nav="accueil"      data-track="mnav_accueil">Accueil</a>
-    <a href="#/ressources"   data-nav="ressources"   data-track="mnav_ressources">Ressources</a>
-    <a href="#/ateliers"     data-nav="ateliers"     data-track="mnav_ateliers">Ateliers</a>
-    <a href="#/opportunites" data-nav="opportunites" data-track="mnav_opportunites">Opportunités</a>
-    <a href="#/impact"       data-nav="impact"       data-track="mnav_impact">Impact</a>
-    <a href="#/apropos"      data-nav="apropos"      data-track="mnav_apropos">À propos</a>
-    <a href="#/rejoindre"    data-nav="rejoindre"    data-track="mnav_rejoindre">Rejoindre</a>
-    <a href="#/proposer"     data-nav="proposer"     data-track="mnav_proposer">Proposer</a>
-  </div>
-</header>
-
-<main id="main" class="wrap z1">
-
-  <!-- ══ CONFIG LIENS (centralisé) ══════════════════════════════════════ -->
-  <script>
-  const L = {
-    email:    "differentsleaders328@gmail.com",
-    linkedin: "https://www.linkedin.com/in/awoumpebrice99/recent-activity/all/",
-    notion_complet: "https://buttercup-sight-745.notion.site/AEC-Cameroun-Orientation-Employabilit-30ee2b4c167380e599bbe47d0d6b9223?pvs=143",
-    notion_base:    "https://buttercup-sight-745.notion.site/RESSOURCES-30ee2b4c167380dc90cef0babdfb8095?pvs=143",
-    ateliers_tally: "https://tally.so/r/ODzE9Y",
-    join_membre:    "https://docs.google.com/forms/d/e/1FAIpQLSePxirx2doALdDiq1qsY6bKNbh8RT6U2F76IK2kEDX6SfcvxA/viewform?usp=header",
-    res_methode:    "https://www.notion.so/ORIENTATION-STRUCTURER-TON-PROJET-310e2b4c167380f39eb6c9c5b7129cc3?source=copy_link",
-    res_cv:         "https://www.notion.so/CV-CANDIDATURES-Public-310e2b4c167380be87e2d75ba86da2bb?source=copy_link",
-    res_metiers:    "https://www.notion.so/7-FICHES-M-TIERS-GRATUITES-310e2b4c167380f29527d8fa40c7f2a0?source=copy_link",
-    opp_bourses:    "https://www.notion.so/Bourses-Public-310e2b4c167380058571c2cd052576e8?source=copy_link",
-    opp_offres:     "https://www.notion.so/OFFRES-ET-OPPORTUNITES-PUBLIC-310e2b4c167380dbbcd6f0154ea15713?source=copy_link",
-    opp_concours:   "https://www.notion.so/OPPORTUNIT-S-DE-CONCOURS-310e2b4c167380a5bfffc770cc39194e?source=copy_link",
-    proposer_form:  "https://docs.google.com/forms/d/e/1FAIpQLSeGMSt89Eb-xxK856BdZoOwva5-txwqFeMjm_hwj4-lixnx7w/viewform?usp=header"
-  };
-  </script>
-
-  <!-- ═══════════ ACCUEIL ═══════════ -->
-  <section class="view active" id="view-accueil">
-    <div class="hero-grid" style="margin-bottom:16px;">
-
-      <div class="card pad">
-        <span class="pill">Cameroun 🇨🇲 &nbsp;·&nbsp; Orientation · Ressources · Ateliers · Opportunités</span>
-        <h1>Clarifie ton projet,<br>puis passe à l'action.</h1>
-        <p class="sub">
-          Une méthode simple et structurée pour aider les jeunes (<strong>15–30 ans</strong>) à clarifier leur projet,
-          développer leurs compétences et accéder aux bonnes opportunités.
-        </p>
-        <div class="actions">
-          <a class="btn primary" href="#/ressources"   data-track="cta_ressources"   onclick="track('cta_ressources','cta_hero')">📚 Ressources</a>
-          <a class="btn green"   href="#/ateliers"     data-track="cta_ateliers"     onclick="track('cta_ateliers','cta_hero')">🗓 Ateliers</a>
-          <a class="btn"         href="#/opportunites" data-track="cta_opportunites" onclick="track('cta_opportunites','cta_hero')">🎯 Opportunités</a>
-          <a class="btn"         href="#/rejoindre"    data-track="cta_rejoindre"    onclick="track('cta_rejoindre','cta_hero')">🚀 Rejoindre</a>
+  <!-- ======================================
+       HEADER
+  ======================================= -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#/accueil" data-nav="accueil" data-track="nav_brand" aria-label="AEC Cameroun – Accueil">
+        <span class="logo" aria-hidden="true">A</span>
+        <div class="brand-t">
+          <b>AEC</b>
+          <span class="sub">Cameroun — Égalité des Chances</span>
         </div>
-        <div class="tags">
-          <span class="pill">✔ Parcours guidé</span>
-          <span class="pill">✔ Ressources actionnables</span>
-          <span class="pill">✔ Ateliers collectifs</span>
-          <span class="pill">✔ Mesure GA4</span>
-        </div>
+      </a>
 
-        <!-- ── BLOC DYNAMIQUE HERO ─────────────────────────── -->
-        <div class="hero-dynamic">
+      <nav class="desktop" aria-label="Navigation principale">
+        <a class="tab" href="#/accueil" data-nav="accueil" data-track="nav_accueil">Accueil</a>
+        <a class="tab" href="#/ressources" data-nav="ressources" data-track="nav_ressources">Ressources</a>
+        <a class="tab" href="#/ateliers" data-nav="ateliers" data-track="nav_ateliers">Ateliers</a>
+        <a class="tab" href="#/opportunites" data-nav="opportunites" data-track="nav_opportunites">Opportunités</a>
+        <a class="tab" href="#/impact" data-nav="impact" data-track="nav_impact">Impact</a>
+        <a class="tab" href="#/apropos" data-nav="apropos" data-track="nav_apropos">À propos</a>
+        <a class="tab" href="#/rejoindre" data-nav="rejoindre" data-track="nav_rejoindre">Rejoindre</a>
+        <a class="tab" href="#/proposer" data-nav="proposer" data-track="nav_proposer">Proposer</a>
+      </nav>
 
-          <!-- Parcours animé 0→1 -->
-          <div class="journey">
-            <div class="journey-step" style="--d:0s">
-              <div class="jdot"></div>
-              <div class="jtext"><b>Clarifier</b><span>Ton projet & tes forces</span></div>
-            </div>
-            <div class="journey-arrow">→</div>
-            <div class="journey-step" style="--d:.18s">
-              <div class="jdot active"></div>
-              <div class="jtext"><b>Acquérir</b><span>Méthode + ressources</span></div>
-            </div>
-            <div class="journey-arrow">→</div>
-            <div class="journey-step" style="--d:.36s">
-              <div class="jdot"></div>
-              <div class="jtext"><b>Accéder</b><span>Opportunités & ateliers</span></div>
-            </div>
-            <div class="journey-arrow">→</div>
-            <div class="journey-step" style="--d:.54s">
-              <div class="jdot gold"></div>
-              <div class="jtext"><b>Réussir</b><span>Projet concret</span></div>
-            </div>
+      <button class="menuBtn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menuPanel">☰ Menu</button>
+    </div>
+
+    <div class="menuPanel" id="menuPanel">
+      <a href="#/accueil" data-nav="accueil" data-track="mnav_accueil">Accueil</a>
+      <a href="#/ressources" data-nav="ressources" data-track="mnav_ressources">Ressources</a>
+      <a href="#/ateliers" data-nav="ateliers" data-track="mnav_ateliers">Ateliers</a>
+      <a href="#/opportunites" data-nav="opportunites" data-track="mnav_opportunites">Opportunités</a>
+      <a href="#/impact" data-nav="impact" data-track="mnav_impact">Impact</a>
+      <a href="#/apropos" data-nav="apropos" data-track="mnav_apropos">À propos</a>
+      <a href="#/rejoindre" data-nav="rejoindre" data-track="mnav_rejoindre">Rejoindre</a>
+      <a href="#/proposer" data-nav="proposer" data-track="mnav_proposer">Proposer</a>
+    </div>
+  </header>
+
+  <main id="main" class="wrap z1">
+
+    <!-- ======================================
+         CONFIG CENTRALISÉE
+         Tous les liens / endpoints modifiables sont ici.
+    ======================================= -->
+    <script>
+      const L = {
+        email: "differentsleaders328@gmail.com",
+        linkedin: "https://www.linkedin.com/in/awoumpebrice99/recent-activity/all/",
+        notion_complet: "https://buttercup-sight-745.notion.site/AEC-Cameroun-Orientation-Employabilit-30ee2b4c167380e599bbe47d0d6b9223?pvs=143",
+        notion_base: "https://buttercup-sight-745.notion.site/RESSOURCES-30ee2b4c167380dc90cef0babdfb8095?pvs=143",
+        ateliers_tally: "https://tally.so/r/ODzE9Y",
+        join_membre: "https://docs.google.com/forms/d/e/1FAIpQLSePxirx2doALdDiq1qsY6bKNbh8RT6U2F76IK2kEDX6SfcvxA/viewform?usp=header",
+        join_whatsapp: "https://chat.whatsapp.com/GovGEzoQLyN5ZQScJqpYBZ",
+        res_methode: "https://www.notion.so/ORIENTATION-STRUCTURER-TON-PROJET-310e2b4c167380f39eb6c9c5b7129cc3?source=copy_link",
+        res_cv: "https://www.notion.so/CV-CANDIDATURES-Public-310e2b4c167380be87e2d75ba86da2bb?source=copy_link",
+        res_metiers: "https://www.notion.so/7-FICHES-M-TIERS-GRATUITES-310e2b4c167380f29527d8fa40c7f2a0?source=copy_link",
+        opp_bourses: "https://www.notion.so/Bourses-Public-310e2b4c167380058571c2cd052576e8?source=copy_link",
+        opp_offres: "https://www.notion.so/OFFRES-ET-OPPORTUNITES-PUBLIC-310e2b4c167380dbbcd6f0154ea15713?source=copy_link",
+        opp_concours: "https://www.notion.so/OPPORTUNIT-S-DE-CONCOURS-310e2b4c167380a5bfffc770cc39194e?source=copy_link",
+        proposer_form: "https://docs.google.com/forms/d/e/1FAIpQLSeGMSt89Eb-xxK856BdZoOwva5-txwqFeMjm_hwj4-lixnx7w/viewform?usp=header",
+
+        /* Endpoint public Apps Script */
+        stats_url: "https://script.google.com/macros/s/AKfycbyjkY0C4yYu0sX05Ojn3EkLmY5skWjqjVC8I2XIRNyPvWHLe1bjycIdU-YbdnU8Nt_g/exec"
+      };
+    </script>
+
+    <!-- ======================================
+         ACCUEIL
+    ======================================= -->
+    <section class="view active" id="view-accueil">
+      <div class="hero-grid">
+
+        <!-- Colonne gauche -->
+        <div class="card pad">
+          <span class="pill">Cameroun 🇨🇲 · Orientation · Ressources · Ateliers · Opportunités</span>
+
+          <h1>Clarifie ton projet.<br>Trouve les bonnes ressources.<br>Passe à l'action.</h1>
+
+          <p class="sub">
+            AEC Cameroun aide les jeunes de <strong>15 à 30 ans</strong> à mieux s’orienter,
+            accéder à des ressources utiles, rejoindre des ateliers et repérer des opportunités concrètes.
+          </p>
+
+          <div class="actions">
+            <a class="btn green" href="#/rejoindre" data-track="cta_rejoindre">🚀 Rejoindre</a>
+            <a class="btn primary" href="#/ressources" data-track="cta_ressources">📚 Ressources</a>
+            <a class="btn" href="#/opportunites" data-track="cta_opportunites">🎯 Opportunités</a>
+            <a class="btn" href="#/ateliers" data-track="cta_ateliers">🗓 Ateliers</a>
           </div>
 
-          <!-- Stats + barre ateliers -->
-          <div class="hstats">
-            <div class="hstat">
-              <span class="hnum" data-target="7">0</span>
-              <span class="hlabel">fiches métiers<br>gratuites</span>
+          <div class="tags">
+            <span class="pill">✔ Parcours guidé</span>
+            <span class="pill">✔ Ressources actionnables</span>
+            <span class="pill">✔ Ateliers collectifs</span>
+            <span class="pill">✔ Opportunités utiles</span>
+          </div>
+
+          <div class="hero-dynamic">
+            <div class="journey">
+              <div class="journey-step" style="--d:0s">
+                <div class="jdot"></div>
+                <div class="jtext"><b>Clarifier</b><span>Ton projet & tes forces</span></div>
+              </div>
+              <div class="journey-arrow">→</div>
+              <div class="journey-step" style="--d:.18s">
+                <div class="jdot active"></div>
+                <div class="jtext"><b>Acquérir</b><span>Méthode + ressources</span></div>
+              </div>
+              <div class="journey-arrow">→</div>
+              <div class="journey-step" style="--d:.36s">
+                <div class="jdot"></div>
+                <div class="jtext"><b>Accéder</b><span>Opportunités & ateliers</span></div>
+              </div>
+              <div class="journey-arrow">→</div>
+              <div class="journey-step" style="--d:.54s">
+                <div class="jdot gold"></div>
+                <div class="jtext"><b>Réussir</b><span>Projet concret</span></div>
+              </div>
             </div>
-            <div class="hstat">
-              <span class="hnum" data-target="3">0</span>
-              <span class="hlabel">ressources<br>Notion</span>
+
+            <div class="hstats">
+              <div class="hstat">
+                <span class="hnum" id="hero-metiers">7</span>
+                <span class="hlabel">fiches métiers<br>gratuites</span>
+              </div>
+              <div class="hstat">
+                <span class="hnum" id="hero-resources">3</span>
+                <span class="hlabel">ressources<br>Notion</span>
+              </div>
+              <div class="hstat">
+                <span class="hnum" id="hero-members">--</span>
+                <span class="hlabel">membres<br>communauté</span>
+              </div>
             </div>
-            <div class="hstat hstat-bar">
-              <span class="hlabel" style="margin-bottom:6px;">🗓 Ateliers — pré-inscriptions</span>
+
+            <div>
+              <span class="hlabel" style="display:block;margin-bottom:6px;">🗓 Pré-inscriptions ateliers</span>
               <div class="prog-track">
                 <div class="prog-fill" id="progFill"></div>
-                <span class="prog-label" id="progLabel">0 / 20</span>
               </div>
-              <span class="hlabel" style="margin-top:5px;font-size:11px;color:var(--mint);">Objectif : 20 → ouverture des dates</span>
+              <span class="hlabel" id="progText" style="display:block;margin-top:6px;color:var(--mint);">-- / 20</span>
+            </div>
+
+            <div class="ticker">
+              <span class="ticker-dot"></span>
+              <span id="tickerText">Plateforme active · Ressources et opportunités en cours de mise à jour</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Colonne droite -->
+        <div class="side-stack">
+          <div class="card pad">
+            <h2>Accès rapide</h2>
+            <p class="hint" style="margin-bottom:14px;">Choisis ton point d’entrée principal.</p>
+
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <a class="btn green block" id="btnWhatsappQuick" data-track="quick_whatsapp">💬 WhatsApp</a>
+              <a class="btn primary block" href="#/ressources" data-track="quick_ressources">📚 Ressources</a>
+              <a class="btn block" href="#/ateliers" data-track="quick_ateliers">🗓 Ateliers</a>
+              <a class="btn block" href="#/opportunites" data-track="quick_opportunites">🎯 Opportunités</a>
+              <a class="btn block" href="#/apropos" data-track="quick_apropos">👤 À propos</a>
+            </div>
+
+            <div class="actions">
+              <a class="btn block" id="btnContact" data-track="open_contact_accueil">📩 Me contacter</a>
             </div>
           </div>
 
-          <!-- Ticker live -->
-          <div class="ticker">
-            <span class="ticker-dot"></span>
-            <span id="tickerText">Plateforme active · Mesure GA4 en cours</span>
+          <div class="card pad compact-card">
+            <h2>Objectifs AEC</h2>
+            <p class="hint" style="margin-bottom:14px;">Vision et cap actuel du projet.</p>
+
+            <div class="mini-goals">
+              <div class="goal-line">
+                <span class="goal-number" id="goal-home-1-number">100</span>
+                <span class="goal-text" id="goal-home-1-text">jeunes à toucher</span>
+              </div>
+              <div class="goal-line">
+                <span class="goal-number" id="goal-home-2-number">10</span>
+                <span class="goal-text" id="goal-home-2-text">jeunes à aider concrètement</span>
+              </div>
+              <div class="goal-line">
+                <span class="goal-number" id="goal-home-3-number">20</span>
+                <span class="goal-text" id="goal-home-3-text">pré-inscriptions ateliers visées</span>
+              </div>
+            </div>
+
+            <div class="actions">
+              <a class="btn sm primary" href="#/impact" data-track="home_objectifs_impact">Voir l’impact</a>
+            </div>
           </div>
         </div>
-        <!-- ── FIN BLOC DYNAMIQUE ──────────────────────────── -->
-
       </div>
 
-      <div class="card pad">
-        <h2>Accès rapide</h2>
-        <p class="hint" style="margin-bottom:14px;">Chaque bouton est mesuré dans GA4.</p>
-        <div style="display:flex;flex-direction:column;gap:8px;">
-          <a class="btn block" href="#/ressources"   data-track="quick_ressources"   onclick="track('quick_ressources','quick_access')">📚 Ressources</a>
-          <a class="btn block" href="#/ateliers"     data-track="quick_ateliers"     onclick="track('quick_ateliers','quick_access')">🗓 Ateliers</a>
-          <a class="btn block" href="#/opportunites" data-track="quick_opportunites" onclick="track('quick_opportunites','quick_access')">🎯 Opportunités</a>
-          <a class="btn primary block" href="#/rejoindre" data-track="quick_rejoindre" onclick="track('quick_rejoindre','quick_access')">Rejoindre →</a>
-          <a class="btn block" href="#/apropos"      data-track="quick_apropos"      onclick="track('quick_apropos','quick_access')">👤 À propos</a>
+      <div class="card pad" style="margin-bottom:16px;">
+        <div class="section-head">
+          <div>
+            <h2>Commencer ici</h2>
+            <p class="hint">Choisis ton besoin principal et avance directement.</p>
+          </div>
         </div>
-        <hr class="hr"/>
-        <div class="actions">
-          <a class="btn green block" id="btnInscription" data-track="open_inscription" onclick="track('open_inscription','cta')">📝 S'inscrire</a>
-          <a class="btn block" id="btnContact" data-track="open_contact_accueil" onclick="track('open_contact_accueil','cta')">📩 Me contacter</a>
-        </div>
-      </div>
-    </div>
 
-    <div class="grid-3">
-      <div class="item">
-        <h3>📚 Ressources</h3>
-        <p>Méthode, CV, fiches métiers, outils concrets.</p>
-        <div class="actions">
-          <a class="btn sm primary" href="#/ressources" data-track="go_ressources" onclick="track('go_ressources','navigation')">Accéder</a>
-          <a class="btn sm" id="homeOpenNotionBase" data-track="open_notion_base" onclick="track('open_notion_base','ressources')">Ouvrir Notion</a>
-        </div>
-      </div>
-      <div class="item">
-        <h3>🗓 Ateliers</h3>
-        <p>En ligne et présentiel. Pré-inscription ouverte.</p>
-        <div class="actions">
-          <a class="btn sm green" href="#/ateliers" data-track="go_ateliers" onclick="track('go_ateliers','navigation')">Voir</a>
-          <a class="btn sm" id="homeOpenTally" data-track="open_tally_accueil" onclick="track('open_tally_accueil','ateliers')">Pré-inscription</a>
+        <div class="grid-3">
+          <div class="item">
+            <h3>🧭 Je veux clarifier mon projet</h3>
+            <p>Découvre la méthode d’orientation et les premières ressources utiles.</p>
+            <div class="actions">
+              <a class="btn sm primary" href="#/ressources" data-track="start_orientation">Commencer</a>
+            </div>
+          </div>
+
+          <div class="item">
+            <h3>🎯 Je cherche une opportunité</h3>
+            <p>Bourses, concours, programmes et offres centralisés.</p>
+            <div class="actions">
+              <a class="btn sm green" href="#/opportunites" data-track="start_opportunites">Voir</a>
+            </div>
+          </div>
+
+          <div class="item">
+            <h3>💬 Je veux rejoindre la communauté</h3>
+            <p>Entre directement dans le groupe WhatsApp AEC Cameroun.</p>
+            <div class="actions">
+              <a class="btn sm" id="btnWhatsappStart" data-track="start_whatsapp">Rejoindre</a>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="item">
-        <h3>🎯 Opportunités</h3>
-        <p>Bourses, programmes, concours, offres d'emploi.</p>
-        <div class="actions">
-          <a class="btn sm primary" href="#/opportunites" data-track="go_opportunites" onclick="track('go_opportunites','navigation')">Consulter</a>
-          <a class="btn sm" href="#/proposer" data-track="go_proposer_accueil" onclick="track('go_proposer_accueil','navigation')">Proposer</a>
+
+      <div class="grid-3">
+        <div class="item">
+          <h3>📚 Ressources</h3>
+          <p>Méthode, CV, fiches métiers, outils concrets.</p>
+          <div class="actions">
+            <a class="btn sm primary" href="#/ressources" data-track="go_ressources">Accéder</a>
+          </div>
+        </div>
+
+        <div class="item">
+          <h3>🗓 Ateliers</h3>
+          <p>En ligne et en présentiel. Pré-inscription ouverte.</p>
+          <div class="actions">
+            <a class="btn sm green" href="#/ateliers" data-track="go_ateliers">Voir</a>
+          </div>
+        </div>
+
+        <div class="item">
+          <h3>🎯 Opportunités</h3>
+          <p>Bourses, programmes, concours, offres d'emploi.</p>
+          <div class="actions">
+            <a class="btn sm primary" href="#/opportunites" data-track="go_opportunites">Consulter</a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ═══════════ RESSOURCES ═══════════ -->
-  <section class="view" id="view-ressources">
-    <div class="section-head">
-      <div><h2>Ressources</h2><p class="hint">Tout est gratuit, actionnable et accessible depuis Notion.</p></div>
-    </div>
-
-    <div class="grid-3" style="margin-bottom:14px;">
-      <div class="item">
-        <h3>🧭 Méthode d'orientation</h3>
-        <p>Se connaître → explorer → tester → décider.</p>
-        <div class="actions">
-          <a class="btn sm primary" id="linkResMethode" data-track="open_res_methode" onclick="track('open_res_methode','ressources')">Accéder →</a>
-          <a class="btn sm" href="#/proposer" data-track="propose_methode">Proposer un contenu</a>
-        </div>
-      </div>
-      <div class="item">
-        <h3>📄 CV & candidatures</h3>
-        <p>Modèles, checklist, LinkedIn, préparation entretien.</p>
-        <div class="actions">
-          <a class="btn sm primary" id="linkResCV" data-track="open_res_cv" onclick="track('open_res_cv','ressources')">Accéder →</a>
-          <a class="btn sm" href="#/proposer" data-track="propose_cv">Proposer un modèle</a>
-        </div>
-      </div>
-      <div class="item">
-        <h3>🧰 Fiches métiers</h3>
-        <p>Missions, compétences, formations, repères concrets.</p>
-        <div class="actions">
-          <a class="btn sm primary" id="linkResMetiers" data-track="open_res_metiers" onclick="track('open_res_metiers','ressources')">Accéder →</a>
-          <a class="btn sm" href="#/proposer" data-track="propose_metiers">Proposer une fiche</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card pad">
-      <h3 style="margin-bottom:6px;">Notion — Base & Complet</h3>
-      <p class="hint" style="margin-bottom:14px;">Deux espaces distincts. La base est gratuite et accessible à tous.</p>
-      <div class="actions">
-        <a class="btn green" id="openNotionBase" data-track="open_notion_base_2" onclick="track('open_notion_base_2','ressources')">📌 Notion Base (gratuit)</a>
-        <a class="btn primary" id="openNotionComplet" data-track="open_notion_complet" onclick="track('open_notion_complet','ressources')">⭐ Notion Complet</a>
-        <a class="btn" href="#/proposer" data-track="go_proposer_from_resources">➕ Proposer une ressource</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════ ATELIERS ═══════════ -->
-  <section class="view" id="view-ateliers">
-    <div class="section-head">
-      <div><h2>Ateliers</h2><p class="hint">Pré-inscription d'abord — les dates sont fixées selon la demande.</p></div>
-    </div>
-
-    <div class="banner mint">
-      <span>🗓</span>
-      <span>Les ateliers sont en préparation. Pré-inscris-toi maintenant pour être informé en priorité de l'ouverture.</span>
-    </div>
-
-    <div class="grid-2" style="margin-bottom:14px;">
-      <div class="item">
-        <div class="badge prep">En préparation</div>
-        <h3 style="margin-top:10px;">Cycle Orientation (en ligne)</h3>
-        <p>Clarifier ton projet + méthode + plan d'action concret.</p>
-        <div class="meta">
-          <span>📅 Période : à définir</span>
-          <span>🕒 Mercredi 18h–19h30</span>
-          <span>📍 Format : En ligne</span>
-          <span>🎯 Lycéens & étudiants</span>
-        </div>
-        <div class="actions">
-          <a class="btn sm green" id="linkPreinscriptionOnline" data-track="workshop_preinscription_online" onclick="track('workshop_preinscription_online','ateliers')">🔔 Pré-inscription</a>
-          <a class="btn sm" href="#/proposer" data-track="workshop_suggest_topic">💡 Suggérer un thème</a>
-        </div>
-      </div>
-      <div class="item">
-        <div class="badge prep">En préparation</div>
-        <h3 style="margin-top:10px;">Atelier pilote (Douala)</h3>
-        <p>Orientation + opportunités + méthode + Q&R en présentiel.</p>
-        <div class="meta">
-          <span>📅 Période : à définir</span>
-          <span>🕒 Samedi matin</span>
-          <span>📍 Douala (présentiel)</span>
-          <span>👥 10–20 participants</span>
-        </div>
-        <div class="actions">
-          <a class="btn sm green" id="linkPreinscriptionDouala" data-track="workshop_preinscription_douala" onclick="track('workshop_preinscription_douala','ateliers')">🔔 Être informé</a>
-          <a class="btn sm" href="#/proposer" data-track="workshop_suggest_place">📍 Proposer un lieu</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card pad">
-      <h3 style="margin-bottom:6px;">Formulaire d'inscription (Tally)</h3>
-      <p class="hint" style="margin-bottom:14px;">Tous les boutons de pré-inscription renvoient vers ce formulaire.</p>
-      <div class="actions">
-        <a class="btn primary" id="openAteliersTally" data-track="open_tally_main" onclick="track('open_tally_main','ateliers')">🗓 Ouvrir le formulaire →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════ OPPORTUNITÉS ═══════════ -->
-  <section class="view" id="view-opportunites">
-    <div class="section-head">
-      <div><h2>Opportunités</h2><p class="hint">Bourses, offres et programmes centralisés sur Notion.</p></div>
-    </div>
-
-    <div class="grid-3" style="margin-bottom:14px;">
-      <div class="item">
-        <h3>🎓 Programmes & bourses</h3>
-        <p>Listes organisées par pays et niveau d'études.</p>
-        <div class="actions">
-          <a class="btn sm primary" id="linkOppBourses" data-track="open_opp_bourses" onclick="track('open_opp_bourses','opportunites')">Consulter →</a>
-        </div>
-      </div>
-      <div class="item">
-        <h3>💼 Offres (emploi / stage)</h3>
-        <p>Opportunités professionnelles centralisées.</p>
-        <div class="actions">
-          <a class="btn sm primary" id="linkOppOffres" data-track="open_opp_offres" onclick="track('open_opp_offres','opportunites')">Consulter →</a>
-        </div>
-      </div>
-      <div class="item">
-        <h3>🌍 Volontariat & concours</h3>
-        <p>Expériences valorisables pour construire son profil.</p>
-        <div class="actions">
-          <a class="btn sm primary" id="linkOppConcours" data-track="open_opp_concours" onclick="track('open_opp_concours','opportunites')">Consulter →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="card pad">
-      <h3 style="margin-bottom:6px;">Tu connais une opportunité ?</h3>
-      <p class="hint" style="margin-bottom:14px;">Soumets-la via le formulaire — on l'ajoute si elle est pertinente.</p>
-      <div class="actions">
-        <a class="btn green" href="#/proposer" data-track="opps_go_proposer" onclick="track('opps_go_proposer','opportunites')">➕ Proposer une opportunité</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════ IMPACT (accès protégé) ═══════════ -->
-  <section class="view" id="view-impact">
-
-    <!-- Écran de verrouillage -->
-    <div id="impact-lock" class="card pad" style="max-width:420px;margin:0 auto;text-align:center;">
-      <div style="font-size:36px;margin-bottom:12px;">🔒</div>
-      <h2 style="margin-bottom:6px;">Accès restreint</h2>
-      <p class="hint" style="margin-bottom:20px;">Cette section est réservée à l'administrateur.</p>
-      <div style="display:flex;gap:10px;justify-content:center;">
-        <input
-          id="impact-pwd"
-          type="password"
-          placeholder="Mot de passe"
-          style="
-            flex:1; padding:11px 14px; border-radius:var(--r);
-            border:1px solid var(--line); background:#1a2540;
-            color:var(--text); font-family:var(--fb); font-size:14px;
-            outline:none; transition:border-color .15s;
-          "
-          onkeydown="if(event.key==='Enter') checkImpactPwd()"
-        />
-        <button
-          onclick="checkImpactPwd()"
-          class="btn primary"
-          style="min-width:90px;">
-          Entrer
-        </button>
-      </div>
-      <p id="impact-err" style="color:#ff6b6b;font-size:13px;margin-top:10px;display:none;">
-        ❌ Mot de passe incorrect
-      </p>
-    </div>
-
-    <!-- Contenu réel — caché jusqu'au bon mot de passe -->
-    <div id="impact-content" style="display:none;">
+    <!-- ======================================
+         RESSOURCES
+    ======================================= -->
+    <section class="view" id="view-ressources">
       <div class="section-head">
-        <div><h2>Impact</h2><p class="hint">Lecture entrepreneur — on améliore ce que l'on mesure.</p></div>
+        <div>
+          <h2>Ressources</h2>
+          <p class="hint">Tout est gratuit, actionnable et accessible depuis Notion.</p>
+        </div>
       </div>
+
+      <div class="grid-3" style="margin-bottom:14px;">
+        <div class="item">
+          <h3>🧭 Méthode d'orientation</h3>
+          <p>Se connaître → explorer → tester → décider.</p>
+          <div class="actions">
+            <a class="btn sm primary" id="linkResMethode" data-track="open_res_methode">Accéder →</a>
+          </div>
+        </div>
+
+        <div class="item">
+          <h3>📄 CV & candidatures</h3>
+          <p>Modèles, checklist, LinkedIn, préparation d'entretien.</p>
+          <div class="actions">
+            <a class="btn sm primary" id="linkResCV" data-track="open_res_cv">Accéder →</a>
+          </div>
+        </div>
+
+        <div class="item">
+          <h3>🧰 Fiches métiers</h3>
+          <p>Missions, compétences, formations, repères concrets.</p>
+          <div class="actions">
+            <a class="btn sm primary" id="linkResMetiers" data-track="open_res_metiers">Accéder →</a>
+          </div>
+        </div>
+      </div>
+
       <div class="card pad">
-        <div class="banner">
-          <span>📊</span>
-          <span>GA4 actif sur toute la plateforme. Chaque clic est mesuré par catégorie : <strong>navigation</strong>, <strong>ressources</strong>, <strong>ateliers</strong>, <strong>opportunités</strong>. Tu peux identifier quelle section génère le plus d'engagement et optimiser en priorité.</span>
-        </div>
-        <h3 style="margin-top:6px;">Ce que tu peux faire avec ces données</h3>
-        <div class="grid-3" style="margin-top:12px;">
-          <div class="item">
-            <h3>🔍 Identifier les pages froides</h3>
-            <p>Quelles sections ont peu de clics ? C'est là qu'il faut améliorer le contenu ou le CTA.</p>
-          </div>
-          <div class="item">
-            <h3>📈 Voir ce qui convertit</h3>
-            <p>Quels boutons amènent à l'inscription ou à Notion ? Dupliquer ce qui marche.</p>
-          </div>
-          <div class="item">
-            <h3>🗓 Mesurer la demande ateliers</h3>
-            <p>Combien de clics sur "Pré-inscription" ? Quand le seuil est atteint, tu fixes les dates.</p>
-          </div>
-        </div>
-        <div style="margin-top:18px;text-align:right;">
-          <button onclick="lockImpact()" class="btn sm" style="font-size:12px;">🔒 Verrouiller</button>
+        <h3 style="margin-bottom:6px;">Notion — Base & Complet</h3>
+        <p class="hint" style="margin-bottom:14px;">Deux espaces distincts. La base est gratuite et accessible à tous.</p>
+        <div class="actions">
+          <a class="btn green" id="openNotionBase" data-track="open_notion_base_2">📌 Notion Base</a>
+          <a class="btn primary" id="openNotionComplet" data-track="open_notion_complet">⭐ Notion Complet</a>
         </div>
       </div>
-    </div>
+    </section>
 
-  </section>
-
-  <!-- ═══════════ À PROPOS ═══════════ -->
-  <section class="view" id="view-apropos">
-    <div class="section-head">
-      <div><h2>À propos</h2></div>
-    </div>
-    <div class="card pad">
-      <h3>Brice Awoumpe · Fondateur</h3>
-      <p class="hint" style="margin-top:6px;max-width:60ch;line-height:1.7;">
-        AEC existe pour rendre l'orientation plus claire et plus actionnable : ressources utiles, ateliers collectifs
-        et opportunités concrètes. Objectif : permettre aux jeunes d'avancer, même sans réseau.
-      </p>
-      <div class="actions" style="margin-top:16px;">
-        <a class="btn primary" id="linkLinkedin" data-track="open_linkedin" onclick="track('open_linkedin','apropos')">💼 LinkedIn</a>
-        <a class="btn green" id="linkNotionMain" data-track="open_notion_complet_apropos" onclick="track('open_notion_complet_apropos','apropos')">📋 Notion</a>
-        <a class="btn" id="linkEmail" data-track="open_email_apropos" onclick="track('open_email_apropos','apropos')">✉️ Email</a>
+    <!-- ======================================
+         ATELIERS
+    ======================================= -->
+    <section class="view" id="view-ateliers">
+      <div class="section-head">
+        <div>
+          <h2>Ateliers</h2>
+          <p class="hint">Pré-inscription d'abord — les dates sont fixées selon la demande.</p>
+        </div>
       </div>
-      <hr class="hr"/>
-      <p class="hint">Contact direct : <a href="/cdn-cgi/l/email-protection#99fdf0fffffcebfcf7edeaf5fcf8fdfcebeaaaaba1d9fef4f8f0f5b7faf6f4" style="color:var(--mint);text-decoration:underline;text-underline-offset:3px;" data-track="email_inline_apropos"><span class="__cf_email__" data-cfemail="54303d32323126313a20273831353031262767666c143339353d387a373b39">[email&#160;protected]</span></a></p>
-    </div>
-  </section>
 
-  <!-- ═══════════ REJOINDRE ═══════════ -->
-  <section class="view" id="view-rejoindre">
-    <div class="section-head">
-      <div><h2>Rejoindre</h2><p class="hint">Espace membre : ressources avancées, ateliers privés, opportunités.</p></div>
-    </div>
-    <div class="card pad">
-      <div class="banner mint" style="margin-bottom:16px;">
-        <span>🚀</span>
-        <span>Rejoins la communauté AEC Cameroun. Accès aux ressources avancées et aux ateliers en avant-première.</span>
+      <div class="banner mint">
+        <span>🗓</span>
+        <span>Les ateliers sont en préparation. Pré-inscris-toi maintenant pour être informé en priorité de l'ouverture.</span>
       </div>
-      <p class="hint" style="margin-bottom:14px;">Inscription via formulaire Google Form — réponse sous 48h.</p>
-      <div class="actions">
-        <a class="btn green" id="btnJoin" data-track="open_join_form" onclick="track('open_join_form','rejoindre')">🚀 Rejoindre maintenant →</a>
+
+      <div class="grid-2" style="margin-bottom:14px;">
+        <div class="item">
+          <div class="badge prep">En préparation</div>
+          <h3 style="margin-top:10px;">Cycle Orientation (en ligne)</h3>
+          <p>Clarifier ton projet + méthode + plan d'action concret.</p>
+          <div class="meta">
+            <span>📅 Période : à définir</span>
+            <span>🕒 Mercredi 18h–19h30</span>
+            <span>📍 Format : En ligne</span>
+            <span>🎯 Lycéens & étudiants</span>
+          </div>
+          <div class="actions">
+            <a class="btn sm green" id="linkPreinscriptionOnline" data-track="workshop_preinscription_online">🔔 Pré-inscription</a>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="badge prep">En préparation</div>
+          <h3 style="margin-top:10px;">Atelier pilote (Douala)</h3>
+          <p>Orientation + opportunités + méthode + questions/réponses en présentiel.</p>
+          <div class="meta">
+            <span>📅 Période : à définir</span>
+            <span>🕒 Samedi matin</span>
+            <span>📍 Douala</span>
+            <span>👥 10–20 participants</span>
+          </div>
+          <div class="actions">
+            <a class="btn sm green" id="linkPreinscriptionDouala" data-track="workshop_preinscription_douala">🔔 Être informé</a>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ═══════════ PROPOSER ═══════════ -->
-  <section class="view" id="view-proposer">
-    <div class="section-head">
-      <div><h2>Proposer une ressource</h2><p class="hint">On garde ce qui est pertinent et actionnable pour les jeunes.</p></div>
-    </div>
-    <div class="card pad">
-      <p class="hint" style="margin-bottom:16px;max-width:54ch;">Tu connais une ressource utile (lien, fichier, info, opportunité) ? Soumets-la via le formulaire.</p>
-      <div class="actions">
-        <a class="btn green" id="linkProposerForm" data-track="open_proposer_form" onclick="track('open_proposer_form','proposer')">➕ Proposer →</a>
-        <a class="btn" href="#/ressources" data-track="back_resources" onclick="track('back_resources','proposer')">↩ Retour aux ressources</a>
+      <div class="card pad">
+        <h3 style="margin-bottom:6px;">Formulaire d'inscription</h3>
+        <p class="hint" style="margin-bottom:14px;">Tous les boutons de pré-inscription renvoient vers ce formulaire.</p>
+        <div class="actions">
+          <a class="btn primary" id="openAteliersTally" data-track="open_tally_main">🗓 Ouvrir le formulaire →</a>
+        </div>
       </div>
+    </section>
+
+    <!-- ======================================
+         OPPORTUNITÉS
+    ======================================= -->
+    <section class="view" id="view-opportunites">
+      <div class="section-head">
+        <div>
+          <h2>Opportunités</h2>
+          <p class="hint">Bourses, offres et programmes centralisés sur Notion.</p>
+        </div>
+      </div>
+
+      <div class="banner">
+        <span>🎯</span>
+        <span>Commence par la catégorie qui correspond à ton objectif du moment.</span>
+      </div>
+
+      <div class="grid-3" style="margin-bottom:14px;">
+        <div class="item">
+          <h3>🎓 Programmes & bourses</h3>
+          <p>Listes organisées par pays et niveau d'études.</p>
+          <div class="actions">
+            <a class="btn sm primary" id="linkOppBourses" data-track="open_opp_bourses">Consulter →</a>
+          </div>
+        </div>
+
+        <div class="item">
+          <h3>💼 Offres</h3>
+          <p>Opportunités professionnelles centralisées.</p>
+          <div class="actions">
+            <a class="btn sm primary" id="linkOppOffres" data-track="open_opp_offres">Consulter →</a>
+          </div>
+        </div>
+
+        <div class="item">
+          <h3>🌍 Volontariat & concours</h3>
+          <p>Expériences valorisables pour construire son profil.</p>
+          <div class="actions">
+            <a class="btn sm primary" id="linkOppConcours" data-track="open_opp_concours">Consulter →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================
+         IMPACT
+         Public :
+         - plus de faux chiffres visibles
+         - discours plus crédible
+         - API / admin / GA conservés
+    ======================================= -->
+    <section class="view" id="view-impact">
+      <div class="section-head">
+        <div>
+          <h2>Impact</h2>
+          <p class="hint">Aperçu public des objectifs, du cap actuel et des priorités du projet.</p>
+        </div>
+      </div>
+
+      <div class="banner">
+        <span>📊</span>
+        <span>
+          Cette section présente la vision du projet, ses objectifs en cours et les axes de progression prioritaires.
+        </span>
+      </div>
+
+      <!-- Objectifs publics -->
+      <div class="grid-3" style="margin-bottom:14px;">
+        <div class="item">
+          <h3>🎯 Objectif principal</h3>
+          <p id="impact-goal-main">Toucher 100 jeunes</p>
+        </div>
+
+        <div class="item">
+          <h3>🤝 Objectif accompagnement</h3>
+          <p id="impact-goal-help">Aider 10 jeunes à avancer concrètement</p>
+        </div>
+
+        <div class="item">
+          <h3>🚀 Focus actuel</h3>
+          <p id="admin-priority">Développer la communauté et les inscriptions aux ateliers</p>
+        </div>
+      </div>
+
+      <!-- Lecture stratégique -->
+      <div class="grid-2" style="margin-bottom:14px;">
+        <div class="item">
+          <h3>🔥 Section la plus forte</h3>
+          <p id="admin-best-page">Accueil</p>
+        </div>
+
+        <div class="item">
+          <h3>🧊 Section à renforcer</h3>
+          <p id="admin-cold-page">Impact</p>
+        </div>
+      </div>
+
+      <!-- Narration projet -->
+      <div class="card pad" style="margin-top:14px;">
+        <h3 style="margin-bottom:6px;">Pourquoi cette section existe</h3>
+        <p class="hint" style="line-height:1.8;">
+          AEC Cameroun ne se limite pas à publier des ressources. L’objectif est de construire un cadre simple,
+          structuré et utile pour aider davantage de jeunes à clarifier leur projet, accéder à de bonnes informations,
+          rejoindre une communauté et avancer concrètement.
+        </p>
+      </div>
+
+      <!-- Dernière mise à jour -->
+      <div class="card pad" style="margin-top:14px;">
+        <h3 style="margin-bottom:6px;">Dernière mise à jour</h3>
+        <p class="hint">Date de mise à jour : <strong id="stat-updated">--</strong></p>
+      </div>
+    </section>
+
+    <!-- ======================================
+         À PROPOS
+    ======================================= -->
+    <section class="view" id="view-apropos">
+      <div class="section-head">
+        <div><h2>À propos</h2></div>
+      </div>
+
+      <div class="card pad">
+        <h3>Brice Awoumpe · Fondateur</h3>
+        <p class="hint" style="margin-top:6px;max-width:60ch;line-height:1.7;">
+          AEC existe pour rendre l'orientation plus claire et plus actionnable :
+          ressources utiles, ateliers collectifs et opportunités concrètes.
+        </p>
+
+        <div class="actions" style="margin-top:16px;">
+          <a class="btn primary" id="linkLinkedin" data-track="open_linkedin">💼 LinkedIn</a>
+          <a class="btn green" id="linkNotionMain" data-track="open_notion_complet_apropos">📋 Notion</a>
+          <a class="btn" id="linkEmail" data-track="open_email_apropos">✉️ Email</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================
+         REJOINDRE
+    ======================================= -->
+    <section class="view" id="view-rejoindre">
+      <div class="section-head">
+        <div>
+          <h2>Rejoindre</h2>
+          <p class="hint">Choisis le canal qui te convient pour suivre AEC Cameroun.</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card pad">
+          <div class="banner mint" style="margin-bottom:16px;">
+            <span>💬</span>
+            <span>Rejoins directement la communauté WhatsApp AEC Cameroun.</span>
+          </div>
+          <h3>Communauté WhatsApp</h3>
+          <p class="hint" style="margin-bottom:14px;">
+            Reçois les nouveautés, ressources, opportunités et infos sur les ateliers.
+          </p>
+          <div class="actions">
+            <a class="btn green" id="btnWhatsapp" data-track="open_join_whatsapp">💬 Rejoindre WhatsApp</a>
+          </div>
+        </div>
+
+        <div class="card pad">
+          <div class="banner" style="margin-bottom:16px;">
+            <span>📝</span>
+            <span>Tu peux aussi passer par le formulaire si tu préfères un accès plus structuré.</span>
+          </div>
+          <h3>Formulaire AEC</h3>
+          <p class="hint" style="margin-bottom:14px;">
+            Inscription via Google Forms pour centraliser les demandes.
+          </p>
+          <div class="actions">
+            <a class="btn primary" id="btnJoin" data-track="open_join_form">📝 Ouvrir le formulaire</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================
+         PROPOSER
+    ======================================= -->
+    <section class="view" id="view-proposer">
+      <div class="section-head">
+        <div>
+          <h2>Proposer une ressource</h2>
+          <p class="hint">On garde ce qui est pertinent, clair et actionnable pour les jeunes.</p>
+        </div>
+      </div>
+
+      <div class="card pad">
+        <p class="hint" style="margin-bottom:16px;max-width:54ch;">
+          Tu connais une ressource utile, une information ou une opportunité ?
+          Soumets-la via le formulaire.
+        </p>
+
+        <div class="actions">
+          <a class="btn green" id="linkProposerForm" data-track="open_proposer_form">➕ Proposer →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================
+         FAQ
+    ======================================= -->
+    <section class="card pad" style="margin-top:18px;">
+      <div class="section-head">
+        <div>
+          <h2>Questions fréquentes</h2>
+          <p class="hint">Les réponses rapides avant de rejoindre ou de s’inscrire.</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <details class="item faq-item">
+          <summary>AEC est-il gratuit ? <span>＋</span></summary>
+          <p>Oui, les ressources principales et l’accès de base sont gratuits.</p>
+        </details>
+
+        <details class="item faq-item">
+          <summary>Qui peut rejoindre ? <span>＋</span></summary>
+          <p>Lycéens, étudiants, jeunes diplômés et jeunes en recherche d’orientation ou d’opportunités.</p>
+        </details>
+
+        <details class="item faq-item">
+          <summary>Les ateliers sont-ils déjà ouverts ? <span>＋</span></summary>
+          <p>Les pré-inscriptions sont ouvertes. Les dates sont fixées selon la demande.</p>
+        </details>
+
+        <details class="item faq-item">
+          <summary>Comment proposer une ressource ? <span>＋</span></summary>
+          <p>Via la page “Proposer”, avec un lien ou une ressource utile et actionnable.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================
+       FOOTER
+  ======================================= -->
+  <footer class="z1">
+    <div class="fi">
+      <span>© 2025 AEC Cameroun · Brice Awoumpe · <a href="mailto:differentsleaders328@gmail.com">differentsleaders328@gmail.com</a></span>
+      <nav class="fl" aria-label="Liens pied de page">
+        <a href="#/ressources" data-nav="ressources" data-track="footer_ressources">Ressources</a>
+        <a href="#/ateliers" data-nav="ateliers" data-track="footer_ateliers">Ateliers</a>
+        <a href="#/opportunites" data-nav="opportunites" data-track="footer_opportunites">Opportunités</a>
+        <a href="#/apropos" data-nav="apropos" data-track="footer_apropos">À propos</a>
+      </nav>
     </div>
-  </section>
+  </footer>
 
-</main>
-
-<footer class="z1">
-  <div class="fi">
-    <span>© 2025 AEC Cameroun &nbsp;·&nbsp; Brice Awoumpe &nbsp;·&nbsp; <a href="/cdn-cgi/l/email-protection#a6c2cfc0c0c3d4c3c8d2d5cac3c7c2c3d4d595949ee6c1cbc7cfca88c5c9cb" style="color:var(--muted);"><span class="__cf_email__" data-cfemail="680c010e0e0d1a0d061c1b040d090c0d1a1b5b5a50280f05090104460b0705">[email&#160;protected]</span></a></span>
-    <nav class="fl" aria-label="Liens pied de page">
-      <a href="#/ressources"   data-nav="ressources"   data-track="footer_ressources">Ressources</a>
-      <a href="#/ateliers"     data-nav="ateliers"     data-track="footer_ateliers">Ateliers</a>
-      <a href="#/opportunites" data-nav="opportunites" data-track="footer_opportunites">Opportunités</a>
-      <a href="#/apropos"      data-nav="apropos"      data-track="footer_apropos">À propos</a>
-    </nav>
+  <!-- CTA mobile -->
+  <div class="floating-cta">
+    <a class="btn green" id="btnWhatsappFloat" data-track="floating_join_whatsapp">💬 WhatsApp</a>
+    <a class="btn primary" href="#/ressources" data-track="floating_resources">📚 Ressources</a>
   </div>
-</footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-(function(){
-  /* ── Animations Hero ─── */
-  document.addEventListener('DOMContentLoaded', function(){
+  <!-- ======================================
+       SCRIPT PRINCIPAL
+       Logique découpée, commentée, maintenable.
+  ======================================= -->
+  <script>
+    (function () {
+      /**
+       * Liste des vues disponibles dans la SPA.
+       * @type {string[]}
+       */
+      const VIEWS = [
+        "accueil",
+        "ressources",
+        "ateliers",
+        "opportunites",
+        "impact",
+        "apropos",
+        "rejoindre",
+        "proposer"
+      ];
 
-    // Compteurs animés
-    document.querySelectorAll('.hnum[data-target]').forEach(function(el){
-      var target = parseInt(el.dataset.target);
-      var start = null;
-      var duration = 1200;
-      function step(ts){
-        if(!start) start = ts;
-        var progress = Math.min((ts - start) / duration, 1);
-        var ease = 1 - Math.pow(1 - progress, 3);
-        el.textContent = Math.round(ease * target);
-        if(progress < 1) requestAnimationFrame(step);
+      /**
+       * Affiche une vue et masque les autres.
+       *
+       * @param {string} name
+       */
+      function showView(name) {
+        const safeName = VIEWS.includes(name) ? name : "accueil";
+
+        VIEWS.forEach((viewName) => {
+          const el = document.getElementById("view-" + viewName);
+          if (el) {
+            el.classList.toggle("active", viewName === safeName);
+          }
+        });
+
+        document.querySelectorAll("[data-nav]").forEach((link) => {
+          link.classList.toggle("active", link.getAttribute("data-nav") === safeName);
+        });
+
+        const panel = document.getElementById("menuPanel");
+        const btn = document.getElementById("menuBtn");
+
+        if (panel) panel.classList.remove("open");
+        if (btn) btn.setAttribute("aria-expanded", "false");
+
+        window.scrollTo({ top: 0, behavior: "auto" });
+
+        if (typeof gtag !== "undefined") {
+          gtag("event", "page_view", {
+            page_title: "AEC Cameroun — " + safeName,
+            page_location: location.href
+          });
+        }
       }
-      setTimeout(function(){ requestAnimationFrame(step); }, 400);
-    });
 
-    // Barre de progression ateliers
-    // Simule 6 pré-inscrits (tu mets à jour ce chiffre manuellement)
-    var INSCRITS = 6;
-    var OBJECTIF = 20;
-    var pct = Math.min((INSCRITS / OBJECTIF) * 100, 100);
-    setTimeout(function(){
-      var fill = document.getElementById('progFill');
-      var label = document.getElementById('progLabel');
-      if(fill) fill.style.width = pct + '%';
-      if(label) label.textContent = INSCRITS + ' / ' + OBJECTIF;
-    }, 600);
-
-    // Ticker rotatif — messages contextuels
-    var messages = [
-      'Plateforme active · Mesure GA4 en cours',
-      '7 fiches métiers gratuites disponibles',
-      'Ateliers en préparation · Pré-inscription ouverte',
-      'Cameroun 🇨🇲 · Orientation · Employabilité',
-      'Bourses, concours & opportunités centralisés',
-    ];
-    var idx = 0;
-    var ticker = document.getElementById('tickerText');
-    if(ticker){
-      setInterval(function(){
-        idx = (idx + 1) % messages.length;
-        ticker.style.opacity = '0';
-        ticker.style.transform = 'translateY(4px)';
-        setTimeout(function(){
-          ticker.textContent = messages[idx];
-          ticker.style.transition = 'opacity .35s ease, transform .35s ease';
-          ticker.style.opacity = '1';
-          ticker.style.transform = 'none';
-        }, 320);
-      }, 3200);
-      ticker.style.transition = 'opacity .35s ease, transform .35s ease';
-    }
-  });
-  var VIEWS=['accueil','ressources','ateliers','opportunites','impact','apropos','rejoindre','proposer'];
-  function showView(name){
-    if(!VIEWS.includes(name)) name='accueil';
-    VIEWS.forEach(function(v){
-      var el=document.getElementById('view-'+v);
-      if(el) el.classList.toggle('active',v===name);
-    });
-    document.querySelectorAll('[data-nav]').forEach(function(a){
-      a.classList.toggle('active',a.getAttribute('data-nav')===name);
-    });
-    var panel=document.getElementById('menuPanel');
-    var btn=document.getElementById('menuBtn');
-    if(panel) panel.classList.remove('open');
-    if(btn) btn.setAttribute('aria-expanded','false');
-    window.scrollTo({top:0,behavior:'instant'});
-    if(typeof gtag!=='undefined') gtag('event','page_view',{page_title:'AEC Cameroun — '+name,page_location:location.href});
-  }
-  function route(){
-    var h=(location.hash||'').trim();
-    var m=h.match(/^#\/([a-z-]+)/i);
-    showView(m?m[1].toLowerCase():'accueil');
-  }
-  window.addEventListener('hashchange',route);
-  document.addEventListener('DOMContentLoaded',route);
-
-  /* ── Mobile menu ─────────────────────────────────────────── */
-  var menuBtn=document.getElementById('menuBtn');
-  var menuPanel=document.getElementById('menuPanel');
-  if(menuBtn&&menuPanel){
-    menuBtn.addEventListener('click',function(){
-      var o=menuPanel.classList.toggle('open');
-      menuBtn.setAttribute('aria-expanded',o?'true':'false');
-      if(typeof gtag!=='undefined') gtag('event','click',{event_category:'navigation',event_label:'menu_mobile_toggle'});
-    });
-  }
-
-  /* ── GA4 auto-tracking data-track ───────────────────────── */
-  document.addEventListener('click',function(e){
-    var el=e.target.closest('[data-track]');
-    if(!el||typeof gtag==='undefined') return;
-    var label=el.getAttribute('data-track');
-    var cat='navigation';
-    if(/^cta_|^quick_/.test(label)) cat='cta';
-    else if(/^open_res|^open_notion|^go_ressources/.test(label)) cat='ressources';
-    else if(/^workshop_|^open_tally|^go_ateliers/.test(label)) cat='ateliers';
-    else if(/^open_opp|^go_opportunites|^opps_/.test(label)) cat='opportunites';
-    else if(/^open_join|^open_inscription/.test(label)) cat='rejoindre';
-    else if(/^open_linkedin|^open_email|^open_notion_complet_a/.test(label)) cat='apropos';
-    else if(/^open_proposer|^back_|^go_proposer/.test(label)) cat='proposer';
-    else if(/^footer_/.test(label)) cat='footer';
-    if(!el.hasAttribute('onclick')) gtag('event','click',{event_category:cat,event_label:label});
-    gtag('event',label,{event_category:cat});
-  });
-
-  /* ── Bind links via L config ──────────────────────────────── */
-  function open(url){ if(!url||url==='#') return; window.open(url,'_blank','noopener,noreferrer'); }
-  function bind(id,url){
-    var el=document.getElementById(id);
-    if(!el||!url) return;
-    el.addEventListener('click',function(e){ e.preventDefault(); open(url); });
-    el.setAttribute('href',url);
-    el.setAttribute('target','_blank');
-    el.setAttribute('rel','noopener noreferrer');
-  }
-  function bindMail(id,email){
-    var el=document.getElementById(id);
-    if(!el) return;
-    el.setAttribute('href','mailto:'+email);
-  }
-
-  document.addEventListener('DOMContentLoaded',function(){
-    bind('btnInscription',       L.ateliers_tally);
-    bindMail('btnContact',       L.email);
-    bind('homeOpenNotionBase',   L.notion_base);
-    bind('homeOpenTally',        L.ateliers_tally);
-    bind('linkResMethode',       L.res_methode);
-    bind('linkResCV',            L.res_cv);
-    bind('linkResMetiers',       L.res_metiers);
-    bind('openNotionBase',       L.notion_base);
-    bind('openNotionComplet',    L.notion_complet);
-    bind('linkPreinscriptionOnline', L.ateliers_tally);
-    bind('linkPreinscriptionDouala', L.ateliers_tally);
-    bind('openAteliersTally',    L.ateliers_tally);
-    bind('linkOppBourses',       L.opp_bourses);
-    bind('linkOppOffres',        L.opp_offres);
-    bind('linkOppConcours',      L.opp_concours);
-    bind('btnJoin',              L.join_membre);
-    bind('linkLinkedin',         L.linkedin);
-    bind('linkNotionMain',       L.notion_complet);
-    bindMail('linkEmail',        L.email);
-    bind('linkProposerForm',     L.proposer_form);
-  });
-
-  /* ── Impact — protection mot de passe ───────────────────── */
-  // Change "aec2025" par le mot de passe de ton choix
-  var IMPACT_PWD = 'aec2025';
-  var IMPACT_KEY = 'aec_impact_ok';
-
-  window.checkImpactPwd = function(){
-    var val = document.getElementById('impact-pwd').value;
-    if(val === IMPACT_PWD){
-      sessionStorage.setItem(IMPACT_KEY,'1');
-      unlockImpact();
-    } else {
-      var err = document.getElementById('impact-err');
-      if(err) err.style.display='block';
-      var inp = document.getElementById('impact-pwd');
-      if(inp){ inp.value=''; inp.focus(); }
-    }
-  };
-
-  window.unlockImpact = function(){
-    var lock    = document.getElementById('impact-lock');
-    var content = document.getElementById('impact-content');
-    if(lock)    lock.style.display    = 'none';
-    if(content) content.style.display = 'block';
-  };
-
-  window.lockImpact = function(){
-    sessionStorage.removeItem(IMPACT_KEY);
-    var lock    = document.getElementById('impact-lock');
-    var content = document.getElementById('impact-content');
-    if(lock)    lock.style.display    = 'block';
-    if(content) content.style.display = 'none';
-    var inp = document.getElementById('impact-pwd');
-    if(inp) inp.value = '';
-  };
-
-  // Si déjà auth dans la session, déverrouiller auto
-  document.addEventListener('DOMContentLoaded',function(){
-    if(sessionStorage.getItem(IMPACT_KEY)==='1' && location.hash==='#/impact'){
-      unlockImpact();
-    }
-  });
-
-  // Gestion au changement de vue
-  window.addEventListener('hashchange',function(){
-    if(location.hash==='#/impact'){
-      if(sessionStorage.getItem(IMPACT_KEY)==='1') unlockImpact();
-    } else {
-      if(!sessionStorage.getItem(IMPACT_KEY)){
-        var lock    = document.getElementById('impact-lock');
-        var content = document.getElementById('impact-content');
-        var err     = document.getElementById('impact-err');
-        if(lock)    lock.style.display    = 'block';
-        if(content) content.style.display = 'none';
-        if(err)     err.style.display     = 'none';
+      /**
+       * Lit le hash et route vers la bonne vue.
+       */
+      function route() {
+        const hash = (location.hash || "").trim();
+        const match = hash.match(/^#\/([a-z-]+)/i);
+        showView(match ? match[1].toLowerCase() : "accueil");
       }
-    }
-  });
 
-})();
-</script>
+      window.addEventListener("hashchange", route);
+      document.addEventListener("DOMContentLoaded", route);
+
+      /* --------------------------------
+         MENU MOBILE
+      -------------------------------- */
+      const menuBtn = document.getElementById("menuBtn");
+      const menuPanel = document.getElementById("menuPanel");
+
+      if (menuBtn && menuPanel) {
+        menuBtn.addEventListener("click", function () {
+          const isOpen = menuPanel.classList.toggle("open");
+          menuBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+          track("menu_mobile_toggle");
+        });
+      }
+
+      /**
+       * Lie un élément à une URL externe.
+       *
+       * @param {string} id
+       * @param {string} url
+       */
+      function bindExternal(id, url) {
+        const el = document.getElementById(id);
+        if (!el || !url) return;
+
+        el.setAttribute("href", url);
+        el.setAttribute("target", "_blank");
+        el.setAttribute("rel", "noopener noreferrer");
+      }
+
+      /**
+       * Lie un élément à un mailto.
+       *
+       * @param {string} id
+       * @param {string} email
+       */
+      function bindMail(id, email) {
+        const el = document.getElementById(id);
+        if (!el || !email) return;
+
+        el.setAttribute("href", "mailto:" + email);
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        bindExternal("btnWhatsapp", L.join_whatsapp);
+        bindExternal("btnWhatsappQuick", L.join_whatsapp);
+        bindExternal("btnWhatsappStart", L.join_whatsapp);
+        bindExternal("btnWhatsappFloat", L.join_whatsapp);
+
+        bindExternal("btnJoin", L.join_membre);
+
+        bindExternal("linkResMethode", L.res_methode);
+        bindExternal("linkResCV", L.res_cv);
+        bindExternal("linkResMetiers", L.res_metiers);
+
+        bindExternal("openNotionBase", L.notion_base);
+        bindExternal("openNotionComplet", L.notion_complet);
+
+        bindExternal("linkPreinscriptionOnline", L.ateliers_tally);
+        bindExternal("linkPreinscriptionDouala", L.ateliers_tally);
+        bindExternal("openAteliersTally", L.ateliers_tally);
+
+        bindExternal("linkOppBourses", L.opp_bourses);
+        bindExternal("linkOppOffres", L.opp_offres);
+        bindExternal("linkOppConcours", L.opp_concours);
+
+        bindExternal("linkLinkedin", L.linkedin);
+        bindExternal("linkNotionMain", L.notion_complet);
+        bindExternal("linkProposerForm", L.proposer_form);
+
+        bindMail("btnContact", L.email);
+        bindMail("linkEmail", L.email);
+      });
+
+      /* --------------------------------
+         TRACKING AUTO
+         On conserve tout le suivi GA4.
+      -------------------------------- */
+      document.addEventListener("click", function (event) {
+        const el = event.target.closest("[data-track]");
+        if (!el || typeof gtag === "undefined") return;
+
+        const label = el.getAttribute("data-track");
+        let category = "navigation";
+
+        if (/^cta_|^quick_|^floating_|^start_/.test(label)) category = "cta";
+        else if (/^open_res|^go_ressources|^open_notion/.test(label)) category = "ressources";
+        else if (/^workshop_|^open_tally|^go_ateliers/.test(label)) category = "ateliers";
+        else if (/^open_opp|^go_opportunites/.test(label)) category = "opportunites";
+        else if (/^open_join|^quick_whatsapp|^start_whatsapp|^floating_join_whatsapp/.test(label)) category = "rejoindre";
+        else if (/^open_linkedin|^open_email/.test(label)) category = "apropos";
+        else if (/^open_proposer/.test(label)) category = "proposer";
+        else if (/^footer_/.test(label)) category = "footer";
+
+        gtag("event", "click", {
+          event_category: category,
+          event_label: label
+        });
+      });
+
+      /**
+       * Insère un texte dans un élément si présent.
+       *
+       * @param {string} id
+       * @param {string|number|null|undefined} value
+       * @param {string} [fallback="--"]
+       */
+      function setText(id, value, fallback = "--") {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.textContent = value ?? fallback;
+      }
+
+      /**
+       * Charge les données publiques depuis l'API Apps Script.
+       *
+       * On conserve :
+       * - les KPI techniques dans l'API
+       * - mais on choisit de ne pas les exposer publiquement sur Impact
+       */
+      async function loadStats() {
+        if (!L.stats_url) return;
+
+        try {
+          const res = await fetch(L.stats_url, { cache: "no-store" });
+          if (!res.ok) throw new Error("HTTP " + res.status);
+
+          const data = await res.json();
+
+          /* ----- Accueil ----- */
+          setText("hero-members", data.members, "--");
+
+          const workshops = Number(data.workshops || 0);
+          const goal = Number(data.workshops_goal || 20);
+          const pct = Math.min((workshops / goal) * 100, 100);
+
+          const fill = document.getElementById("progFill");
+          const text = document.getElementById("progText");
+
+          if (fill) fill.style.width = pct + "%";
+          if (text) text.textContent = workshops + " / " + goal;
+
+          /* ----- Impact public ----- */
+          setText("admin-best-page", data.best_page, "Accueil");
+          setText("admin-cold-page", data.cold_page, "Impact");
+          setText("admin-priority", data.priority, "Développer la communauté");
+          setText("stat-updated", data.updated_at, "--");
+
+          /* ----- Objectifs dynamiques ----- */
+          setText("impact-goal-main", data.goal_main, "Toucher 100 jeunes");
+          setText("impact-goal-help", data.goal_help, "Aider 10 jeunes à avancer concrètement");
+
+          /* ----- Objectifs latéraux accueil ----- */
+          setText("goal-home-1-number", data.home_goal_1_number, "100");
+          setText("goal-home-1-text", data.home_goal_1_text, "jeunes à toucher");
+
+          setText("goal-home-2-number", data.home_goal_2_number, "10");
+          setText("goal-home-2-text", data.home_goal_2_text, "jeunes à aider concrètement");
+
+          setText("goal-home-3-number", data.home_goal_3_number, String(goal));
+          setText("goal-home-3-text", data.home_goal_3_text, "pré-inscriptions ateliers visées");
+
+          /* KPI techniques gardés mais masqués côté public :
+             data.visitors
+             data.pageviews
+             data.clicks
+          */
+        } catch (err) {
+          console.error("Erreur chargement stats:", err);
+        }
+      }
+
+      /**
+       * Ticker d’ambiance hero.
+       */
+      function startTicker() {
+        const messages = [
+          "Plateforme active · Ressources et opportunités en cours de mise à jour",
+          "Rejoins la communauté WhatsApp AEC Cameroun",
+          "Ateliers en préparation · Pré-inscription ouverte",
+          "Orientation, employabilité et opportunités pour les jeunes"
+        ];
+
+        let idx = 0;
+        const ticker = document.getElementById("tickerText");
+        if (!ticker) return;
+
+        ticker.style.transition = "opacity .35s ease, transform .35s ease";
+
+        setInterval(function () {
+          idx = (idx + 1) % messages.length;
+
+          ticker.style.opacity = "0";
+          ticker.style.transform = "translateY(4px)";
+
+          setTimeout(function () {
+            ticker.textContent = messages[idx];
+            ticker.style.opacity = "1";
+            ticker.style.transform = "none";
+          }, 320);
+        }, 3200);
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        loadStats();
+        startTicker();
+      });
+    })();
+  </script>
 </body>
 </html>
