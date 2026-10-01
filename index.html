@@ -55,22 +55,29 @@
 <nav aria-label="Navigation principale" class="desktop">
 <a class="tab" data-nav="accueil" data-track="nav_accueil" href="#/accueil">Accueil</a>
 <a class="tab" data-nav="ressources" data-track="nav_ressources" href="#/ressources">Ressources</a>
-<a class="tab" data-nav="ateliers" data-track="nav_ateliers" href="#/ateliers">Ateliers</a>
 <a class="tab" data-nav="opportunites" data-track="nav_opportunites" href="#/opportunites">Opportunités</a>
-<a class="tab" data-nav="impact" data-track="nav_impact" href="#/impact">Impact</a>
 <a class="tab" data-nav="apropos" data-track="nav_apropos" href="#/apropos">À propos</a>
-<a class="tab" data-nav="rejoindre" data-track="nav_rejoindre" href="#/rejoindre">Communauté</a>
-<a class="tab" data-nav="proposer" data-track="nav_proposer" href="#/proposer">Proposer</a>
+<div class="more-wrap">
+<button aria-controls="morePanel" aria-expanded="false" class="tab" id="moreBtn" type="button">Plus ▾</button>
+<div class="morePanel" id="morePanel">
+<a data-nav="ateliers" data-track="more_ateliers" href="#/ateliers">Ateliers</a>
+<a data-nav="impact" data-track="more_impact" href="#/impact">Impact</a>
+<a data-nav="rejoindre" data-track="more_rejoindre" href="#/rejoindre">Communauté</a>
+<a data-nav="proposer" data-track="more_proposer" href="#/proposer">Proposer</a>
+</div>
+</div>
 </nav>
 <button aria-controls="menuPanel" aria-expanded="false" class="menuBtn" id="menuBtn" type="button">☰ Menu</button>
 </div>
 <div class="menuPanel" id="menuPanel">
+<span class="menu-group-label">Principal</span>
 <a data-nav="accueil" data-track="mnav_accueil" href="#/accueil">Accueil</a>
 <a data-nav="ressources" data-track="mnav_ressources" href="#/ressources">Ressources</a>
-<a data-nav="ateliers" data-track="mnav_ateliers" href="#/ateliers">Ateliers</a>
 <a data-nav="opportunites" data-track="mnav_opportunites" href="#/opportunites">Opportunités</a>
-<a data-nav="impact" data-track="mnav_impact" href="#/impact">Impact</a>
 <a data-nav="apropos" data-track="mnav_apropos" href="#/apropos">À propos</a>
+<span class="menu-group-label">Autres accès</span>
+<a data-nav="ateliers" data-track="mnav_ateliers" href="#/ateliers">Ateliers</a>
+<a data-nav="impact" data-track="mnav_impact" href="#/impact">Impact</a>
 <a data-nav="rejoindre" data-track="mnav_rejoindre" href="#/rejoindre">Communauté</a>
 <a data-nav="proposer" data-track="mnav_proposer" href="#/proposer">Proposer</a>
 </div>
@@ -87,14 +94,17 @@
 <section class="view active" id="view-accueil">
 <div class="hero-grid">
 <div class="card pad">
-<span class="pill">Cameroun 🇨🇲 · Orientation · CV · Opportunités · Communauté</span>
+<span class="pill">Cameroun 🇨🇲 · Orientation &amp; emploi des jeunes</span>
 <h1>Trouve ta voie au Cameroun.<br/>Clarifie ton projet.<br/>Passe à l’action.</h1>
-<p class="sub">AEC Cameroun aide les jeunes à <strong>mieux s’orienter</strong>, <strong>améliorer leur CV</strong>, accéder à des <strong>opportunités concrètes</strong> et rejoindre une <strong>communauté utile</strong>.</p>
+<p class="sub">Pour les lycéens, étudiants et jeunes en recherche de stage, de première expérience ou d’emploi : clarifie ta situation et découvre la prochaine action à entreprendre.</p>
 <div class="actions">
-<a class="btn green" data-track="cta_hero_whatsapp" href="#/rejoindre">💬 Rejoindre WhatsApp</a>
-<a class="btn primary" data-track="cta_hero_ressources" href="#/ressources">📚 Voir les ressources</a>
-<a class="btn" data-track="cta_hero_opportunites" href="#/opportunites">🎯 Voir les opportunités</a>
-<a class="btn" data-track="cta_hero_ateliers" href="#/ateliers">🗓 Ateliers</a>
+<a class="btn primary" data-track="cta_hero_primary" href="#/diagnostic">Faire mon diagnostic →</a>
+</div>
+<div class="actions">
+<a class="btn sm green" data-track="cta_hero_whatsapp" href="#/rejoindre">💬 Rejoindre WhatsApp</a>
+<a class="btn sm" data-track="cta_hero_ressources" href="#/ressources">📚 Voir les ressources</a>
+<a class="btn sm" data-track="cta_hero_opportunites" href="#/opportunites">🎯 Voir les opportunités</a>
+<a class="btn sm" data-track="cta_hero_ateliers" href="#/ateliers">🗓 Ateliers</a>
 </div>
 <div class="tags">
 <span class="pill">✔ Orientation simple</span>
@@ -156,35 +166,11 @@
 </div>
 </div>
 </div>
-<div class="card pad" style="margin-bottom:16px;">
+<div class="card pad" style="margin-bottom:16px;" id="bloc-entree">
 <div class="section-head">
 <div>
 <h2>Commencer ici</h2>
 <p class="hint">Choisis ton besoin principal et avance directement.</p>
-</div>
-</div>
-<div class="grid-3">
-<div class="item">
-<h3>🧭 Je veux clarifier mon projet</h3>
-<p>Découvre la méthode d’orientation et les premières ressources utiles.</p>
-<div class="actions">
-<a class="btn sm primary" data-track="start_orientation" href="#/ressources">Commencer</a>
-</div>
-</div>
-<div class="item">
-<h3>🎯 Je cherche une opportunité</h3>
-<p>Bourses, concours, programmes et offres centralisés.</p>
-<div class="actions">
-<a class="btn sm green" data-track="start_opportunites" href="#/opportunites">Voir</a>
-</div>
-</div>
-<div class="item">
-<h3>💬 Je veux rejoindre la communauté</h3>
-<p>Entre directement dans le groupe WhatsApp AEC Cameroun.</p>
-<div class="actions">
-<a class="btn sm" data-track="start_whatsapp" id="btnWhatsappStart">Rejoindre</a>
-</div>
-</div>
 </div>
 </div>
 <div class="grid-3">
@@ -196,17 +182,111 @@
 </div>
 </div>
 <div class="item">
+<h3>🎯 Opportunités</h3>
+<p>Bourses, programmes, concours, offres d'emploi.</p>
+<div class="actions">
+<a class="btn sm primary" data-track="go_opportunites" href="#/opportunites">Consulter</a>
+</div>
+</div>
+<div class="item">
 <h3>🗓 Ateliers</h3>
 <p>En ligne et en présentiel. Pré-inscription ouverte.</p>
 <div class="actions">
 <a class="btn sm green" data-track="go_ateliers" href="#/ateliers">Voir</a>
 </div>
 </div>
-<div class="item">
-<h3>🎯 Opportunités</h3>
-<p>Bourses, programmes, concours, offres d'emploi.</p>
-<div class="actions">
-<a class="btn sm primary" data-track="go_opportunites" href="#/opportunites">Consulter</a>
+</div>
+</div>
+</section>
+<!-- ======================================
+         DIAGNOSTIC EXPRESS
+    ======================================= -->
+<section class="view" id="view-diagnostic">
+<div class="section-head">
+<div>
+<h2>Faire mon diagnostic</h2>
+<p class="hint">3 questions rapides. Aucune donnée personnelle n’est demandée.</p>
+</div>
+</div>
+<div class="card pad diag-card" id="diagCard">
+<div class="diag-progress" id="diagProgress" aria-hidden="true">
+<span class="diag-dot" data-dot="1"></span>
+<span class="diag-dot" data-dot="2"></span>
+<span class="diag-dot" data-dot="3"></span>
+</div>
+
+<div class="diag-step" id="diagStep1" data-step="1">
+<p class="diag-stepnum">Question 1 / 3</p>
+<h3>Quel résultat veux-tu obtenir dans les 30 à 90 prochains jours ?</h3>
+<div class="diag-options" role="group" aria-label="Question 1 sur 3">
+<button class="diag-opt" data-q="q1" data-v="etudes" type="button">Choisir / préparer mes études ou un concours</button>
+<button class="diag-opt" data-q="q1" data-v="stage" type="button">Trouver un stage ou une première expérience</button>
+<button class="diag-opt" data-q="q1" data-v="emploi" type="button">Trouver mon premier emploi</button>
+<button class="diag-opt" data-q="q1" data-v="inconnu" type="button">Je ne sais pas encore exactement</button>
+</div>
+<div class="diag-nav">
+<span></span>
+<button class="btn primary diag-next" data-next="2" disabled="" type="button">Continuer →</button>
+</div>
+</div>
+
+<div class="diag-step" data-step="2" hidden="" id="diagStep2">
+<p class="diag-stepnum">Question 2 / 3</p>
+<h3>Quel est ton blocage principal aujourd’hui ?</h3>
+<div class="diag-options" role="group" aria-label="Question 2 sur 3">
+<button class="diag-opt" data-q="q2" data-v="choix" type="button">Je ne sais pas quoi choisir</button>
+<button class="diag-opt" data-q="q2" data-v="info" type="button">Je ne sais pas quoi vérifier / où trouver une information fiable</button>
+<button class="diag-opt" data-q="q2" data-v="profil" type="button">Je ne sais pas comment présenter mon profil, mes preuves ou mon CV</button>
+<button class="diag-opt" data-q="q2" data-v="opportunites" type="button">Je ne trouve pas d’opportunités adaptées</button>
+<button class="diag-opt" data-q="q2" data-v="action" type="button">Je ne sais pas quelle action faire maintenant</button>
+</div>
+<div class="diag-nav">
+<button class="btn diag-back" data-back="1" type="button">← Retour</button>
+<button class="btn primary diag-next" data-next="3" disabled="" type="button">Continuer →</button>
+</div>
+</div>
+
+<div class="diag-step" data-step="3" hidden="" id="diagStep3">
+<p class="diag-stepnum">Question 3 / 3</p>
+<h3>Comment veux-tu avancer ?</h3>
+<div class="diag-options" role="group" aria-label="Question 3 sur 3">
+<button class="diag-opt" data-q="q3" data-v="seul" type="button">Seul</button>
+<button class="diag-opt" data-q="q3" data-v="systeme" type="button">Avec un système préparé</button>
+<button class="diag-opt" data-q="q3" data-v="accompagne" type="button">Avec un accompagnement</button>
+</div>
+<div class="diag-nav">
+<button class="btn diag-back" data-back="2" type="button">← Retour</button>
+<button class="btn primary diag-next" data-next="result" disabled="" type="button">Voir mon résultat →</button>
+</div>
+</div>
+
+<div class="diag-step" data-step="result" hidden="" id="diagStepResult">
+<p class="diag-stepnum">Ton résultat</p>
+<div class="diag-result-grid">
+<div class="diag-result-item">
+<span class="diag-result-label">🎯 Objectif</span>
+<p id="diagResultObjectif"></p>
+</div>
+<div class="diag-result-item">
+<span class="diag-result-label">🧱 Blocage principal</span>
+<p id="diagResultBlocage"></p>
+</div>
+<div class="diag-result-item diag-result-highlight">
+<span class="diag-result-label">➡️ Prochaine action</span>
+<p id="diagResultAction"></p>
+</div>
+<div class="diag-result-item">
+<span class="diag-result-label">🤝 Mode d’aide</span>
+<p id="diagResultMode"></p>
+</div>
+<div class="diag-result-item diag-result-source">
+<span class="diag-result-label">📌 Source à vérifier</span>
+<p>À préciser selon ton objectif.</p>
+</div>
+</div>
+<div class="diag-nav">
+<button class="btn diag-restart" type="button">↺ Recommencer</button>
+<a class="btn primary" data-track="diag_result_ressources" href="#/ressources">📚 Voir les ressources liées</a>
 </div>
 </div>
 </div>
@@ -537,5 +617,5 @@
        Logique découpée, commentée, maintenable.
   ======================================= -->
 
-<script src="data/config.js"></script><script src="js/app.js"></script></body>
+<script src="data/config.js"></script><script src="js/app.js"></script><script src="js/diagnostic.js"></script></body>
 </html>

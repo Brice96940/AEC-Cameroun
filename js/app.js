@@ -6,6 +6,7 @@ const L = window.AEC_CONFIG || {};
        */
       const VIEWS = [
         "accueil",
+        "diagnostic",
         "ressources",
         "ateliers",
         "opportunites",
@@ -40,6 +41,12 @@ const L = window.AEC_CONFIG || {};
         if (panel) panel.classList.remove("open");
         if (btn) btn.setAttribute("aria-expanded", "false");
 
+        const more = document.getElementById("morePanel");
+        const moreBtn = document.getElementById("moreBtn");
+
+        if (more) more.classList.remove("open");
+        if (moreBtn) moreBtn.setAttribute("aria-expanded", "false");
+
         window.scrollTo({ top: 0, behavior: "auto" });
 
         if (typeof gtag !== "undefined") {
@@ -73,6 +80,36 @@ const L = window.AEC_CONFIG || {};
           const isOpen = menuPanel.classList.toggle("open");
           menuBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
           track("menu_mobile_toggle");
+        });
+      }
+
+      /* --------------------------------
+         DESKTOP "PLUS" (accès secondaires)
+      -------------------------------- */
+      const moreBtn = document.getElementById("moreBtn");
+      const morePanel = document.getElementById("morePanel");
+
+      if (moreBtn && morePanel) {
+        moreBtn.addEventListener("click", function (event) {
+          event.stopPropagation();
+          const isOpen = morePanel.classList.toggle("open");
+          moreBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+          track("nav_more_toggle");
+        });
+
+        document.addEventListener("click", function (event) {
+          if (!morePanel.classList.contains("open")) return;
+          if (event.target === moreBtn || morePanel.contains(event.target)) return;
+          morePanel.classList.remove("open");
+          moreBtn.setAttribute("aria-expanded", "false");
+        });
+
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape" && morePanel.classList.contains("open")) {
+            morePanel.classList.remove("open");
+            moreBtn.setAttribute("aria-expanded", "false");
+            moreBtn.focus();
+          }
         });
       }
 
