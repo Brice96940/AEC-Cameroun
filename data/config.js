@@ -1,8 +1,8 @@
 window.AEC_CONFIG = {
         email: "differentsleaders328@gmail.com",
         linkedin: "https://www.linkedin.com/in/awoumpebrice99/recent-activity/all/",
-        notion_complet: "https://buttercup-sight-745.notion.site/AEC-Cameroun-Orientation-Employabilit-30ee2b4c167380e599bbe47d0d6b9223?pvs=143",
-        notion_base: "https://buttercup-sight-745.notion.site/RESSOURCES-30ee2b4c167380dc90cef0babdfb8095?pvs=143",
+        notion_complet: "https://buttercup-sight-745.notion.site/AEC-CAMEROUN-RESSOURCES-PUBLIQUES-V1-3f3e2b4c167381d389c3df69a60a40f0?pvs=143",
+        notion_base: "https://buttercup-sight-745.notion.site/BASE-RESSOURCES-AEC-CAMEROUN-3f3e2b4c167381e5b165c490978f179b?pvs=143",
         ateliers_tally: "https://tally.so/r/ODzE9Y",
         join_membre: "https://docs.google.com/forms/d/e/1FAIpQLSePxirx2doALdDiq1qsY6bKNbh8RT6U2F76IK2kEDX6SfcvxA/viewform?usp=header",
         join_whatsapp: "https://chat.whatsapp.com/GovGEzoQLyN5ZQScJqpYBZ",
